@@ -24,6 +24,12 @@ body {
   text-align: center;
 }
 
+.character.add span {
+  font-size: 15em;
+  color: darkcyan;
+  line-height: 100%;
+}
+
 img {
   width: auto;
   max-height: 15em;
