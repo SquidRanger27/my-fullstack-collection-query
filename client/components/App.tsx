@@ -1,5 +1,6 @@
 import { getCharacters } from '../apis/characters'
 import { useQuery } from '@tanstack/react-query'
+import Character from './Character'
 
 function App() {
   const {
@@ -18,10 +19,12 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Characters:</h1>
       </header>
       <section className="main">
-        <pre>{JSON.stringify(characters, null, 2)}</pre>
+        {characters.map((character) => (
+          <Character key={character.id} {...character} />
+        ))}
       </section>
     </>
   )
