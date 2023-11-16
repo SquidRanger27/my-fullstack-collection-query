@@ -1,9 +1,9 @@
 import request from 'superagent'
-import { Book } from '../models/books'
-const booksUrl = 'api/v1/books'
+import { Cheese } from '../models/cheese'
+const cheesesUrl = 'api/v1/cheeses'
 
-export async function getBooks(): Promise<Book[]> {
-  const booksResponse = await request.get(booksUrl)
-  console.log(booksResponse)
-  return booksResponse.body
+export async function getCheesesApi(): Promise<Cheese[]> {
+  const cheesesResponse = await request.get(cheesesUrl)
+  console.log(cheesesResponse)
+  return cheesesResponse.body
 }

@@ -1,6 +1,6 @@
 import connection from './connection'
-import { Book } from '../../models/books'
+import { Cheese } from '../../models/cheese'
 
-export async function getAllBooks(): Promise<Book[]> {
-  return connection('books').select('*')
+export async function getAllCheeses(): Promise<Cheese[]> {
+  return connection('cheese').select('*')
 }

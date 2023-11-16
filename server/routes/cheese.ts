@@ -5,8 +5,8 @@ import * as db from '../db/db.ts'
 // GET /api/v1/books
 router.get('/', async (req, res) => {
   try {
-    const books = await db.getAllBooks()
-    res.json({ books })
+    const cheeses = await db.getAllCheeses()
+    res.json({ cheeses })
   } catch (error: any) {
     res.sendStatus(500)
     console.log(error.message)
