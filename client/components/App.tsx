@@ -1,10 +1,14 @@
-function App() {
+import { Link } from 'react-router-dom'
+
+export function App() {
   return (
     <>
       <header className="header">
         <h1>My Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        <Link to="/movies">Click here to see the movie list</Link>
+      </section>
     </>
   )
 }
