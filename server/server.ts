@@ -1,7 +1,7 @@
 import * as Path from 'node:path'
 
 import express from 'express'
-import dbRoutes from './routes/dbRoutes'
+import dbRoutes from './db/db'
 
 const server = express()
 server.use(express.json())
