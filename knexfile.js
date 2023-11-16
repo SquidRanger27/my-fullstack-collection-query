@@ -1,45 +1,42 @@
-// Update with your config settings.
+const { join } = require('node:path')
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-export default {
+module.exports = {
   development: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      filename: './dev.sqlite3',
+      filename: join(__dirname, 'dev.sqlite3'),
+    },
+    pool: {
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
-  staging: {
-    client: 'postgresql',
+  test: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
-    },
-    pool: {
-      min: 2,
-      max: 10,
+      filename: ':memory:',
     },
     migrations: {
-      tableName: 'knex_migrations',
+      directory: join(__dirname, 'migrations'),
+    },
+    seeds: {
+      directory: join(__dirname, 'seeds'),
+    },
+    pool: {
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
   production: {
-    client: 'postgresql',
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      filename: '/app/storage/prod.sqlite3',
     },
     pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: 'knex_migrations',
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 }
