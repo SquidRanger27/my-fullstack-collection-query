@@ -1,33 +1,44 @@
-import { useQuery } from '@tanstack/react-query'
-import { getAllMovies } from '../apis/apiClient'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { addMovie, getAllMovies } from '../apis/apiClient'
 import * as Models from '../../models/movies'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export function AddMovies() {
-  const {
-    data: movies,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ['movies'],
-    queryFn: () => getAllMovies(),
+  const [rating, setRating] = useState(0)
+  const [name, setName] = useState('')
+
+  const queryClient = useQueryClient()
+
+  const addMovieMutation = useMutation({
+    mutationFn: addMovie,
+    onSuccess() {
+      queryClient.invalidateQueries[{ queryKey: ['movies'] }]
+    },
   })
-
-  if (!movies || isLoading) {
-    return <h1>Loading</h1>
-  }
-
-  if (error) {
-    return <h1>Error </h1>
-  }
 
   return (
     <>
-      <form>
-        <label></label>
-        <input></input>
-        <label></label>
-        <input></input>
+      <Link to="/">
+        <h1>Home</h1>
+      </Link>
+      <form
+        onSubmit={() => {
+          addMovieMutation.mutate({ name, rating })
+        }}
+      >
+        <label htmlFor="name">Movie Name</label>
+        <input id="name" type="text" value={name} />
+        <label htmlFor="rating">Personal Rating</label>
+        <input
+          id="rating"
+          type="number"
+          min="0"
+          max="10"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+        />
+        <button type="submit">Save</button>
       </form>
     </>
   )
