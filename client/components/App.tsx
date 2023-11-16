@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 export function App() {
   return (
@@ -7,7 +7,8 @@ export function App() {
         <h1>My Collection</h1>
       </header>
       <section className="main">
-        <Link to="/movies">Click here to see the movie list</Link>
+        <Link to="/movies">Click here to see my movie list</Link>
+        <Outlet />
       </section>
     </>
   )
