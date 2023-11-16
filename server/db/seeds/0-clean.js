@@ -1,5 +1,6 @@
 export async function seed(knex) {
   // Deletes ALL existing entries
-  await knex('Comments').del()
-  await knex('Posts').del()
+  await knex('Books').del()
+  await knex('Authors').del()
+  await knex('Authors_Books').del()
 }

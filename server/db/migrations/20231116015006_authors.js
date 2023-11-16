@@ -4,7 +4,7 @@
  */
 export function up(knex) {
   return knex.schema.createTable('Authors', (table) => {
-    table.increments().primary().references('Authors_Books.author_id')
+    table.increments().primary()
     table.string('name')
     table.date('dob')
     table.integer('books_published')
