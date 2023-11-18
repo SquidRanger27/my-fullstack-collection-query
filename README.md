@@ -10,19 +10,21 @@ This repo is designed to provide space to code a fullstack app. It contains node
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
-    You may also want to start a new branch
-    ```sh
-    cd my-fullstack-collection
-    npm i
-    git checkout -b <branchname>
-    npm run dev
-    ```
+  You may also want to start a new branch
+
+  ```sh
+  cd my-fullstack-collection
+  npm i
+  git checkout -b <branchname>
+  npm run dev
+  ```
+
   </details>
 
 <details>
   <summary>More about using <code>npm</code> vs <code>npx</code></summary>
 
-  - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
+- When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
 </details>
 
 ---
@@ -35,12 +37,12 @@ This repo is designed to provide space to code a fullstack app. It contains node
   <details style="padding-left: 2em">
     <summary>More about your collection</summary>
 
-    **Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
+  **Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
 
-    |id|title|author|
-    |---|---|---|
-    | 1 | Ready Player One | Ernest Cline |
-    | 2 | Throwing Rocks at the Google Bus | Douglas Rushkoff |
+  | id  | title                            | author           |
+  | --- | -------------------------------- | ---------------- |
+  | 1   | Ready Player One                 | Ernest Cline     |
+  | 2   | Throwing Rocks at the Google Bus | Douglas Rushkoff |
 
 Our first job is getting something showing on the front end from our database. Here's a list of steps in case they are useful. You can build in any order you like though ;)
 
@@ -48,35 +50,42 @@ Our first job is getting something showing on the front end from our database. H
 
 ### 2. Building the database
 
-- [ ] Design a database to store a list of your things (e.g. books)
-- [ ] Build the migrations and seed data
+- [x] Design a database to store a list of your things (e.g. books)
+- [x] Build the migrations and seed data
 
 ### 3. Building the API
+
 - [ ] Build an API (back end route) to get the information from your database
 - [ ] Test your API with Insomnia
 
 ## Front end
 
 ### 4. Setting the stage
+
 - [ ] Build a React component with static html
 
 ### 5. Building the API client
+
 - [ ] Build an API client in the front end to request the information from your routes
 
-### 6. Querying Data 
+### 6. Querying Data
+
 - [ ] Write a query with the `useQuery` hook to fetch the collection data from the API
 - [ ] Display the collection data you queried in a component (you may want to create a new component for this)
 
 ### 7. Create Data
+
 - [ ] (Optional) Create a new component for your new collection item form
-- [ ] Mutate data with the `useMutation` hook to create a new collection item via the API 
+- [ ] Mutate data with the `useMutation` hook to create a new collection item via the API
 
 ### 8. Delete Data
+
 - [ ] Mutate data with the `useMutation` hook to delete an exisiting collection item via the API (you may want to add this to your collection display component)
 
 ### 9. Update Data
+
 - [ ] (Optional) Create a new component for your update collection item form
-- [ ] Mutate data with the `useMutation` hook to update an exisiting collection item via the API 
+- [ ] Mutate data with the `useMutation` hook to update an exisiting collection item via the API
 
 ---
 
@@ -93,4 +102,5 @@ Our first job is getting something showing on the front end from our database. H
 </details>
 
 ---
+
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=my-fullstack-collection-query)
