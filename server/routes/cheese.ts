@@ -15,4 +15,16 @@ router.get('/', async (req, res) => {
   }
 })
 
+//POST /api/v1/cheeses
+router.post('/', async (req, res) => {
+  try {
+    const cheese = req.body
+    const addedCheese = await db.addCheeseToDb(cheese)
+    res.json(addedCheese)
+  } catch (error: any) {
+    res.sendStatus(500)
+    console.log(error.message)
+  }
+})
+
 export default router

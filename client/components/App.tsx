@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import { PacmanLoader } from 'react-spinners/PacmanLoader'
 import * as Models from '../../models/cheese'
-import Cheeses from './Cheeses'
+import CheeseList from './CheeseList'
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <header className="header">
         <h1>Havarti Your Say</h1>
       </header>
-      <Cheeses />
+      <CheeseList />
     </>
   )
 }
