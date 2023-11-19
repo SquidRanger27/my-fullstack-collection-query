@@ -1,8 +1,11 @@
+import Tasks from './Kanban'
+
 function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>My Kanban 4 U</h1>
+        <Tasks />
       </header>
       <section className="main">{/* add your code here */}</section>
     </>

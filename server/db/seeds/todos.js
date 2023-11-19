@@ -20,15 +20,15 @@ export async function seed(knex) {
     },
     {
       title: 'Basic CSS',
-      dateAdded: 1495083077243,
       details: 'Ensure tasks are visible',
+      dateAdded: 1495083077243,
       isStretch: 1,
       colour: 'e9967a',
     },
     {
       title: 'Pat cat',
-      dateAdded: 1495083077243,
       details: 'Pat the cat',
+      dateAdded: 1495083077243,
       isStretch: 0,
       colour: '33D7FF',
     },
