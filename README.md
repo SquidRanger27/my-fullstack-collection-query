@@ -62,16 +62,16 @@ Our first job is getting something showing on the front end from our database. H
 
 ### 4. Setting the stage
 
-- [ ] Build a React component with static html
+- [x] Build a React component with static html
 
 ### 5. Building the API client
 
-- [ ] Build an API client in the front end to request the information from your routes
+- [x] Build an API client in the front end to request the information from your routes
 
 ### 6. Querying Data
 
-- [ ] Write a query with the `useQuery` hook to fetch the collection data from the API
-- [ ] Display the collection data you queried in a component (you may want to create a new component for this)
+- [x] Write a query with the `useQuery` hook to fetch the collection data from the API
+- [x] Display the collection data you queried in a component (you may want to create a new component for this)
 
 ### 7. Create Data
 
