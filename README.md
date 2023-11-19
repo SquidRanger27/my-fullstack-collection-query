@@ -55,8 +55,8 @@ Our first job is getting something showing on the front end from our database. H
 
 ### 3. Building the API
 
-- [ ] Build an API (back end route) to get the information from your database
-- [ ] Test your API with Insomnia
+- [x] Build an API (back end route) to get the information from your database
+- [x] Test your API with Insomnia
 
 ## Front end
 
