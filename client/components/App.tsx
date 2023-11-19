@@ -1,6 +1,7 @@
 import { getAllProductsAPI } from "../apis/apiClient"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
+import AdminForm from "./AdminForm"
 function App() {
   const {data:products,isLoading,error} = useQuery({queryKey:['products'],queryFn:getAllProductsAPI})
   if (error) {
@@ -26,7 +27,7 @@ function App() {
             <p className = "priceFont">{data.product_price}</p>
             <span className = "productNameFont">{data.product_name}</span>
           </div>
-          
+         
         </div>
         )
       })}</section>
