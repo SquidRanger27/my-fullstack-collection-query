@@ -5,4 +5,42 @@ body {
   margin: 0;
   padding: 20px;
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom:20px;
+}
+img{
+  height:300px;
+  width:287px;
+}
+.main{
+  display:grid;
+  width:90;
+  height:100vh;
+  grid-template-columns: repeat(4,1fr);
+  grid-column-gap:10px;
+  grid-row-gap:10px;
+  justify-content: space-around;
+  margin-bottom:20px;
+
+}
+.product_container{
+  border:1px solid black;
+  width:300px;
+  
+}
+.product_image{
+  display:flex;
+  justify-content: center;
+  padding:10px;
+}
+.product_details{
+  background-color:aliceblue;
+  padding:5px;
+}
+.priceFont{
+  font-size: 2em;
+  font-weight:bold;
+  color:red;
+}
+.productNameFont{
+  font-size: 1.5em;
 }
