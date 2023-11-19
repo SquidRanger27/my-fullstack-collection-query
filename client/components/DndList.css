@@ -1,0 +1,29 @@
+.dnd-list {
+  display: flex;
+  flex-direction: row; /* Change the direction to row */
+  justify-content: space-between; /* Add space between columns */
+}
+
+.dnd-item {
+  border: 1px solid lightgray;
+  padding: 8px;
+  margin: 8px;
+  background-color: white;
+  transition: background-color 0.2s ease;
+}
+
+.dnd-item.dragging {
+  background-color: #f0f0f0; /* Change the background color during drag */
+}
+
+.dnd-column {
+  flex: 0 0 calc(30% - 16px); /* Set the width of each column to 20% */
+  padding: 8px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  margin-right: 16px;
+}
+
+.dnd-column:last-child {
+  margin-right: 0; /* Remove right margin from the last column */
+}
