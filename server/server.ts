@@ -2,6 +2,8 @@ import * as Path from 'node:path'
 
 import express from 'express'
 
+import itemsRoute from './routes/routes'
+
 const server = express()
 server.use(express.json())
 
@@ -12,5 +14,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
+
+// Set up route
+server.use('/api/v1/', itemsRoute)
 
 export default server

@@ -1,10 +1,23 @@
+// import { Outlet } from 'react-router-dom'
+
+import ItemsList from './ItemsList'
+
 function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Where Is My Memory?</h1>
+        {/* <li>Home</li>
+        <li>Profiles/Members</li>
+        <li>Items Lent</li>
+        <li>Memories Captured</li>
+        <h1>Log In</h1> */}
       </header>
-      <section className="main">{/* add your code here */}</section>
+
+      <section className="main">
+        {/* add your code here */}
+        <ItemsList />
+      </section>
     </>
   )
 }
