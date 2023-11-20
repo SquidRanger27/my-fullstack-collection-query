@@ -1,13 +1,9 @@
 //AddCheese.tsx Component
 
 import { useState } from 'react'
-import {
-  useMutation,
-  useQueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import { addCheeseApi } from '../apiClient'
 import { NewCheese } from '../../models/cheese'
+import { addCheeseApi } from '../apiClient'
+import { useQueryClient, useMutation } from '@tanstack/react-query'
 
 const emptyCheese: NewCheese = {
   name: '',

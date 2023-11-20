@@ -12,3 +12,8 @@ export async function addCheeseApi(cheese: Cheese) {
   const response = await request.post(cheesesUrl).send(cheese)
   return response.body
 }
+
+export async function deleteCheeseApi(cheeseId: number) {
+  const response = await request.delete(`${cheesesUrl}/${cheeseId}`)
+  return response.body
+}

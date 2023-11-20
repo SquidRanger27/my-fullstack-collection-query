@@ -29,7 +29,10 @@ router.post('/', async (req, res) => {
 
 //DELETE /api/v1/cheeses
 router.delete('/:id', async (req, res) => {
+  const cheeseId = Number(req.params.id)
   try {
+    await db.deleteCheeseFromDb(cheeseId)
+    res.status(200).send()
   } catch (error: any) {
     res.sendStatus(500)
     console.log(error.message)
