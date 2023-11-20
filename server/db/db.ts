@@ -22,6 +22,6 @@ export function updatePlace(id: number, name: string, description: string) {
     .returning(['name', 'description'])
 }
 
-export function deletePlaceById(id: number) {
-  return db('NZ places').where({ id }).delete()
+export async function deletePlaceById(id: number) {
+  await db('NZ places').where({ id }).delete()
 }
