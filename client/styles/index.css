@@ -5,6 +5,8 @@ body {
   margin: 0;
   padding: 20px;
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* make sure this stretches the entire width so that the child elements know how much to */
+  width: 100%;
 }
 
 img{
@@ -25,4 +27,32 @@ img{
   margin:0.5rem;
   padding: 0.3rem;
   background-color: bisque;
+}
+
+.detail{
+  width: 60%;
+
+  background-color: antiquewhite;
+  justify-content: center;
+  align-items: center;
+}
+
+.fill{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.detail img{
+  width: 60%;
+  margin: 2%;
+}
+
+.detail .infoLine{
+  justify-content: center;
+  width: 100%;
+}
+
+.infoLine p{
+  margin: auto 5%;
 }

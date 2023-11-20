@@ -7,3 +7,8 @@ export async function getAllArtHeadings(){
   console.log(artHeadings.body)
   return artHeadings.body
 }
+
+export async function getArtById(id:number){
+  const artDetails = await request.get(`/api/v1/artworks/${id}`)
+  return artDetails.body
+}
