@@ -1,7 +1,7 @@
 export interface DigimonData {
   id: number
-  digimonName: string
-  digimonType: string
+  digimon_name: string
+  digimon_type: string
 }
 
 export default DigimonData
