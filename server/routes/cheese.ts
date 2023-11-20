@@ -39,4 +39,18 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+//PATCH /api/v1/cheeses
+router.patch('/:id', async (req, res) => {
+  const cheeseId = Number(req.params.id)
+
+  try {
+    const updatedCheese = req.body
+    await db.updateCheeseInDb(cheeseId, updatedCheese)
+    res.status(200).json({ message: 'Cheese updated successfully' })
+  } catch (error: any) {
+    res.sendStatus(500)
+    console.log(error.message)
+  }
+})
+
 export default router
