@@ -2,7 +2,7 @@ import {useQuery} from '@tanstack/react-query'
 import { getAllArtHeadings } from "../apis/apiClient"
 import {Link} from 'react-router-dom'
 
-export default function App (){
+export default function Detail (){
   
   const {data: art, isLoading, isError} = useQuery({queryKey:['art'], queryFn:getAllArtHeadings})
   if (isError){
