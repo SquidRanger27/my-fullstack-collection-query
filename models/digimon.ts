@@ -4,4 +4,7 @@ export interface DigimonData {
   digimon_type: string
 }
 
-export default DigimonData
+export interface NewDigimonData {
+  digimon_name: string
+  digimon_type: string
+}
