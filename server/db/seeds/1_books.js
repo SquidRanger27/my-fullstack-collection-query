@@ -9,13 +9,13 @@ export async function seed(knex) {
     {
       id: 2,
       title: "The Wise Man's Fear",
-      authour: "Patrick Rothfuss",
+      author: "Patrick Rothfuss",
       genre: "Fantasy",
     },
     {
       id: 3,
       title: "The Black Prism",
-      authour: "Brent Weeks",
+      author: "Brent Weeks",
       genre: "Fantasy",
     },
     {

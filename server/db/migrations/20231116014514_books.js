@@ -6,7 +6,7 @@ export function up(knex) {
   return knex.schema.createTable('Books', (table) => {
     table.increments().primary()
     table.string('title')
-    table.string('author').references('Authors.name')
+    table.string('author')
     table.string('genre')
   })
 }
