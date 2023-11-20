@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     res.json(tasks)
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Rats! Somthing went wrong!' })
+    res.status(500).json({ message: 'Somthing went wrong!' })
   }
 })
 
@@ -23,9 +23,14 @@ router.get('/', async (req, res) => {
 //   } catch (error) {
 //     console.log(error)
 
-//     res.status(500).json({ message: 'Rats! Somthing went wrong!' })
+//     res.status(500).json({ message: 'Somthing went wrong!' })
 //   }
 // })
+
+
+
+//.post to add new task
+
 router.post('/', async (req, res) => {
   try {
     const { title, details, isStretch, colour } = req.body
@@ -35,7 +40,7 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.log(error)
 
-    res.status(500).json({ message: 'Rats! Somthing went wrong!' })
+    res.status(500).json({ message: 'Somthing went wrong!' })
   }
 })
 export default router

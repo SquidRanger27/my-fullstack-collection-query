@@ -6,3 +6,10 @@ export interface Task {
   isStretch: boolean
   colour: string
 }
+
+export interface NewTask {
+  title: string
+  details: string
+  isStretch: boolean
+  colour: string
+}
