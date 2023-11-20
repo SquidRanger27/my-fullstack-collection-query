@@ -2,7 +2,7 @@ import { getTasks } from '../apis/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 
-import DndList from './TestingDraggable'
+import DndList from './DndList'
 
 export default function Tasks() {
   const [taskState, setTaskState] = useState({
@@ -13,6 +13,8 @@ export default function Tasks() {
   })
 
   const queryClient = useQueryClient()
+
+
 
   const {
     data: tasks,
@@ -36,7 +38,7 @@ export default function Tasks() {
   // Now, you can use the DndList component to render draggable items
   return (
     <>
-      <DndList items={tasks} />
+      <DndList items={tasks || []} />
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-
+import { deleteTask } from '../../client/apis/api.ts'
 import * as db from '../db/db.ts'
 
 const router = Router()
@@ -27,8 +27,6 @@ router.get('/', async (req, res) => {
 //   }
 // })
 
-
-
 //.post to add new task
 
 router.post('/', async (req, res) => {
@@ -43,4 +41,5 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'Somthing went wrong!' })
   }
 })
+
 export default router

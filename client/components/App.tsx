@@ -1,9 +1,4 @@
 import Tasks from './Kanban'
-
-import { DragDropContext, Draggable } from 'react-beautiful-dnd'
-import { Droppable } from 'react-beautiful-dnd'
-
-import DndList from './TestingDraggable'
 import { NewTaskForm } from './NewTaskForm'
 import ClearLocalStorage from './ClearLocalStorage'
 

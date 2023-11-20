@@ -1,28 +1,17 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import './DndList.css'
 import { useState, useEffect } from 'react'
-
-//TODO new items will not render unless local sotrage is cleared
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const DndList = ({ items }) => {
+  const queryClient = useQueryClient()
+
   const numberOfColumns = 4
 
-  // Load columns state from localStorage on initial render
-  const initialColumns =
-    JSON.parse(localStorage.getItem('columns')) || getDefaultColumns()
-  console.log(localStorage)
-
-  const [columns, setColumns] = useState(initialColumns)
-
-  useEffect(() => {
-    // Save columns state to localStorage whenever it changes
-
-    localStorage.setItem('columns', JSON.stringify(columns))
-  }, [columns])
+  const [columns, setColumns] = useState(getDefaultColumns())
 
   function getDefaultColumns() {
     const columnNames = ['Backlog', 'ToDos', 'In progress', 'Completed']
-    console.log(columnNames)
 
     return Array.from({ length: numberOfColumns }, (_, columnIndex) => ({
       id: `column${columnIndex + 1}`,
@@ -100,6 +89,7 @@ const DndList = ({ items }) => {
                         <p>{item.details}</p>
                         <p>{item.isStretch ? 'Stretch' : 'MVP'}</p>
                         <p>{item.colour}</p>
+                        <button>Delete</button>
                       </div>
                     )}
                   </Draggable>

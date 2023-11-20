@@ -17,6 +17,7 @@ export function NewTaskForm() {
   const addTaskMutation = useMutation({
     mutationFn: addTask,
     onSuccess: () => {
+      console.log('New task added')
       queryClient.invalidateQueries(['tasks'])
     },
   })
@@ -39,13 +40,13 @@ export function NewTaskForm() {
     setTaskState(stateObj)
   }
 
-  function handleisStretchChange(e: any) {
-    const stateObj = {
-      ...taskState,
-      isStretch: e.target.value,
-    }
-    setTaskState(stateObj)
-  }
+  // function handleisStretchChange(e: any) {
+  //   const stateObj = {
+  //     ...taskState,
+  //     isStretch: e.target.value,
+  //   }
+  //   setTaskState(stateObj)
+  // }
 
   function handleColourChange(e: any) {
     const stateObj = {

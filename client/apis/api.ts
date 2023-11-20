@@ -22,6 +22,7 @@ export async function addTask(task: any): Promise<Task> {
     isStretch: task.isStretch,
     colour: task.colour,
   })
-
   return res.body
 }
+
+

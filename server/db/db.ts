@@ -24,3 +24,8 @@ export async function insertTask(
   ])
   return connection('task').select('*')
 }
+
+
+export async function deleteTask(taskId: number): Promise<void> {
+  await connection('task').where('id', taskId).del();
+}
