@@ -1,7 +1,7 @@
 import * as Path from 'node:path'
-
+import artRoutes from './routes/router'
 import express from 'express'
-import dbRoutes from './db/db'
+
 
 const server = express()
 server.use(express.json())
@@ -14,6 +14,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-server.use('/api/v1/artworks', dbRoutes)
+server.use('/api/v1/artworks', artRoutes)
 
 export default server

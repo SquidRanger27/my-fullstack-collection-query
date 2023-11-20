@@ -8,6 +8,7 @@ export async function getArtOverview(): Promise<ArtHeading[]>{
 export async function getArtById(id:number): Promise<Art>{
   return connection('art')
   .where("id", id)
+  .select('*')
   .first()
 }
 
