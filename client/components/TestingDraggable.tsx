@@ -178,8 +178,12 @@ const DndList = ({ items }) => {
   }, [columns])
 
   function getDefaultColumns() {
+    const columnNames = ['Backlog', 'ToDos', 'In progress', 'Completed']
+    console.log(columnNames)
+
     return Array.from({ length: numberOfColumns }, (_, columnIndex) => ({
       id: `column${columnIndex + 1}`,
+      name: columnNames[columnIndex],
       items: columnIndex === 0 ? items : [],
     }))
   }
@@ -231,7 +235,7 @@ const DndList = ({ items }) => {
                 {...provided.droppableProps}
                 className="dnd-column"
               >
-                <h3>{`Column ${columnIndex + 1}`}</h3>
+                <h3>{`${column.name}`}</h3>
                 {column.items.map((item, index) => (
                   <Draggable
                     key={item.id}

@@ -9,7 +9,7 @@ export function NewTaskForm() {
   const [taskState, setTaskState] = useState({
     title: '',
     details: '',
-    isStretch: '',
+    isStretch: false,
     colour: '',
   })
 
