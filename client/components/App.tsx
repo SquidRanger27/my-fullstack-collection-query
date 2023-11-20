@@ -19,14 +19,12 @@ export default function App (){
     <div className="collection hflex">
       {art.map((item)=>{
       return(
-        <>
-        <Link to={`/${item.id}`}>
+        <Link to={`/${item.id}`} key={item.id}>
           <div className='vflex artTile'>
           <h3>{item.name}</h3>
           <img src={item.imageUrl}/>
           </div>
         </Link>
-        </>
       )
       })}
     </div>
