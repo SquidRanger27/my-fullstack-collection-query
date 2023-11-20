@@ -3,7 +3,7 @@
 // @vitest-environment node
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest'
 import connection from './connection'
-import { getAllCheeses } from './db'
+import { getAllCheeses, addCheeseToDb } from './db'
 
 beforeAll(async () => {
   await connection.migrate.latest()
@@ -27,5 +27,32 @@ describe('getCheeses', () => {
 
     //ASSERT
     expect(actualCheeses).toStrictEqual(expectedCheeses)
+  })
+})
+
+describe('addCheese', () => {
+  it('adds a cheese to the database', async () => {
+    //ARRANGE
+    const cheeseToAdd = {
+      name: 'Test',
+      description: 'Test',
+      comment: 'Test',
+      rating_out_of_a_possible_10_Goldblums: 1,
+    }
+    //ACT
+    await addCheeseToDb(cheeseToAdd)
+
+    //ASSERT
+    const cheesesInDb = await getAllCheeses()
+    const addedCheese = cheesesInDb.find(
+      (cheese) => cheese.name === cheeseToAdd.name
+    )
+
+    expect(addedCheese?.name).toBe(cheeseToAdd.name)
+    expect(addedCheese?.description).toBe(cheeseToAdd.description)
+    expect(addedCheese?.comment).toBe(cheeseToAdd.comment)
+    expect(addedCheese?.rating_out_of_a_possible_10_Goldblums).toBe(
+      cheeseToAdd.rating_out_of_a_possible_10_Goldblums
+    )
   })
 })
