@@ -12,6 +12,14 @@ export async function getArtById(id:number): Promise<Art>{
   .first()
 }
 
-export async function addArt(NewArt): Promise<Art>{
-  
+export async function addArt(newArt:NewArt): Promise<Art>{
+  return connection('art').insert(
+    {
+      "name": newArt.name,
+      "description": newArt.description,
+      "medium": newArt.medium,
+      "imageUrl": newArt.imageUrl,
+      "owner": newArt.owner
+    }
+  )
 }

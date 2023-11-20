@@ -26,10 +26,16 @@ router.get('/', async(req,res)=>{
 // GET ONE ARTWORK USING AN ID
 // /api/v1/artworks/:id
 router.get('/:id', async(req,res)=>{
+  const id = Number(req.params.id)
+   if(isNaN(id)){
+      res.status(404).send('id must be a number')
+      return
+   }
   try{
-    const id = Number(req.params.id)
-    console.log(id)
-    const artInfo = await db.getArtById(id)
+   const artInfo = await db.getArtById(id)
+    if(!artInfo){
+      res.status(404).send('id could not be found')
+    }
     res.json(artInfo)
   }catch(err){
     console.log(err)
@@ -43,9 +49,11 @@ router.get('/:id', async(req,res)=>{
 // /api/v1/artworks
 router.post('/', async(req,res)=>{
   try{
-    const {name, description, medium, imageUrl, owner} = req.body
-  }catch{
-    
+    console.log(req.body)
+    const newArt = await db.addArt(req.body)
+    res.status(200).json(newArt)
+  }catch(error){
+    res.status(500).send('database is sad')
   }
 })
 
