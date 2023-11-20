@@ -1,4 +1,4 @@
-import {outelet} from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 
 function AppLayout() {
   return (
@@ -6,7 +6,7 @@ function AppLayout() {
       <header className="header">
         <h1>My Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <Outlet />  
     </>
   )
 }

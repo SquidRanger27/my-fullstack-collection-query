@@ -6,3 +6,7 @@ body {
   padding: 20px;
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+img{
+  width: 8rem;
+}
