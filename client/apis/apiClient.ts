@@ -6,3 +6,7 @@ export async function getAllItems() {
 
   return response.body as Item[]
 }
+
+export async function addItem({ name, item, description }: Item) {
+  await request.post('/api/v1/').send({ name, item, description })
+}

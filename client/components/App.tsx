@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>Where Is My Memory?</h1>
+        <h1>Where Is My Item?</h1>
         {/* <li>Home</li>
         <li>Profiles/Members</li>
         <li>Items Lent</li>
