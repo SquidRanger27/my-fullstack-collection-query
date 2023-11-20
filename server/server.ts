@@ -2,6 +2,8 @@ import * as Path from 'node:path'
 
 import express from 'express'
 
+import digimonRoute from './routes/digimon'
+
 const server = express()
 server.use(express.json())
 
@@ -13,4 +15,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
+// routes
+server.use('/api/v1/digimons', digimonRoute)
 export default server
