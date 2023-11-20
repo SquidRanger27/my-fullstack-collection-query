@@ -14,17 +14,19 @@ export default function App (){
   return(
     <>
     <h2>Artwork List</h2>
-    <ul>
+    <div className="collection hflex">
       {art.map((item)=>{
       return(
         <>
-        <li>{item.name}</li>
+        <div className='vflex'>
+        <h3>{item.name}</h3>
         <img src={item.imageUrl}/>
+        </div>
 
         </>
       )
       })}
-    </ul>
+    </div>
     </>
   )
 }
