@@ -165,12 +165,24 @@ import { JSX } from 'react/jsx-runtime'
 
 const DndList = ({ items }) => {
   const numberOfColumns = 4
-  const [columns, setColumns] = useState(() =>
-    Array.from({ length: numberOfColumns }, (_, columnIndex) => ({
+
+  // Load columns state from localStorage on initial render
+  const initialColumns =
+    JSON.parse(localStorage.getItem('columns')) || getDefaultColumns()
+
+  const [columns, setColumns] = useState(initialColumns)
+
+  useEffect(() => {
+    // Save columns state to localStorage whenever it changes
+    localStorage.setItem('columns', JSON.stringify(columns))
+  }, [columns])
+
+  function getDefaultColumns() {
+    return Array.from({ length: numberOfColumns }, (_, columnIndex) => ({
       id: `column${columnIndex + 1}`,
       items: columnIndex === 0 ? items : [],
     }))
-  )
+  }
 
   const handleDragEnd = (result) => {
     if (!result.destination) {

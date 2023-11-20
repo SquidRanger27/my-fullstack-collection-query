@@ -50,7 +50,7 @@ export function NewTaskForm() {
   function handleColourChange(e: any) {
     const stateObj = {
       ...taskState,
-      Colour: e.target.value,
+      colour: e.target.value,
     }
     setTaskState(stateObj)
   }

@@ -15,11 +15,12 @@ export async function getTasks(): Promise<Task[]> {
 //   return res.body
 // }
 
-export async function addTask(task: any): Promise<string> {
+export async function addTask(task: any): Promise<Task> {
   const res = await request.post(rootUrl + '/kanban').send({
     title: task.title,
-    content: task.details,
+    details: task.details,
     isStretch: task.isStretch,
+    colour: task.colour,
   })
 
   return res.body
