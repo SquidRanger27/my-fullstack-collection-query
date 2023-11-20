@@ -9,3 +9,7 @@ export async function getAllCheeses(): Promise<Cheese[]> {
 export async function addCheeseToDb(cheese: any) {
   return connection('cheese').insert(cheese)
 }
+
+export async function deleteCheeseFromDb(id: number) {
+  return connection('cheese').where({ id }).delete()
+}

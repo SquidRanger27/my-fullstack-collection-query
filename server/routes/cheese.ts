@@ -27,4 +27,13 @@ router.post('/', async (req, res) => {
   }
 })
 
+//DELETE /api/v1/cheeses
+router.delete('/:id', async (req, res) => {
+  try {
+  } catch (error: any) {
+    res.sendStatus(500)
+    console.log(error.message)
+  }
+})
+
 export default router
