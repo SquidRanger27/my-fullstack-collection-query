@@ -75,8 +75,8 @@ Our first job is getting something showing on the front end from our database. H
 
 ### 7. Create Data
 
-- [ ] (Optional) Create a new component for your new collection item form
-- [ ] Mutate data with the `useMutation` hook to create a new collection item via the API
+- [x] (Optional) Create a new component for your new collection item form
+- [x] Mutate data with the `useMutation` hook to create a new collection item via the API
 
 ### 8. Delete Data
 

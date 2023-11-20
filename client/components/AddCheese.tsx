@@ -1,19 +1,24 @@
 //AddCheese.tsx Component
 
 import { useState } from 'react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import {
+  useMutation,
+  useQueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { addCheeseApi } from '../apiClient'
-import { Cheese } from '../../models/cheese'
+import { NewCheese } from '../../models/cheese'
+
+const emptyCheese: NewCheese = {
+  name: '',
+  description: '',
+  comment: '',
+  rating_out_of_a_possible_10_Goldblums: 0,
+}
 
 export default function AddCheese() {
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    comment: '',
-    rating_out_of_a_possible_10_Goldblums: '',
-  })
-
   const queryClient = useQueryClient()
+  const [formData, setFormData] = useState(emptyCheese)
 
   const addCheeseMutation = useMutation({
     mutationFn: addCheeseApi,
@@ -22,11 +27,11 @@ export default function AddCheese() {
     },
   })
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     try {
-      await addCheeseMutation.mutate(formData)
+      addCheeseMutation.mutate(formData)
     } catch (error: any) {
       console.log(error.message)
     }
@@ -41,7 +46,7 @@ export default function AddCheese() {
   return (
     <>
       <form action="/" onSubmit={handleSubmit} method="POST">
-        <label htmlFor="name">Name: </label>
+        <label htmlFor="name">Name:</label>
         <input
           id="name"
           type="text"
@@ -50,7 +55,7 @@ export default function AddCheese() {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="description">Description: </label>
+        <label htmlFor="description">Description:</label>
         <input
           id="description"
           type="text"
@@ -59,7 +64,7 @@ export default function AddCheese() {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="comment">Comment: </label>
+        <label htmlFor="comment">Comment:</label>
         <input
           id="comment"
           type="text"
@@ -69,7 +74,7 @@ export default function AddCheese() {
         />
 
         <label htmlFor="rating_out_of_a_possible_10_Goldblums">
-          Rating out of a possible 10 Goldblums:{' '}
+          Rating out of a possible 10 Goldblums:
         </label>
         <input
           id="rating_out_of_a_possible_10_Goldblums"
