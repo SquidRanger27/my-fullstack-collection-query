@@ -26,10 +26,10 @@ export default function Detail (){
           <p><strong>Owner:</strong> {artDetail.owner}</p>
         </div>
         <img src={`${artDetail.imageUrl}`}/>
-      
-
       </div>
     </div>
+
+    <Link to='/'><p>Back To Home</p></Link>
     </>
   )
 }

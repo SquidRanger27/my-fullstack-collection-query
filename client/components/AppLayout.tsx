@@ -4,7 +4,7 @@ function AppLayout() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Rose's Art Collection</h1>
       </header>
       <Outlet />  
     </>

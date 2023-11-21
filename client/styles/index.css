@@ -3,7 +3,6 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-  padding: 20px;
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   /* make sure this stretches the entire width so that the child elements know how much to */
   width: 100%;
@@ -31,10 +30,11 @@ img{
 
 .detail{
   width: 60%;
-
+  margin: 1rem;
   background-color: antiquewhite;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .fill{
@@ -55,4 +55,16 @@ img{
 
 .infoLine p{
   margin: auto 5%;
+}
+
+header{
+  background-color: bisque;
+  margin:0;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h1{
+  margin:0;
 }

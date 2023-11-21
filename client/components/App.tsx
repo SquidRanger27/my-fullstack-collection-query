@@ -1,6 +1,7 @@
 import {useQuery} from '@tanstack/react-query'
 import { getAllArtHeadings } from "../apis/apiClient"
 import {Link} from 'react-router-dom'
+import AddForm from './AddForm'
 
 export default function App (){
   
@@ -25,11 +26,11 @@ export default function App (){
           <img src={item.imageUrl}/>
           </div>
         </Link>
-
         </>
       )
       })}
     </div>
+      <AddForm />
     </>
   )
 }
