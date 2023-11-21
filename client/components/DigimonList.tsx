@@ -1,7 +1,7 @@
 // import { useEffect, useState } from 'react'
 import { getDigimonApi } from '../apis/apiClient'
 import { useQuery } from '@tanstack/react-query'
-import DigimonData from '../../models/digimon'
+import { DigimonData } from '../../models/digimon'
 
 export default function DigimonList() {
   const {
@@ -20,12 +20,18 @@ export default function DigimonList() {
   return (
     <>
       <div>
-        <p>Hello, Digimon!</p>
-        <ul>
+        <h3>Hello, Digimon!</h3>
+        <ol>
           {digimons.map((digimon: DigimonData) => (
-            <li key={digimon.id}>{digimon.digimon_name}</li>
+            <li key={digimon.id}>
+              <strong>Digimon ID:</strong> {digimon.id} <br />
+              <strong>Digimon Name:</strong> {digimon.digimonName} <br />
+              <strong>Digimon Type:</strong> {digimon.digimonType}
+              <br />
+              <br />
+            </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </>
   )

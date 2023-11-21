@@ -21,19 +21,19 @@ router.get('/', async (req, res) => {
 })
 
 //POST
-//NEED TO FIX TO ADD NAME AND TYPE ON INSOMNIA
+
 router.post('/', async (req, res) => {
-  const name = req.body
-  console.log('hello' + name)
-  if (!name) {
+  const { digimonName, digimonType } = req.body
+
+  if (!req.body) {
     res.status(400).send('Bad Request: ID must be a number')
     return
   }
 
   try {
-    const digimons = await addDigimonDb(name)
-    console.log('POST' + digimons)
-    res.status(200).json({ digimons })
+    const newDigimons = await addDigimonDb(digimonName, digimonType)
+    console.log('POST' + newDigimons)
+    res.status(200).json({ newDigimons })
   } catch (err) {
     console.log(err)
     res.status(500).send('Could not add digimon!')
@@ -41,27 +41,27 @@ router.post('/', async (req, res) => {
 })
 
 //UPDATE
-// router.patch('/:id', async (req, res) => {
-//   const id = parseInt(req.params.id)
-//   if (isNaN(id)) {
-//     res.status(400).send('Bad Request: ID must be a number')
-//     return
-//   }
+router.patch('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
 
-//   const name = req.body
-//   if (!name) {
-//     res.status(400).send('Bad Request: Name is required')
-//     return
-//   }
+  const { digimonName, digimonType } = req.body
+  if (!req.body) {
+    res.status(400).send('Bad Request: Name is required')
+    return
+  }
 
-//   try {
-//     await renameDigimonDb(id, digimon_name, digimon_type)
-//     res.sendStatus(200)
-//   } catch (err) {
-//     console.log(err)
-//     res.status(500).send('Could not rename Digimon')
-//   }
-// })
+  try {
+    await renameDigimonDb(id, digimonName, digimonType)
+    res.sendStatus(200)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Could not rename Digimon')
+  }
+})
 
 //DELETE
 router.delete('/:id', async (req, res) => {
