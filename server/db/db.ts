@@ -30,7 +30,11 @@ export async function renameDigimonDb(
   return connection('digimons')
     .where({ id })
     .update({ digimon_name, digimon_type })
-    .returning(['id as id', 'digimon_name as digimonName', 'digimonType'])
+    .returning([
+      'id as id',
+      'digimon_name as digimonName',
+      'digimon_type as digimonType',
+    ])
 }
 
 export function deleteDigimonDb(id: number) {

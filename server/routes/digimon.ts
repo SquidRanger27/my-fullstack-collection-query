@@ -43,12 +43,12 @@ router.post('/', async (req, res) => {
 //UPDATE
 router.patch('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
-  if (isNaN(id)) {
-    res.status(400).send('Bad Request: ID must be a number')
-    return
-  }
-
   const { digimonName, digimonType } = req.body
+
+  console.log('Received ID:', id)
+  console.log('Received Name:', digimonName)
+  console.log('Received Type:', digimonType)
+
   if (!req.body) {
     res.status(400).send('Bad Request: Name is required')
     return
