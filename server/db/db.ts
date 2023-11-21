@@ -12,6 +12,7 @@ export async function getAllTasks(): Promise<Task[]> {
 //     .where('id', id)
 //   return connection('task').select('*').where('id', id)
 // }
+
 export async function insertTask(
   title: string,
   details: string,
@@ -26,6 +27,6 @@ export async function insertTask(
 }
 
 
-export async function deleteTask(taskId: number): Promise<void> {
-  await connection('task').where('id', taskId).del();
-}
+// export function deleteTask(taskId: number): {
+//   return connection('task').where('id', taskId).del();
+// }

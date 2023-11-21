@@ -1,6 +1,8 @@
 import { Router } from 'express'
-import { deleteTask } from '../../client/apis/api.ts'
 import * as db from '../db/db.ts'
+
+//Calls DB functions
+
 
 const router = Router()
 
@@ -16,6 +18,26 @@ router.get('/', async (req, res) => {
   }
 })
 
+
+//POST tasks
+router.post('/', async (req, res) => {
+  try {
+    const { title, details, isStretch, colour } = req.body
+    console.log(title, details)
+    const addTask = await db.insertTask(title, details, isStretch, colour)
+    res.json(addTask)
+  } catch (error) {
+    console.log(error)
+
+    res.status(500).json({ message: 'Somthing went wrong!' })
+  }
+})
+
+
+//DELETE task
+router.delete
+
+
 // router.patch('/', async (req, res) => {
 //   try {
 //     const task = await db.editTask(req.body.id, req.body.details)
@@ -29,17 +51,8 @@ router.get('/', async (req, res) => {
 
 //.post to add new task
 
-router.post('/', async (req, res) => {
-  try {
-    const { title, details, isStretch, colour } = req.body
-    console.log(title, details)
-    const addTask = await db.insertTask(title, details, isStretch, colour)
-    res.json(addTask)
-  } catch (error) {
-    console.log(error)
 
-    res.status(500).json({ message: 'Somthing went wrong!' })
-  }
-})
+
+
 
 export default router

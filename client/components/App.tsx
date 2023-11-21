@@ -6,8 +6,8 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Kanban 4 U</h1>
-        <ClearLocalStorage />
+        <h1>Kanban 4 U</h1>
+        {/* <ClearLocalStorage /> */}
         <NewTaskForm />
 
         <Tasks />

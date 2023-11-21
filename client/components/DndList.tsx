@@ -59,48 +59,50 @@ const DndList = ({ items }) => {
   }
 
   return (
-    <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="dnd-list">
-        {columns.map((column, columnIndex) => (
-          <Droppable key={column.id} droppableId={column.id}>
-            {(provided) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                className="dnd-column"
-              >
-                <h3>{`${column.name}`}</h3>
-                {column.items.map((item, index) => (
-                  <Draggable
-                    key={item.id}
-                    draggableId={item.id.toString()}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className={`dnd-item ${
-                          snapshot.isDragging ? 'dragging' : ''
-                        }`}
-                      >
-                        <p>{item.title}</p>
-                        <p>{item.details}</p>
-                        <p>{item.isStretch ? 'Stretch' : 'MVP'}</p>
-                        <p>{item.colour}</p>
-                        <button>Delete</button>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        ))}
-      </div>
-    </DragDropContext>
+    <>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <div className="dnd-list">
+          {columns.map((column, columnIndex) => (
+            <Droppable key={columnIndex} droppableId={column.id}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className="dnd-column"
+                >
+                  <h2>{`${column.name}`}</h2>
+                  {column.items.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id.toString()}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className={`dnd-item ${
+                            snapshot.isDragging ? 'dragging' : ''
+                          }`}
+                        >
+                          <p>{item.title}</p>
+                          <p>{item.details}</p>
+                          <p>{item.isStretch ? 'Stretch' : 'MVP'}</p>
+                          <p>{item.colour}</p>
+                          <button>Delete</button>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          ))}
+        </div>
+      </DragDropContext>
+    </>
   )
 }
 
