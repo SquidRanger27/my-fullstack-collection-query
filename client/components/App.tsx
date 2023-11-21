@@ -1,3 +1,4 @@
+import AddDigimonForm from './AddDigimon'
 import Digimon from './DigimonList'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       </header>
       <section className="main">
         <Digimon />
+        <AddDigimonForm />
       </section>
     </>
   )

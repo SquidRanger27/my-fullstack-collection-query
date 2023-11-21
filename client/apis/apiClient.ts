@@ -11,19 +11,19 @@ export async function getDigimonApi(): Promise<DigimonData[]> {
 export async function addDigimonApi(data: DigimonData): Promise<DigimonData[]> {
   console.log(data)
   const digimonResp = await request.post(digimonUrl).send(data)
-  console.log(digimonResp + 'bello')
   return digimonResp.body
 }
 
-// export async function renameDigimonApi(
-//   id: number,
-//   newName: string,
-//   newType: string
-// ): Promise<DigimonData[]> {
-//   const digimonResp = await request.patch(digimonUrl).send({})
-//   console.log(digimonResp + 'bello')
-//   return digimonResp.body
-// }
+export async function renameDigimonApi(
+  id: number,
+  newName: string,
+  newType: string
+): Promise<DigimonData[]> {
+  const digimonResp = await request
+    .patch(digimonUrl)
+    .send({ id, newName, newType })
+  return digimonResp.body
+}
 
 export async function deleteDigimonApi(id: number) {
   const digimonResp = await request.delete(`${digimonUrl}/${id}`)

@@ -1,5 +1,5 @@
 import connection from './connection'
-import { DigimonData, NewDigimonData } from '../../models/digimon'
+import { DigimonData } from '../../models/digimon'
 
 export function getDigimonDb(): Promise<DigimonData[]> {
   return connection('digimons').select(
@@ -26,7 +26,7 @@ export async function renameDigimonDb(
   id: number,
   digimon_name: string,
   digimon_type: string
-): Promise<DigimonData | undefined> {
+): Promise<DigimonData[]> {
   return connection('digimons')
     .where({ id })
     .update({ digimon_name, digimon_type })
