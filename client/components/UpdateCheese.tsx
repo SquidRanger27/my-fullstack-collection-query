@@ -10,10 +10,10 @@ interface Props {
 export default function UpdateCheese({ cheeseId }: Props) {
   const [editing, setEditing] = useState(false)
   const [updateCheeseForm, setUpdateCheeseForm] = useState({
-    updatedName: '',
-    updatedDescription: '',
-    updatedComment: '',
-    updatedRating_out_of_a_possible_10_Goldblums: 0,
+    name: '',
+    description: '',
+    comment: '',
+    rating_out_of_a_possible_10_Goldblums: 0,
   })
   const queryClient = useQueryClient()
 
@@ -28,12 +28,13 @@ export default function UpdateCheese({ cheeseId }: Props) {
     e.preventDefault()
 
     try {
-      updateCheeseMutation.mutate(cheeseId, updateCheeseForm)
+      updateCheeseMutation.mutate()
       setEditing(false)
     } catch (error: any) {
       console.log(error.message)
     }
   }
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target
     setUpdateCheeseForm((prevForm) => ({
@@ -42,50 +43,79 @@ export default function UpdateCheese({ cheeseId }: Props) {
     }))
   }
 
+  const handleToggleForm = () => {
+    setEditing(!editing)
+    if (!editing) {
+      setUpdateCheeseForm({
+        name: '',
+        description: '',
+        comment: '',
+        rating_out_of_a_possible_10_Goldblums: 0,
+      })
+    }
+  }
+
   return (
     <div>
-      <form onSubmit={handleEditSubmit} method="PATCH">
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          type="text"
-          name="updatedName"
-          value={updateCheeseForm.updatedName}
-          onChange={handleInputChange}
-        />
+      <button onClick={handleToggleForm}>
+        {editing ? 'Cancel Update' : 'Update this cheese'}
+      </button>
+      {editing && (
+        <form onSubmit={handleEditSubmit} method="PATCH">
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={updateCheeseForm.name}
+              onChange={handleInputChange}
+              aria-label="name"
+            />
+          </div>
 
-        <label htmlFor="description">Description:</label>
-        <input
-          id="description"
-          type="text"
-          name="updatedDescription"
-          value={updateCheeseForm.updatedDescription}
-          onChange={handleInputChange}
-        />
+          <div>
+            <label htmlFor="description">Description:</label>
+            <input
+              id="description"
+              type="text"
+              name="description"
+              value={updateCheeseForm.description}
+              onChange={handleInputChange}
+              aria-label="description"
+            />
+          </div>
 
-        <label htmlFor="comment">Comment:</label>
-        <input
-          id="comment"
-          type="text"
-          name="updatedComment"
-          value={updateCheeseForm.updatedComment}
-          onChange={handleInputChange}
-        />
+          <div>
+            <label htmlFor="comment">Comment:</label>
+            <input
+              id="comment"
+              type="text"
+              name="comment"
+              value={updateCheeseForm.comment}
+              onChange={handleInputChange}
+              aria-label="comment"
+            />
+          </div>
 
-        <label htmlFor="rating_out_of_a_possible_10_Goldblums">
-          Rating out of a possible 10 Goldblums:
-        </label>
-        <input
-          id="rating_out_of_a_possible_10_Goldblums"
-          type="text"
-          name="updatedRating_out_of_a_possible_10_Goldblums"
-          value={updateCheeseForm.updatedRating_out_of_a_possible_10_Goldblums}
-          onChange={handleInputChange}
-        />
-        <button type="submit" className="edit">
-          Update
-        </button>
-      </form>
+          <div>
+            <label htmlFor="rating_out_of_a_possible_10_Goldblums">
+              Rating out of a possible 10 Goldblums:
+            </label>
+            <input
+              id="rating_out_of_a_possible_10_Goldblums"
+              type="text"
+              name="rating_out_of_a_possible_10_Goldblums"
+              value={updateCheeseForm.rating_out_of_a_possible_10_Goldblums}
+              onChange={handleInputChange}
+              aria-label="rating_out_of_a_possible_10_Goldblums"
+            />
+          </div>
+          <button type="submit" className="edit">
+            Update
+          </button>
+        </form>
+      )}
     </div>
   )
 }

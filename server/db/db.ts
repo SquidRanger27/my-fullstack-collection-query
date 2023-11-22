@@ -15,5 +15,15 @@ export async function deleteCheeseFromDb(cheeseId: number) {
 }
 
 export async function updateCheeseInDb(cheeseId: number, updatedCheese: any) {
-  return connection('cheese').where({ id: cheeseId }).update(updatedCheese)
+  const { name, description, comment, rating_out_of_a_possible_10_Goldblums } =
+    updatedCheese
+
+  return connection('cheese')
+    .where({ id: cheeseId })
+    .update({
+      name,
+      description,
+      comment,
+      rating_out_of_a_possible_10_Goldblums,
+    })
 }
