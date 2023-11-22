@@ -9,10 +9,16 @@ interface Props {
 
 export default function UpdateCheese({ cheeseId }: Props) {
   const [editing, setEditing] = useState(false)
+  const [updateCheeseForm, setUpdateCheeseForm] = useState({
+    updatedName: '',
+    updatedDescription: '',
+    updatedComment: '',
+    updatedRating_out_of_a_possible_10_Goldblums: 0,
+  })
   const queryClient = useQueryClient()
 
   const updateCheeseMutation = useMutation({
-    mutationFn: updateCheeseApi,
+    mutationFn: () => updateCheeseApi(cheeseId, updateCheeseForm),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cheese'] })
     },
@@ -22,11 +28,18 @@ export default function UpdateCheese({ cheeseId }: Props) {
     e.preventDefault()
 
     try {
-      await updateCheeseMutation.mutateAsync(cheeseId)
+      updateCheeseMutation.mutate(cheeseId, updateCheeseForm)
       setEditing(false)
     } catch (error: any) {
       console.log(error.message)
     }
+  }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target
+    setUpdateCheeseForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }))
   }
 
   return (
@@ -37,7 +50,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
           id="name"
           type="text"
           name="updatedName"
-          value={formData.name}
+          value={updateCheeseForm.updatedName}
           onChange={handleInputChange}
         />
 
@@ -46,7 +59,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
           id="description"
           type="text"
           name="updatedDescription"
-          value={formData.description}
+          value={updateCheeseForm.updatedDescription}
           onChange={handleInputChange}
         />
 
@@ -55,7 +68,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
           id="comment"
           type="text"
           name="updatedComment"
-          value={formData.comment}
+          value={updateCheeseForm.updatedComment}
           onChange={handleInputChange}
         />
 
@@ -66,7 +79,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
           id="rating_out_of_a_possible_10_Goldblums"
           type="text"
           name="updatedRating_out_of_a_possible_10_Goldblums"
-          value={formData.rating_out_of_a_possible_10_Goldblums}
+          value={updateCheeseForm.updatedRating_out_of_a_possible_10_Goldblums}
           onChange={handleInputChange}
         />
         <button type="submit" className="edit">

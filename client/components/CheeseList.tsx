@@ -4,6 +4,7 @@ import PacmanLoader from 'react-spinners/PacmanLoader'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState, useEffect } from 'react'
 import DeleteCheese from './DeleteCheese'
+import UpdateCheese from './UpdateCheese'
 
 export default function CheeseList() {
   const queryClient = useQueryClient()
@@ -44,6 +45,7 @@ export default function CheeseList() {
               <b>Rating (out of a possible 10 Goldblums): </b>{' '}
               {c.rating_out_of_a_possible_10_Goldblums}
               <DeleteCheese cheeseId={c.id} />
+              <UpdateCheese cheeseId={c.id} />
             </li>
           </ul>
         ))}

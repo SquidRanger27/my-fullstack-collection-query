@@ -42,14 +42,14 @@ router.delete('/:id', async (req, res) => {
 //PATCH /api/v1/cheeses
 router.patch('/:id', async (req, res) => {
   const cheeseId = Number(req.params.id)
-
   try {
     const updatedCheese = req.body
+    console.log('Received update data:', updatedCheese)
     await db.updateCheeseInDb(cheeseId, updatedCheese)
     res.status(200).json({ message: 'Cheese updated successfully' })
   } catch (error: any) {
+    console.error('Error updating cheese:', error.message)
     res.sendStatus(500)
-    console.log(error.message)
   }
 })
 

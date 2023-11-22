@@ -80,7 +80,7 @@ Our first job is getting something showing on the front end from our database. H
 
 ### 8. Delete Data
 
-- [ ] Mutate data with the `useMutation` hook to delete an exisiting collection item via the API (you may want to add this to your collection display component)
+- [x] Mutate data with the `useMutation` hook to delete an exisiting collection item via the API (you may want to add this to your collection display component)
 
 ### 9. Update Data
 
