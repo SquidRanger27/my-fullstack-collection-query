@@ -12,3 +12,7 @@ export async function getArtById(id:number){
   const artDetails = await request.get(`/api/v1/artworks/${id}`)
   return artDetails.body
 }
+
+export async function postNewArt(){
+  await request.get('/api/v1/artworks')
+}
