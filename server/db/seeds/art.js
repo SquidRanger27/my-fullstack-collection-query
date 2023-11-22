@@ -12,7 +12,7 @@ export async function seed(knex) {
       description:
         'I did this collage at my parents house. The bird on the boat was an accident at first but I love him',
       medium: 'collage',
-      imageUrl: 'public/wave.jpeg',
+      imageUrl: '/wave.jpeg',
       owner: 'rose',
     },
     {
@@ -21,7 +21,7 @@ export async function seed(knex) {
       description:
         'A basset hound dog walked into my house half way through making this piece of art. Gaby was crafting with me at the time.',
       medium: 'collage',
-      imageUrl: 'public/Klint.jpeg',
+      imageUrl: '/Klint.jpeg',
       owner: 'rose',
     },
     {
@@ -30,7 +30,7 @@ export async function seed(knex) {
       description:
         'I made this based on a request from dad. It was when I began to take it more seriously.',
       medium: 'collage',
-      imageUrl: 'public/angus.jpeg',
+      imageUrl: '/angus.jpeg',
       owner: 'rose',
     },
   ])
