@@ -68,3 +68,16 @@ header{
 h1{
   margin:0;
 }
+
+.addNew{
+  max-width: 20rem;
+  width: 80%;
+}
+
+input, textarea{
+  width: 100%;
+}
+
+label{
+  width: 100%;
+}

@@ -58,21 +58,21 @@ router.post('/', async(req,res)=>{
 })
 
 
-const multer = require('multer')
-const upload = multer({ dest: '../../uploads/' })
+// const multer = require('multer')
+// const upload = multer({ dest: '../../uploads/' })
 
-// 3
-app.post('/', upload.single('image'), (req, res) => {
-  // 4
-  const imageName = req.file.filename
-  const description = req.body.description
+// // 3
+// app.post('/', upload.single('image'), (req, res) => {
+//   // 4
+//   const imageName = req.file.filename
+//   const description = req.body.description
 
-  // Save this data to a database probably
+//   // Save this data to a database probably
 
-  console.log(description, imageName)
-  res.send({description, imageName})
+//   console.log(description, imageName)
+//   res.send({description, imageName})
 
-})
+// })
 
 
 // Multer creates a unique name for the file, so the path will be something like images/d54c8136cd238804b67e4a0c56427f8b
