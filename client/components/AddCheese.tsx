@@ -42,7 +42,7 @@ export default function AddCheese() {
   return (
     <>
       <div>
-        <h3>Add a cheese to your collection</h3>
+        <h1>Add a cheese to your collection</h1>
       </div>
       <form action="/" onSubmit={handleSubmit} method="POST">
         <label htmlFor="name">Name:</label>
