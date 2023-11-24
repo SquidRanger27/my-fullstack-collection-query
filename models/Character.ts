@@ -23,3 +23,8 @@ export type NewCharacterModel = NewCharacterSetName | NewCharacterSetAlias
 export type CharacterModel = NewCharacterModel & {
   id: number
 }
+
+// Function for checking if the form input matches the type
+export function checkType<Type>(object: unknown, type: Type) {
+  return object
+}

@@ -24,10 +24,23 @@ body {
   text-align: center;
 }
 
-.character.add span {
+.character input:not([type = submit]) {
+  padding: 0.25em;
+  margin: 0.25em;
+  color: lime;
+  font-size: inherit;
+  width: 50%;
+  border: solid darkolivegreen;
+  border-radius: 0.25em;
+  background-color: black;
+  display: inline-block;
+}
+
+.character.add a {
   font-size: 15em;
   color: darkcyan;
   line-height: 100%;
+  text-decoration: none;
 }
 
 img {
