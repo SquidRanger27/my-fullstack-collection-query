@@ -1,14 +1,10 @@
 import { getCheesesApi } from '../apiClient'
-import { Cheese } from '../../models/cheese'
 import PacmanLoader from 'react-spinners/PacmanLoader'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useState, useEffect } from 'react'
 import DeleteCheese from './DeleteCheese'
 import UpdateCheese from './UpdateCheese'
 
 export default function CheeseList() {
-  const queryClient = useQueryClient()
-
   const {
     data: cheese,
     isError,

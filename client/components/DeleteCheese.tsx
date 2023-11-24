@@ -1,6 +1,4 @@
 //DeleteCheese.tsx
-import React from 'react'
-import { Cheese } from '../../models/cheese'
 import { deleteCheeseApi } from '../apiClient'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 

@@ -1,6 +1,5 @@
 //routes cheese.ts
 import express from 'express'
-import { Router } from 'express'
 const router = express.Router()
 import * as db from '../db/db.ts'
 
