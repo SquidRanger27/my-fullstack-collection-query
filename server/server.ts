@@ -5,6 +5,7 @@ import characters from './routes/characters'
 
 const server = express()
 server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
 server.use('/api/v1/characters', characters)
 
 if (process.env.NODE_ENV === 'production') {

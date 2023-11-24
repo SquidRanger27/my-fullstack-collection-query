@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { deleteCharacter } from '../apis/characters'
-import { updateCharacter } from '../../server/db/db'
+import { updateCharacter } from '../apis/characters'
 import { CharacterModel } from '../../models/Character'
 
 function Character(props: CharacterModel) {
@@ -19,10 +19,11 @@ function Character(props: CharacterModel) {
   function handleUpdate(event: { preventDefault: () => void }) {
     event.preventDefault()
     // Show error message if both name and alias are null
-    if (characterData.name && characterData.alias) {
+    if (characterData.name || characterData.alias) {
       updateCharacter(characterData)
+    } else {
+      alert("At least one of 'Alias' and 'Name' must be defined.")
     }
-    alert("At least one of 'Alias' and 'Name' must be defined.")
   }
 
   function handleChange(event: { target: HTMLInputElement }) {

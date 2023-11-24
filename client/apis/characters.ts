@@ -16,7 +16,7 @@ export async function addCharacter(newCharacter: NewCharacterModel) {
   return response.body
 }
 
-export async function editCharacter(character: CharacterModel) {
+export async function updateCharacter(character: CharacterModel) {
   const response = await request.patch('/api/v1/characters/').send(character)
   return response.body
 }
