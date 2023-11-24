@@ -7,7 +7,7 @@ export async function getCharacters() {
 }
 
 export async function deleteCharacter(id: number) {
-  const response = await request.delete('/api/v1/characters/' + id)
+  const response = await request.delete('/api/v1/characters/').send({ id })
   return response.body
 }
 
