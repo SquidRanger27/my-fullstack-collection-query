@@ -21,6 +21,7 @@ function Character(props: CharacterModel) {
     // Show error message if both name and alias are null
     if (characterData.name || characterData.alias) {
       updateCharacter(characterData)
+      setEditing(false)
     } else {
       alert("At least one of 'Alias' and 'Name' must be defined.")
     }
