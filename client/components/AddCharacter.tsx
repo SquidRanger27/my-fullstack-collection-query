@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
-
 import { useState } from 'react'
 import { addCharacter } from '../apis/characters'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 function AddCharacter() {
   const [characterData, setCharacterData] = useState({
@@ -10,6 +9,16 @@ function AddCharacter() {
     image: '',
   })
   const [adding, setAdding] = useState(false)
+  const queryClient = useQueryClient()
+
+  const addMutation = useMutation({
+    mutationFn: addCharacter,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['characters'],
+      })
+    },
+  })
 
   function toggleAdd() {
     setAdding(!adding)
@@ -19,8 +28,7 @@ function AddCharacter() {
     event.preventDefault()
     // Show error message if both name and alias are null
     if (characterData.name || characterData.alias) {
-      addCharacter(characterData)
-      setAdding(false)
+      addMutation.mutate(characterData)
     } else {
       alert("At least one of 'Alias' and 'Name' must be defined.")
     }

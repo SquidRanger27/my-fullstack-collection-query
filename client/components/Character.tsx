@@ -1,15 +1,34 @@
 import { useState } from 'react'
-import { deleteCharacter } from '../apis/characters'
-import { updateCharacter } from '../apis/characters'
+import { deleteCharacter, updateCharacter } from '../apis/characters'
 import { CharacterModel } from '../../models/Character'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 function Character(props: CharacterModel) {
   const { id, name, alias, image } = props
   const [characterData, setCharacterData] = useState(props)
   const [editing, setEditing] = useState(false)
+  const queryClient = useQueryClient()
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteCharacter,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['characters'],
+      })
+    },
+  })
+
+  const updateMutation = useMutation({
+    mutationFn: updateCharacter,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['characters'],
+      })
+    },
+  })
 
   function handleDelete() {
-    deleteCharacter(id)
+    deleteMutation.mutate(id)
   }
 
   function toggleEdit() {
@@ -20,7 +39,7 @@ function Character(props: CharacterModel) {
     event.preventDefault()
     // Show error message if both name and alias are null
     if (characterData.name || characterData.alias) {
-      updateCharacter(characterData)
+      updateMutation.mutate(characterData)
       setEditing(false)
     } else {
       alert("At least one of 'Alias' and 'Name' must be defined.")
