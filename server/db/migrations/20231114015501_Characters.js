@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up(knex) {
+export async function up(knex) {
   return knex.schema.createTable('characters', (table) => {
     table.increments('id')
     table.string('name')
@@ -15,6 +15,6 @@ export function up(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down(knex) {
+export async function down(knex) {
   return knex.schema.dropTable('characters')
 }

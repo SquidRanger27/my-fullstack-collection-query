@@ -36,12 +36,6 @@ export default {
   production: {
     client: 'sqlite3',
     useNullAsDefault: true,
-    migrations: {
-      directory: Path.join(__dirname, 'migrations'),
-    },
-    seeds: {
-      directory: Path.join(__dirname, 'seeds'),
-    },
     connection: {
       filename: '/app/storage/prod.sqlite3',
     },
