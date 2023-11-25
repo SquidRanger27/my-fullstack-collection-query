@@ -39,8 +39,5 @@ export default {
     connection: {
       filename: '/app/storage/prod.sqlite3',
     },
-    pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
-    },
   },
 }
