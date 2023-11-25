@@ -1,15 +1,37 @@
 import { Router } from 'express'
+import * as db from '../db/db'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
-  res.send('a okay')
+  res.send(await db.getAllMovies())
 })
 
-router.delete('/', async (req, res) => {})
+router.post('/', async (req, res) => {
+  try {
+    await db.addMovie(req.body)
+    res.sendStatus(200)
+  } catch (error) {
+    res.send(error).status(400)
+  }
+})
 
-router.put('/', async (req, res) => {})
+router.delete('/:id', async (req, res) => {
+  try {
+    await db.deleteMovie(Number(req.params.id))
+    res.sendStatus(200)
+  } catch (error) {
+    res.send(error).status(400)
+  }
+})
 
-router.patch('/', async (req, res) => {})
+router.patch('/:id', async (req, res) => {
+  try {
+    await db.updateMovie(Number(req.params.id), req.body)
+    res.sendStatus(200)
+  } catch (error) {
+    res.send(error).status(400)
+  }
+})
 
 export default router
