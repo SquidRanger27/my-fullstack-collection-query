@@ -9,6 +9,7 @@ export function up(knex) {
     table.increments('id')
     table.string('name')
     table.string('description')
+    table.string('image')
   })
 }
 

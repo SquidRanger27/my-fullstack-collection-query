@@ -23,6 +23,7 @@ function HomePage() {
             <div key={place.id}>
               <h3>{place.name}</h3>
               <p>{place.description}</p>
+              <img src={place.image} alt={place.name} />
             </div>
           )
         })}
