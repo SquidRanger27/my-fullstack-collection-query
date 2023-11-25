@@ -24,6 +24,16 @@ body {
   text-align: center;
 }
 
+.character div {
+  display: flex;
+  width: 100%;
+}
+
+.character div * {
+  width: 100%;
+  margin: 1em;
+}
+
 .character input:not([type = submit]) {
   padding: 0.25em;
   margin: 0.25em;
@@ -36,16 +46,21 @@ body {
   display: inline-block;
 }
 
-.character.add a {
+.character.add button {
   font-size: 15em;
   color: darkcyan;
   line-height: 100%;
   text-decoration: none;
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 img {
   width: auto;
-  max-height: 15em;
+  max-height: 13em;
   max-width: 10em;
   border: solid lightslategray 0.2em;
   border-radius: 1em;
