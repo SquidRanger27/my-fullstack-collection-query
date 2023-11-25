@@ -87,7 +87,7 @@ function Character(props: CharacterModel) {
       ) : (
         <div className="character">
           <h2>{alias ? alias : name}</h2>
-          {alias ? <h3>Name: {name}</h3> : ''}
+          {alias && name ? <h3>Name: {name}</h3> : ''}
           {image && <img src={image} alt={name || alias || 'character'} />}
           <div>
             <button onClick={toggleEdit}>Edit</button>
