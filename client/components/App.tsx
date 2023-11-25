@@ -1,6 +1,7 @@
 // import { Outlet } from 'react-router-dom'
 
 import ItemsList from './ItemsList'
+import AddNewItem from './AddNewItem'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <section className="main">
         {/* add your code here */}
         <ItemsList />
+        <AddNewItem />
       </section>
     </>
   )

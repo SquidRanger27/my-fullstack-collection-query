@@ -6,9 +6,10 @@ export async function up(knex) {
   await knex.schema.createTable('items', (table) => {
     table.increments('id').primary()
     table.string('name')
-    table.string('item')
+    table.string('genre')
     table.string('description')
-    table.dateTime('dateLent').defaultTo(knex.fn.now())
+    // table.dateTime('dateLent').defaultTo(knex.fn.now())
+    table.string('dateLent')
     table.dateTime('dateAdded').defaultTo(knex.fn.now())
   })
 }

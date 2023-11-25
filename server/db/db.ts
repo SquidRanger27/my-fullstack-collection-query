@@ -1,16 +1,19 @@
 import connection from './connection.ts'
-import { Item } from '../../models/items.ts'
+import { Item, NewItem } from '../../models/items.ts'
 
+// Links to router.get in server/routes/routes.ts
 export async function getAllItems(): Promise<Item[]> {
   return await connection('items').select()
 }
 
+// Links to router.post in server/routes/routes.ts
 export async function addItem(
   name: string,
-  item: string,
-  description: string
-): Promise<Item[]> {
+  genre: string,
+  description: string,
+  dateLent: string
+): Promise<NewItem[]> {
   return await connection('items')
-    .insert({ name, item, description })
-    .returning(['id', 'name', 'item', 'description'])
+    .insert({ name, genre, description, dateLent })
+    .returning(['id', 'name', 'genre', 'description', 'dateLent'])
 }

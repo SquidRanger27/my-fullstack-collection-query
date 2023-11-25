@@ -27,17 +27,19 @@ export default function ItemsList() {
   return (
     <>
       <div className="items-list">
-        <h1>Current Items Lent: </h1>
-
+        <h1 className="items-header">Current Items Lent: </h1>
         <ul>
           {items.map((item: Item) => {
+            // console.log(item)
             return (
               <li key={item.id}>
-                {item.name}; {item.item}; {item.description}
+                {item.name} - {item.genre} - {item.description} -{' '}
+                {item.dateLent}
               </li>
             )
           })}
         </ul>
+        <h2 className="new-item">Add New Item: </h2>
       </div>
     </>
   )
