@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getCharacters, testConnection } from '../apis/characters'
+import { testConnection } from '../apis/characters'
 
 function Test() {
   const {
@@ -12,7 +12,7 @@ function Test() {
     isLoading: boolean
   } = useQuery({
     queryKey: ['test'],
-    queryFn: getCharacters,
+    queryFn: testConnection,
   })
 
   if (error) return <p>An error has occured :(</p>
