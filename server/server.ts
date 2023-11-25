@@ -1,9 +1,11 @@
 import * as Path from 'node:path'
-
+import movies from './routes/movies'
 import express from 'express'
 
 const server = express()
 server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
+server.use('/api/v1/movies', movies)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
