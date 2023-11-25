@@ -31,4 +31,21 @@ router.post('/', async (req, res) => {
   }
 })
 
+// Links to request.delete in client/apis/apliClient.ts
+router.delete('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+
+  try {
+    await db.deleteItem(id)
+    res.sendStatus(200)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Could not delete data')
+  }
+})
+
 export default router

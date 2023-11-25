@@ -12,3 +12,7 @@ export async function getAllItems() {
 export async function addItem({ name, genre, description, dateLent }: NewItem) {
   await request.post(URL).send({ name, genre, description, dateLent })
 }
+
+export async function deleteItem({ id }: Item) {
+  await request.delete(URL + `${id}`)
+}

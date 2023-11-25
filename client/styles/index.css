@@ -18,10 +18,17 @@ body {
   font-size: 1.8rem;
 }
 
-ul {
+ul li {
   font-size: 1.2rem;
+  padding-bottom: 1rem;
 }
 
+.delete-button {
+  margin-top: 0.2rem;
+  margin-left: 10rem;
+  padding: 0.5rem;
+  max-width: 200px;
+}
 .new-item {
   text-align: center;
 }
@@ -48,7 +55,8 @@ input {
   max-width: 200px;
 }
 
-.add-button:hover {
+.add-button:hover,
+.delete-button:hover {
   cursor: pointer;
   background-color: black;
   color: white;

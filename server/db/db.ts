@@ -17,3 +17,8 @@ export async function addItem(
     .insert({ name, genre, description, dateLent })
     .returning(['id', 'name', 'genre', 'description', 'dateLent'])
 }
+
+// Links to router.delete in server/routes/routes.ts
+export async function deleteItem(id: number): Promise<Item[]> {
+  return await connection('items').where({ id }).delete()
+}

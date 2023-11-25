@@ -39,7 +39,8 @@ export default function AddNewItem() {
   return (
     <div className="add-form">
       <form onSubmit={handleAddSubmit} aria-label="Add New Item">
-        <label htmlFor="name">Name: </label>
+        {/* <label htmlFor="name">Name: </label> */}
+        Name:
         <input
           aria-label="name"
           type="text"
@@ -47,7 +48,8 @@ export default function AddNewItem() {
           required
           onChange={(e) => setName(e.target.value)}
         />
-        <label htmlFor="genre">Genre: </label>
+        {/* <label htmlFor="genre">Genre: </label> */}
+        Genre:
         <input
           aria-label="genre"
           type="text"
@@ -55,7 +57,8 @@ export default function AddNewItem() {
           required
           onChange={(e) => setGenre(e.target.value)}
         />
-        <label htmlFor="description">Description: </label>
+        {/* <label htmlFor="description">Description: </label> */}
+        Description:
         <input
           aria-label="description"
           type="text"
@@ -63,7 +66,8 @@ export default function AddNewItem() {
           required
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="dateLent">Date Lent: </label>
+        {/* <label htmlFor="dateLent">Date Lent: </label> */}
+        Date Lent:
         <input
           aria-label="dateLent"
           type="text"

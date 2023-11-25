@@ -1,12 +1,14 @@
 import { Item } from '../../models/items'
 import { getAllItems } from '../apis/apiClient'
 import { useQuery } from '@tanstack/react-query'
+import DeleteItem from './DeleteItem'
 
 export default function ItemsList() {
   const {
     data: items,
     isLoading,
     isError,
+    refetch,
   } = useQuery({ queryKey: ['items'], queryFn: getAllItems })
   // console.log(getAllItems())
   console.log(items)
@@ -24,6 +26,10 @@ export default function ItemsList() {
     return <p>Im trying to load the data...</p>
   }
 
+  const handleItemDelete = async () => {
+    await refetch()
+  }
+
   return (
     <>
       <div className="items-list">
@@ -32,10 +38,13 @@ export default function ItemsList() {
           {items.map((item: Item) => {
             // console.log(item)
             return (
-              <li key={item.id}>
-                {item.name} - {item.genre} - {item.description} -{' '}
-                {item.dateLent}
-              </li>
+              <>
+                <li key={item.id}>
+                  {item.name} - {item.genre} - {item.description} -{' '}
+                  {item.dateLent}
+                  <DeleteItem id={item.id} onSuccess={handleItemDelete} />
+                </li>
+              </>
             )
           })}
         </ul>
