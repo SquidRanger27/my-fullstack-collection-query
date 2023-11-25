@@ -4,7 +4,6 @@ import knex from 'knex'
 type Environment = 'production' | 'test' | 'development'
 
 const environment = (process.env.NODE_ENV || 'development') as Environment
-console.log(environment)
 const config = knexFile[environment]
 
 const connection = knex(config)
