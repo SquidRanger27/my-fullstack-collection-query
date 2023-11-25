@@ -1,8 +1,60 @@
 body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
+  position: relative; /* Changed from absolute to relative */
+  margin: 0 auto;
   padding: 20px;
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* HomePage.css */
+
+.banner-container {
+  background-image: url('../../client/public/Major Cities/banner.png'); /* Replace with the path to your banner image */
+  background-size: 1200px 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  padding: 50px 20px; /* Adjust the padding as needed */
+}
+
+#home-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px; /* Added padding on the sides */
+}
+
+#home-page-title {
+  text-align: center;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  font-size: x-large;
+}
+
+.city-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns in the grid */
+  gap: 30px; /* Adjust the gap between city cards */
+  justify-content: center; /* Center the grid */
+}
+
+.city-card {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.city-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.city-details {
+  padding: 15px;
+}
+
+.city-name {
+  margin-bottom: 10px;
+  color: #333;
 }

@@ -8,27 +8,26 @@ function HomePage() {
     isError,
   } = useQuery({ queryKey: ['places'], queryFn: nz.getAllPlaces })
   if (isError) {
-    return <p>Cannot get to your destination...</p>
+    return <h2>Cannot get to your destination...</h2>
   }
   if (!places || isLoading) {
-    return <p>Taking off...</p>
+    return <h2>Taking off...</h2>
   }
 
   return (
-    <>
-      <h2>New Zealand Places</h2>
-      <div>
-        {places.map((place) => {
-          return (
-            <div key={place.id}>
-              <h3>{place.name}</h3>
+    <div id="home-page-container">
+      <div className="city-container">
+        {places.map((place) => (
+          <div key={place.id} className="city-card">
+            <img src={place.image} alt={place.name} className="city-image" />
+            <div className="city-details">
+              <h3 className="city-name">{place.name}</h3>
               <p>{place.description}</p>
-              <img src={place.image} alt={place.name} />
             </div>
-          )
-        })}
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   )
 }
 

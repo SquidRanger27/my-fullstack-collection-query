@@ -4,7 +4,11 @@ function AppLayout() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <div className="banner-container">
+          <h1 id="home-page-title">
+            Explore Major Cities <br></br> in New Zealand
+          </h1>
+        </div>
       </header>
       <section className="main">
         <Outlet />

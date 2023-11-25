@@ -10,14 +10,15 @@ export async function seed(knex) {
       id: 1,
       name: 'Wellington',
       description:
-        'Auckland, situated on the North Island, is New Zealand\'s largest city and a bustling economic hub. Known as the "City of Sails," it boasts a stunning harbor filled with yachts and offers a diverse range of cultural attractions, shopping districts, and vibrant nightlife. The iconic Sky Tower dominates the skyline, providing panoramic views of the city and beyond.',
+        'Wellington, the capital city of New Zealand, is located at the southern tip of the North Island. Nestled between hills and a rugged coastline, Wellington is celebrated for its vibrant arts scene, including theaters, museums, and galleries. The city is also home to the government headquarters and is known for its lively cafe culture.',
       image: 'client/public/Major Cities/wellington.jpg',
     },
+
     {
       id: 2,
       name: 'Auckland',
       description:
-        'Wellington, the capital city of New Zealand, is located at the southern tip of the North Island. Nestled between hills and a rugged coastline, Wellington is celebrated for its vibrant arts scene, including theaters, museums, and galleries. The city is also home to the government headquarters and is known for its lively cafe culture.',
+        'Auckland, situated on the North Island, is New Zealand\'s largest city and a bustling economic hub. Known as the "City of Sails," it boasts a stunning harbor filled with yachts and offers a diverse range of cultural attractions, shopping districts, and vibrant nightlife. The iconic Sky Tower dominates the skyline, providing panoramic views of the city and beyond.',
       image: 'client/public/Major Cities/auckland.jpg',
     },
     {
