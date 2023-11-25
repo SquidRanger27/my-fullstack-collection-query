@@ -22,3 +22,16 @@ export async function addItem(
 export async function deleteItem(id: number): Promise<Item[]> {
   return await connection('items').where({ id }).delete()
 }
+
+// Links to router.patch in server/routes/routes.ts
+export async function editItem(
+  id: number,
+  genre: string,
+  description: string,
+  dateLent: string
+): Promise<Item[]> {
+  return await connection('items')
+    .where({ id })
+    .update({ genre, description, dateLent })
+    .returning(['id', 'name', 'genre', 'description', 'dateLent'])
+}

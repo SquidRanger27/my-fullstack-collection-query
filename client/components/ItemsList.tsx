@@ -2,6 +2,7 @@ import { Item } from '../../models/items'
 import { getAllItems } from '../apis/apiClient'
 import { useQuery } from '@tanstack/react-query'
 import DeleteItem from './DeleteItem'
+import EditItem from './EditItem'
 
 export default function ItemsList() {
   const {
@@ -30,6 +31,10 @@ export default function ItemsList() {
     await refetch()
   }
 
+  const handleItemEdit = async () => {
+    await refetch()
+  }
+
   return (
     <>
       <div className="items-list">
@@ -43,12 +48,12 @@ export default function ItemsList() {
                   {item.name} - {item.genre} - {item.description} -{' '}
                   {item.dateLent}
                   <DeleteItem id={item.id} onSuccess={handleItemDelete} />
+                  <EditItem id={item.id} onSuccess={handleItemEdit} />
                 </li>
               </>
             )
           })}
         </ul>
-        <h2 className="new-item">Add New Item: </h2>
       </div>
     </>
   )

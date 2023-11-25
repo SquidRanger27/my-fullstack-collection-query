@@ -38,6 +38,7 @@ export default function AddNewItem() {
 
   return (
     <div className="add-form">
+      <h2 className="new-item">Add New Item: </h2>
       <form onSubmit={handleAddSubmit} aria-label="Add New Item">
         {/* <label htmlFor="name">Name: </label> */}
         Name:

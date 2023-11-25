@@ -16,3 +16,23 @@ export async function addItem({ name, genre, description, dateLent }: NewItem) {
 export async function deleteItem({ id }: Item) {
   await request.delete(URL + `${id}`)
 }
+
+interface EditItems {
+  id: Item['id']
+  newGenre: Item['genre']
+  newDescription: Item['description']
+  newDateLent: Item['dateLent']
+}
+
+export async function editItem({
+  id,
+  newGenre,
+  newDescription,
+  newDateLent,
+}: EditItems) {
+  await request.patch(URL + `${id}`).send({
+    genre: newGenre,
+    description: newDescription,
+    dateLent: newDateLent,
+  })
+}

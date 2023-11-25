@@ -3,6 +3,13 @@ body {
   background-color: bisque;
 }
 
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
 .header {
   text-align: center;
   font-size: 1.5rem;
@@ -19,16 +26,31 @@ body {
 }
 
 ul li {
+  margin-top: 1rem;
   font-size: 1.2rem;
   padding-bottom: 1rem;
 }
 
 .delete-button {
   margin-top: 0.2rem;
-  margin-left: 10rem;
+  /* margin-left: 10rem; */
   padding: 0.5rem;
   max-width: 200px;
 }
+
+.edit-button {
+  margin-top: 0.3rem;
+  margin-left: 7rem;
+  max-width: 50px;
+  padding: 0.5rem;
+}
+
+.edit-form form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
 .new-item {
   text-align: center;
 }
@@ -56,7 +78,8 @@ input {
 }
 
 .add-button:hover,
-.delete-button:hover {
+.delete-button:hover,
+.edit-button:hover {
   cursor: pointer;
   background-color: black;
   color: white;

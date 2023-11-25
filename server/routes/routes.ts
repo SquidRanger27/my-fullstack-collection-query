@@ -48,4 +48,27 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+// Links to request.patch in client/apis/apliClient.ts
+router.patch('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+
+  const { genre, description, dateLent } = req.body
+  if (!req.body) {
+    res.status(400).send('Bad Request: Further info required!')
+    return
+  }
+
+  try {
+    await db.editItem(id, genre, description, dateLent)
+    res.sendStatus(200)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Could not edit items')
+  }
+})
+
 export default router
