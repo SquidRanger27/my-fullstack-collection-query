@@ -20,3 +20,8 @@ export async function updateCharacter(character: CharacterModel) {
   const response = await request.patch('/api/v1/characters/').send(character)
   return response.body
 }
+
+export async function testConnection() {
+  const response = await request.get('/api/v1/test')
+  return response.body
+}
