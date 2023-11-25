@@ -1,7 +1,19 @@
 import express from 'express'
 import * as db from '../db/db'
+import multer from 'multer'
 
 const router = express.Router()
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    return cb(null, "../../public/")
+  },
+  filename: function(req, file, cb){
+    return cb(null, file.orginalname)
+  }
+})
+
+const upload = multer({storage})
 
 //_________________________________________
 // GET ALL ARTWORKS AND DETAILS FOR DISPLAY
@@ -56,6 +68,16 @@ router.post('/', async(req,res)=>{
     res.status(500).send('database is sad')
   }
 })
+
+// ______________________________________
+// upload new image
+router.post('/upload', upload.single('file'), (req,res)=>{
+  console.log(req.body)
+  console.log(req.file)
+})
+
+
+
 
 
 // const multer = require('multer')

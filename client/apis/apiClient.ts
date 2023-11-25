@@ -16,3 +16,7 @@ export async function getArtById(id:number){
 export async function postNewArt(){
   await request.get('/api/v1/artworks')
 }
+
+export async function uploadArt(){
+  await request.post('/api/v1/artworks/upload')
+}

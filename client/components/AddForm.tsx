@@ -1,7 +1,18 @@
 import { useState } from "react"
+import axios from 'axios'
+import { uploadArt } from "../apis/apiClient"
 
 export default function AddForm() {
+  const [file, setFile] = useState()
   
+  const uploadFile = () =>{
+    const formData = new FormData()
+    formData.append('file', file)
+    uploadArt()
+    // axios.post('http://localhost:3000/upload',)
+    // .then(res => {})
+    // .catch(error => console.log(error))
+  }
 
   const submit = async event => {
     event.preventDefault()
@@ -40,19 +51,22 @@ export default function AddForm() {
           type="text"
           name="medium"
           // value={formData.medium}
-          // onChange={handleChange}
+          
         />
+        
       </label>
       <br />
 
       <label className='hflex'>
         Image URL:
         <input
-          type="text"
+          type="file"
           name="imageUrl"
           // value={formData.imageUrl}
           // onChange={handleChange}
+          onChange={(e)=> setFile(e.target.files[0])}
         />
+        <button type="button" onClick={uploadFile}>Upload</button>
       </label>
       <br />
 

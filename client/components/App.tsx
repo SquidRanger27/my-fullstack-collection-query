@@ -2,6 +2,7 @@ import {useQuery} from '@tanstack/react-query'
 import { getAllArtHeadings } from "../apis/apiClient"
 import {Link} from 'react-router-dom'
 import AddForm from './AddForm'
+import OneImage from './oneImage'
 
 export default function App (){
   
@@ -28,7 +29,8 @@ export default function App (){
       )
       })}
     </div>
-      <AddForm />
+      <OneImage />
+      {/* <AddForm /> */}
     </>
   )
 }
