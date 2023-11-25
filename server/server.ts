@@ -9,7 +9,7 @@ server.use(express.urlencoded({ extended: true }))
 server.use('/api/v1/characters', characters)
 
 server.get('/api/v1/test', (req, res) => {
-  res.status(200)
+  res.sendStatus(200)
 })
 
 if (process.env.NODE_ENV === 'production') {
