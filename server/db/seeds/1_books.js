@@ -1,0 +1,142 @@
+export async function seed(knex) {
+  await knex('books').insert([
+    {
+      author_name: 'Gene Wolfe',
+      book_title: 'The Shadow of the Torturer',
+      series_title: 'The Book of the New Sun',
+      entry_number: 1,
+    },
+    {
+      author_name: 'Gene Wolfe',
+      book_title: 'The Claw of the Conciliator',
+      series_title: 'The Book of the New Sun',
+      entry_number: 2,
+    },
+    {
+      author_name: 'Gene Wolfe',
+      book_title: 'The Sword of the Lictor',
+      series_title: 'The Book of the New Sun',
+      entry_number: 3,
+    },
+    {
+      author_name: 'Gene Wolfe',
+      book_title: 'The Citadel of the Autarch',
+      series_title: 'The Book of the New Sun',
+      entry_number: 4,
+    },
+    {
+      author_name: 'Gene Wolfe',
+      book_title: 'The Citadel of the Autarch',
+      series_title: 'The Book of the New Sun',
+      entry_number: 4,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Gardens of the Moon',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 1,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Deadhouse Gates',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 2,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Memories of Ice',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 3,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'House of Chains',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 4,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Midnight Tides',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 5,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'The Bonehunters',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 6,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Reaper&aposs Gale',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 7,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Toll the Hounds',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 8,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'Dust of Dreams',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 9,
+    },
+    {
+      author_name: 'Steven Erikson',
+      book_title: 'The Crippled God',
+      series_title: 'Malazan: Book of the Fallen',
+      entry_number: 10,
+    },
+    {
+      author_name: 'Jack Vance',
+      book_title: 'The Dying Earth',
+      series_title: 'Dying Earth',
+      entry_number: 1,
+    },
+    {
+      author_name: 'Jack Vance',
+      book_title: 'The Eyes of the Overworld',
+      series_title: 'Dying Earth',
+      entry_number: 2,
+    },
+    {
+      author_name: 'Jack Vance',
+      book_title: 'Cugel&aposs Saga',
+      series_title: 'Dying Earth',
+      entry_number: 3,
+    },
+    {
+      author_name: 'Jack Vance',
+      book_title: 'Rhialto the Marvellous',
+      series_title: 'Dying Earth',
+      entry_number: 4,
+    },
+    {
+      author_name: 'Brandon Sanderson',
+      book_title: 'The Way of Kings',
+      series_title: 'Stormlight Archive',
+      entry_number: 1,
+    },
+    {
+      author_name: 'Brandon Sanderson',
+      book_title: 'Words of Radiance',
+      series_title: 'Stormlight Archive',
+      entry_number: 2,
+    },
+    {
+      author_name: 'Brandon Sanderson',
+      book_title: 'Oathbringer',
+      series_title: 'Stormlight Archive',
+      entry_number: 3,
+    },
+    {
+      author_name: 'Brandon Sanderson',
+      book_title: 'Rhythm of War',
+      series_title: 'Stormlight Archive',
+      entry_number: 4,
+    },
+  ])
+}
