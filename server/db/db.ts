@@ -2,17 +2,21 @@ import connection from './connection'
 import { DigimonData } from '../../models/digimon'
 
 export async function getDigimonDb(): Promise<DigimonData[]> {
-  return await connection('digimons').select(
+  const digimons = await connection('digimons').select(
     'id as id',
     'digimon_name as digimonName',
     'digimon_type as digimonType'
   )
+  console.log('DB:', digimons)
+
+  return digimons
 }
 
 export function addDigimonDb(
   digimon_name: string,
   digimon_type: string
 ): Promise<DigimonData[]> {
+  console.log('DB add')
   return connection('digimons')
     .insert({ digimon_name, digimon_type })
     .returning([

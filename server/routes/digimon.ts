@@ -12,7 +12,7 @@ import {
 router.get('/', async (req, res) => {
   try {
     const digimons = await getDigimonDb()
-    // console.log(digimons)
+    console.log('SERVER:', digimons)
     res.json(digimons)
   } catch (err: any) {
     res.sendStatus(500)
