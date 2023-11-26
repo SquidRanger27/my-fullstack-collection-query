@@ -3,7 +3,10 @@ import express from 'express'
 import cheeseRoutes from './routes/cheese'
 
 const server = express()
+
+//Middleware
 server.use(express.json())
+
 server.use('/api/v1/cheeses', cheeseRoutes)
 
 if (process.env.NODE_ENV === 'production') {
