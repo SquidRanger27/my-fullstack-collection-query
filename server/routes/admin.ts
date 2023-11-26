@@ -2,7 +2,8 @@ import express from 'express'
 import { insertProducts ,displayProducts} from '../db/db.ts'
 import multer from 'multer'
 const router = express.Router()
-
+router.use(express.urlencoded({extended:true}))
+router.use(express.json())
 // const storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
 //     // Set the destination path where you want to save the uploaded file
@@ -14,7 +15,7 @@ const router = express.Router()
 //   },
 // })
 
-// const upload = multer({storage:storage})
+const upload = multer({dest: 'public'})
 // //api/v1/admin
 router.get('/',async(req,res)=>{
   const response = await displayProducts()
@@ -22,29 +23,12 @@ router.get('/',async(req,res)=>{
   res.json(response)
 })
 
-router.post('/',async(req,res)=>{
+router.post('/',upload.single('product_image'),async(req,res)=>{
   try {
-    // const file = req.file;
-    // const {product_name,product_price,product_image,product_type} = req.body;
-    // const insertData ={
-    //   product_name,product_price,product_image,product_type
-    // }
-
-    // const product_name = req.body.product_name
-    // const product_price = req.body.product_price
-    // const product_image = req.body.product_image
-    // const product_type = req.body.product_type
-    // const response = await insertProducts(product_name,product_price,product_image,product_type);
-    // const insertData = {
-    //   product_name,
-    //   product_price,
-    //   product_image,
-    //   product_type
-    // }
+   
     const input = req.body
-    console.log("Input",input);
-    const response = await insertProducts(input)
-    res.json(response)
+    const response = await insertProducts(req.file,input)
+    res.status(200).send(response)
     
   } catch (error) {
     console.error(error);
@@ -53,3 +37,4 @@ router.post('/',async(req,res)=>{
 })
 
 export default router
+
