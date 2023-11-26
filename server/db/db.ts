@@ -5,14 +5,11 @@ export function displayProducts(){
 }
 
 
-export function insertProducts(picture:string,inputs:NewProducts){
+export function insertProducts(result:NewProducts){
 
-  const filePath = picture;
+  // const filePath = picture;
   return connection('products')
-  .insert({
-    product_image: filePath,
-    ...inputs, // Include other form data
-  })
+  .insert(result)
   .returning(['product_name','product_price','product_image','product_type'])
   
 }

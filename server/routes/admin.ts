@@ -25,9 +25,15 @@ router.get('/',async(req,res)=>{
 
 router.post('/',upload.single('product_image'),async(req,res)=>{
   try {
-   
+    const file = req.file
     const input = req.body
-    const response = await insertProducts(req.file,input)
+    const result = {
+      product_name:input.product_name,
+      product_price:input.product_price,
+      product_image:file,
+      product_type:input.product_type
+    }
+    const response = await insertProducts(result)
     res.status(200).send(response)
     
   } catch (error) {

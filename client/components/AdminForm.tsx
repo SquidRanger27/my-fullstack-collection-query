@@ -32,8 +32,9 @@ function AdminForm(){
 
   function handleClick(e){
     e.preventDefault()
-    addProductMutation.mutate({text})
-    console.log("pressed")
+    console.log("from handleClick",text)
+    addProductMutation.mutate(text)
+
   }
 
   return(

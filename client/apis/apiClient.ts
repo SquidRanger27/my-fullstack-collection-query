@@ -13,11 +13,13 @@ export async function getAllProductsAPI(){
   
 }
 const adminRoute = '/api/v1/admin'
-export async function addProducts(picture:string,inputs:NewProducts){
+export async function addProducts(text){
   try{
-    const response = await request.post(adminRoute).send({picture,inputs})
-    return response
+    const response = await request.post(adminRoute).send(text)
+    console.log("this is from APiclient",text)
+    console.log("this is the response from apiClient",response.body)
+    return response.body
   }catch(e){
-    throw new Error(`An error occurred while adding the quiz`)
+    throw new Error(`An error occurred while adding product`)
   }
 }
