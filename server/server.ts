@@ -1,10 +1,19 @@
 import * as Path from 'node:path'
 import products from './routes/products'
 import express from 'express'
-import { displayProducts } from './db/db'
-import { Router } from 'express'
+
+
+import multer from 'multer';
+import path from 'path';
+
 const server = express()
-server.use(express.json())
+
+
+const upload = multer({ dest: 'public/' });
+
+// Use express.static to serve static files from the 'public' folder
+const publicFolder = path.resolve('public');
+server.use(express.static(publicFolder));
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
@@ -13,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
+
 
 server.use('/api/v1/products',products)
 export default server

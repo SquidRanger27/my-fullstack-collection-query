@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Shop</h1>
+        <h1 className = "title">Ton's Grocery</h1>
       </header>
       <section className="main">{products.map((data)=>{
         return(

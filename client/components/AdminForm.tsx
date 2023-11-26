@@ -1,10 +1,15 @@
 import { useState } from "react";
+
 function AdminForm(){
   const [selectedOption, setSelectedOption] = useState('');
-
+  
   function handleSelectChange(e){
 
     setSelectedOption(e.target.value)
+  }
+  function handleClick(e){
+e.preventDefault()
+    console.log("piutang ina mo")
   }
   return(
     <form action="/admin" method="post">
@@ -33,7 +38,7 @@ function AdminForm(){
          </td>
         </tr>
       </table>
-      <button>Add</button>
+      <button type="submit" onClick = {handleClick}>Add</button>
     </form>
     
   )

@@ -1,7 +1,7 @@
 import express from 'express'
 import { displayProducts } from '../db/db'
-const router = express.Router()
 
+const router = express.Router()
 
 
 router.get('/',async(req,res)=>{

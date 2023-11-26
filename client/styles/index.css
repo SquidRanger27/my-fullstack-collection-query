@@ -36,7 +36,7 @@ img{
  
 }
 .product_details{
- f
+ 
   background-color:aliceblue;
   padding:5px;
 }
@@ -63,4 +63,7 @@ form{
   flex-direction: column;
   align-items: center;
   
+}
+.title{
+  text-align: center;
 }
