@@ -6,6 +6,8 @@ import digimonRoute from './routes/digimon'
 
 const server = express()
 server.use(express.json())
+// routes
+server.use('/api/v1/digimons', digimonRoute)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
@@ -15,6 +17,4 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-// routes
-server.use('/api/v1/digimons', digimonRoute)
 export default server
