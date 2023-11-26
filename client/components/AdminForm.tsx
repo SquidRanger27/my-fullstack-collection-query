@@ -32,9 +32,9 @@ function AdminForm(){
 
   function handleClick(e){
     e.preventDefault()
-    console.log("from handleClick",text)
+    console.log("eto ay text",text)
     addProductMutation.mutate(text)
-
+    console.log("pressed")
   }
 
   return(
@@ -50,7 +50,7 @@ function AdminForm(){
         </tr>
         <tr>
           <td><label htmlFor="product_image">Upload Image</label></td>
-          <td><input type="file" id = "product_image" name = "product_image" accept="image/*" value = {text.product_image} onChange={handleSelectChange}/></td>
+          <td><input type="file" id = "product_image" name = "product_image" accept="image/*" onChange={handleSelectChange}/></td>
         </tr>
         <tr>
           <td><label htmlFor="product_type">Product Type:</label></td>
