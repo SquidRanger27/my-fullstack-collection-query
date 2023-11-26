@@ -37,7 +37,7 @@ describe('addCheese', () => {
       name: 'Test',
       description: 'Test',
       comment: 'Test',
-      rating_out_of_a_possible_10_Goldblums: 1,
+      rating: 1,
     }
     //ACT
     await addCheeseToDb(cheeseToAdd)
@@ -51,8 +51,6 @@ describe('addCheese', () => {
     expect(addedCheese?.name).toBe(cheeseToAdd.name)
     expect(addedCheese?.description).toBe(cheeseToAdd.description)
     expect(addedCheese?.comment).toBe(cheeseToAdd.comment)
-    expect(addedCheese?.rating_out_of_a_possible_10_Goldblums).toBe(
-      cheeseToAdd.rating_out_of_a_possible_10_Goldblums
-    )
+    expect(addedCheese?.rating).toBe(cheeseToAdd.rating)
   })
 })

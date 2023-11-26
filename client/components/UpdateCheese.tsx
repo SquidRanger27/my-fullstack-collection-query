@@ -13,7 +13,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
     name: '',
     description: '',
     comment: '',
-    rating_out_of_a_possible_10_Goldblums: 0,
+    rating: 0,
   })
   const queryClient = useQueryClient()
 
@@ -50,7 +50,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
         name: '',
         description: '',
         comment: '',
-        rating_out_of_a_possible_10_Goldblums: 0,
+        rating: 0,
       })
     }
   }
@@ -99,16 +99,16 @@ export default function UpdateCheese({ cheeseId }: Props) {
           </div>
 
           <div>
-            <label htmlFor="rating_out_of_a_possible_10_Goldblums">
+            <label htmlFor="rating">
               Rating out of a possible 10 Goldblums:
             </label>
             <input
-              id="rating_out_of_a_possible_10_Goldblums"
+              id="rating"
               type="text"
-              name="rating_out_of_a_possible_10_Goldblums"
-              value={updateCheeseForm.rating_out_of_a_possible_10_Goldblums}
+              name="rating"
+              value={updateCheeseForm.rating}
               onChange={handleInputChange}
-              aria-label="rating_out_of_a_possible_10_Goldblums"
+              aria-label="rating"
             />
           </div>
           <button type="submit" className="edit">

@@ -16,7 +16,7 @@ const mockAddedCheeseData = {
   name: 'Test name',
   description: 'Test description',
   comment: 'Test comment',
-  rating_out_of_a_possible_10_Goldblums: 10,
+  rating: 10,
 }
 
 describe('<AddCheese />', () => {
@@ -49,7 +49,7 @@ describe('<AddCheese />', () => {
     fireEvent.change(commentInput, { target: { value: 'Test comment' } })
     fireEvent.change(ratingInput, {
       target: {
-        value: mockAddedCheeseData.rating_out_of_a_possible_10_Goldblums,
+        value: mockAddedCheeseData.rating,
       },
     })
     console.log('Component rendered')

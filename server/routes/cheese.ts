@@ -4,6 +4,7 @@ const router = express.Router()
 import * as db from '../db/db.ts'
 
 // GET /api/v1/cheeses
+
 router.get('/', async (req, res) => {
   try {
     const cheeses = await db.getAllCheeses()
@@ -15,9 +16,10 @@ router.get('/', async (req, res) => {
 })
 
 //POST /api/v1/cheeses
+
 router.post('/', async (req, res) => {
+  const cheese = req.body
   try {
-    const cheese = req.body
     const addedCheese = await db.addCheeseToDb(cheese)
     res.json(addedCheese)
   } catch (error: any) {
@@ -27,6 +29,7 @@ router.post('/', async (req, res) => {
 })
 
 //DELETE /api/v1/cheeses
+
 router.delete('/:id', async (req, res) => {
   const cheeseId = Number(req.params.id)
   try {
@@ -39,11 +42,11 @@ router.delete('/:id', async (req, res) => {
 })
 
 //PATCH /api/v1/cheeses
+
 router.patch('/:id', async (req, res) => {
   const cheeseId = Number(req.params.id)
+  const updatedCheese = req.body
   try {
-    const updatedCheese = req.body
-    console.log('Received update data:', updatedCheese)
     await db.updateCheeseInDb(cheeseId, updatedCheese)
     res.status(200).json({ message: 'Cheese updated successfully' })
   } catch (error: any) {

@@ -2,13 +2,13 @@ export interface Cheese {
   id: number
   name: string
   description: string
-  rating_out_of_a_possible_10_Goldblums: number
+  rating: number
   comment: string
 }
 
 export interface NewCheese {
   name: string
   description: string
-  rating_out_of_a_possible_10_Goldblums: number
+  rating: number
   comment: string
 }

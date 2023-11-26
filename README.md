@@ -1,6 +1,21 @@
-# Fullstack Collection App
+# Final Project Pitch
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, API requests and React components that'll use React Query. Let's get going!
+For any cheese lovers out there, do you ever get optionitis when browsing the cheese section at Moore Wilson's?
+
+The goal of this project is to create a social media platform to celebrate all things cheese. Here we have the bones of a basic app with CRUD functionality. As it stands, a user is able to record cheeses and add a rating out of a possible 10 Goldblums, update their cheeses, and delete them from their collection. But it could be so much more that that. I propose we build the following functionality:
+
+Authentication
+
+- Create a registration and login page.
+- Ensure that only authenticated users can perform CRUD operations.
+
+External API
+
+- Add search functionality using an external API (https://cheesestore.github.io/#tag-Cheese) so that users don't have to type out all the cheesy details.
+
+Improve the UI
+
+- Designed the user interface using Figma for a more polished and professional.
 
 ## Setup
 
@@ -31,7 +46,12 @@ This repo is designed to provide space to code a fullstack app. It contains node
 
 ## Requirements
 
-### 1. Choosing your data set
+### Workflow
+
+- Use the GitHub KANBAN to assign yourself a task, post comments in the tickets to describe what needs to be done/what you are working on.
+- Move the tickets along the KANBAN as you progress.
+- When you're ready to commit new changes, first commit to your branch create a pull request to dev.
+- At the end of each sprint, there will be a review process before committing new features to dev.
 
 - [ ] First, decide what you would like to keep a collection of. This could be a repo for keeping track of movies, books, gifs, cars, rocks, anything you fancy, but keep it simple!
   <details style="padding-left: 2em">
@@ -88,19 +108,3 @@ Our first job is getting something showing on the front end from our database. H
 - [x] Mutate data with the `useMutation` hook to update an exisiting collection item via the API
 
 ---
-
-## Stretch
-
-<details>
-  <summary>More about stretch challenges</summary>
-  
-  - Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
-  - Is there any complex data you chose to not include earlier or any way you could expand this dataset?
-    - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, and this may require adjusting your database design
-  - Could you add an external API (maybe an inspirational quote in the footer?)
-  - If you haven't already, CSS!
-</details>
-
----
-
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=my-fullstack-collection-query)

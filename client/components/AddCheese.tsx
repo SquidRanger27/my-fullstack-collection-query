@@ -9,7 +9,7 @@ const emptyCheese: NewCheese = {
   name: '',
   description: '',
   comment: '',
-  rating_out_of_a_possible_10_Goldblums: 0,
+  rating: 0,
 }
 
 export default function AddCheese() {
@@ -20,6 +20,7 @@ export default function AddCheese() {
     mutationFn: addCheeseApi,
     onSuccess: () => {
       queryClient.invalidateQueries(['cheese'])
+      setFormData(emptyCheese)
     },
   })
 
@@ -72,14 +73,12 @@ export default function AddCheese() {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="rating_out_of_a_possible_10_Goldblums">
-          Rating out of a possible 10 Goldblums:
-        </label>
+        <label htmlFor="rating">Rating out of a possible 10 Goldblums:</label>
         <input
-          id="rating_out_of_a_possible_10_Goldblums"
+          id="rating"
           type="text"
-          name="rating_out_of_a_possible_10_Goldblums"
-          value={formData.rating_out_of_a_possible_10_Goldblums}
+          name="rating"
+          value={formData.rating}
           onChange={handleInputChange}
         />
         <button type="submit" className="add">

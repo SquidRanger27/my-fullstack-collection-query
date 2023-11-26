@@ -38,8 +38,7 @@ export default function CheeseList() {
               <br />
               <b>Comment:</b> {c.comment} <br />
               <br />
-              <b>Rating (out of a possible 10 Goldblums): </b>{' '}
-              {c.rating_out_of_a_possible_10_Goldblums}
+              <b>Rating (out of a possible 10 Goldblums): </b> {c.rating}
               <DeleteCheese cheeseId={c.id} />
               <UpdateCheese cheeseId={c.id} />
             </li>

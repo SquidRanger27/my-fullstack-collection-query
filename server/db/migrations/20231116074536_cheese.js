@@ -3,7 +3,7 @@ export function up(knex) {
     table.increments('id')
     table.varchar('name')
     table.varchar('description')
-    table.integer('rating_out_of_a_possible_10_Goldblums')
+    table.integer('rating')
     table.varchar('comment')
   })
 }
