@@ -1,12 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
-import * as nz from '../apis/apiClient'
+import { useGetAllPlaces } from '../apis/hooks'
 
 function HomePage() {
-  const {
-    data: places,
-    isLoading,
-    isError,
-  } = useQuery({ queryKey: ['places'], queryFn: nz.getAllPlaces })
+  const { data: places, isLoading, isError } = useGetAllPlaces()
+
   if (isError) {
     return <h2>Cannot get to your destination...</h2>
   }
