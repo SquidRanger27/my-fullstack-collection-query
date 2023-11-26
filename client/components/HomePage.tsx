@@ -1,4 +1,5 @@
 import { useGetAllPlaces } from '../apis/hooks'
+import { Link } from 'react-router-dom'
 
 function HomePage() {
   const { data: places, isLoading, isError } = useGetAllPlaces()
@@ -14,13 +15,19 @@ function HomePage() {
     <div id="home-page-container">
       <div className="city-container">
         {places.map((place) => (
-          <div key={place.id} className="city-card">
-            <img src={place.image} alt={place.name} className="city-image" />
-            <div className="city-details">
-              <h3 className="city-name">{place.name}</h3>
-              <p>{place.description}</p>
+          <Link
+            key={place.id}
+            to={`/api/v1/nzplaces/${place.id}`}
+            className="city-link"
+          >
+            <div key={place.id} className="city-card">
+              <img src={place.image} alt={place.name} className="city-image" />
+              <div className="city-details">
+                <h3 className="city-name link-text">{place.name}</h3>
+                <p className="link-text">{place.description}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
