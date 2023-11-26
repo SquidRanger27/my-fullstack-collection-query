@@ -2,8 +2,13 @@ import { useParams } from 'react-router-dom'
 import { useGetPlaceById } from '../apis/hooks'
 
 function DetailPage() {
-  const { id } = useParams()
-  const { data: cityDetails, isLoading, isError } = useGetPlaceById(id)
+  const { id } = useParams<{ id?: string }>() // useParams returns an object, so use destructuring
+  const parsedId = id ? Number(id) : undefined // parse the id to a number
+  const {
+    data: cityDetails,
+    isLoading,
+    isError,
+  } = useGetPlaceById({ id: parsedId as number })
 
   if (isLoading) {
     return <p>Loading...</p>

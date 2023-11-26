@@ -1,9 +1,6 @@
 import * as nz from './apiClient'
 import { useMutation, useQuery } from '@tanstack/react-query'
-
-type UseGetPlaceByIdProps = {
-  id: number
-}
+import { UseGetPlaceByIdProps } from '../../models/models'
 
 export const useGetAllPlaces = () => {
   return useQuery({ queryKey: ['places'], queryFn: nz.getAllPlaces })
