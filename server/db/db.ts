@@ -7,7 +7,7 @@ export async function getDigimonDb(): Promise<DigimonData[]> {
     'digimon_name as digimonName',
     'digimon_type as digimonType'
   )
-  console.log('DB:', digimons)
+  // console.log('DB:', digimons)
 
   return digimons
 }
@@ -16,7 +16,7 @@ export function addDigimonDb(
   digimon_name: string,
   digimon_type: string
 ): Promise<DigimonData[]> {
-  console.log('DB add')
+  // console.log('DB add')
   return connection('digimons')
     .insert({ digimon_name, digimon_type })
     .returning([

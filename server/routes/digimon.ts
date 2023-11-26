@@ -12,7 +12,7 @@ import {
 router.get('/', async (req, res) => {
   try {
     const digimons = await getDigimonDb()
-    console.log('SERVER:', digimons)
+    // console.log('SERVER:', digimons)
     res.json(digimons)
   } catch (err: any) {
     res.sendStatus(500)
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 
   try {
     const newDigimons = await addDigimonDb(digimonName, digimonType)
-    console.log('POST' + newDigimons)
+    // console.log('POST' + newDigimons)
     res.status(200).json({ newDigimons })
   } catch (err) {
     console.log(err)
