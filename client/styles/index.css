@@ -85,3 +85,11 @@ label{
 .content{
   margin: 2rem;
 }
+
+.hidden{
+  display:none;
+}
+
+.visible{
+  display:auto;
+}

@@ -7,8 +7,8 @@ import OneImage from './oneImage'
 export default function App (){
   
   const { data: art, isLoading, isError, error } = useQuery(['art'], getAllArtHeadings, {
-    staleTime: 0,
-    refetchOnMount: 'always',
+    // staleTime: 0,
+    // refetchOnMount: 'always',
   })
   if (isError){
     console.error('error grabbing the art list', error)
@@ -18,7 +18,7 @@ export default function App (){
     return <p>drafting artworks...</p>
   }
 
-  
+  console.log(art)
   return(
     <>
     <h2>Artwork List</h2>

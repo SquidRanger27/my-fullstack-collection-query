@@ -24,3 +24,9 @@ export async function uploadArt(formData){
   .post('/api/v1/artworks/upload')
   .send(formData)
 }
+
+export async function editDetailsPatch(newDetails:Art.NewDetails){
+  const response = await request
+  .patch('/api/v1/artworks/edit')
+  .send(newDetails)
+}

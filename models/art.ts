@@ -20,3 +20,9 @@ export interface NewArt{
   imageUrl: string
   owner: string
 }
+export interface NewDetails{
+  name: string
+  description: string
+  medium: string
+  owner: string
+}

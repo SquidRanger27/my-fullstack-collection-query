@@ -4,7 +4,7 @@ import App from './components/App'
 import Detail from './components/Detail'
 
 export const routes = createRoutesFromElements(
-  <Route element = {<AppLayout />}>
+  <Route path ='/' element = {<AppLayout />}>
     <Route index element = {<App />}/>
     <Route path="/:id" element = {<Detail />}/>
   </Route>
