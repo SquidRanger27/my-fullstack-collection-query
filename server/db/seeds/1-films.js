@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 export async function seed(knex) {
-  await knex('locations').insert([
+  await knex('films').insert([
     {
       id: 1,
       title: 'Inglourious Basterds',
