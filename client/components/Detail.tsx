@@ -32,7 +32,9 @@ export default function Detail (){
     <>
     <div className="fill">
       <div className="vflex detail">
+        <div className={editing? 'visible': 'hidden'}>
         <Edit />
+        </div>
         <div className = {editing?'hidden':'visible'} >
           <h2>{artDetail.name}</h2>
           <p>{artDetail.description}</p>  

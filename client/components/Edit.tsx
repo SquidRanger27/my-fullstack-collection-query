@@ -63,10 +63,10 @@ export default function Edit() {
 
   return (<>
   <div className='addNew vflex'>
-    <h2>Edit Artwork Details</h2>
+    <h2>Edit artwork details</h2>
     <form className= 'vflex'>
     <label className='hflex'>
-        Edit Artwork Name:
+        Edit artwork name:
         <input
           type="text"
           name= "newName"
@@ -77,7 +77,7 @@ export default function Edit() {
       <br />
 
       <label className='hflex'>
-        Edit Description:
+        Edit description:
         <textarea
           name="newDescription"
           value={newDescription}
@@ -87,7 +87,7 @@ export default function Edit() {
       <br />
 
       <label className='hflex'>
-        Medium:
+        Edit medium:
         <input
           type="text"
           name="newMedium"
@@ -101,7 +101,7 @@ export default function Edit() {
       <br />
       
       <label className='hflex'>
-        newOwner:
+        Edit owner:
         <input
           type="text"
           name="newOwner"
