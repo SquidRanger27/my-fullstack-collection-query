@@ -55,7 +55,7 @@ export function Form(props: FormProps) {
 
   return (
     <div className="Movie">
-      <h3>{props.shouldEdit >= 1 ? 'Edit Movie' : 'Add Movie'}</h3>
+      <h2>{props.shouldEdit >= 1 ? 'Edit Movie' : 'Add Movie'}</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Movie Name
@@ -78,7 +78,7 @@ export function Form(props: FormProps) {
           <br />
         </label>
         <br />
-        <input type="submit" name="submit" />
+        <input type="submit" name="submit" value="Submit" />
       </form>
     </div>
   )
