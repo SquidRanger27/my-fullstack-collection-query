@@ -5,7 +5,7 @@ export function Movie(props: MovieDataProp) {
   const { data } = props
 
   return (
-    <>
+    <div className="movie">
       <p>Name: {data.name}</p>
       <p>Director: {data.director}</p>
       <img
@@ -13,6 +13,6 @@ export function Movie(props: MovieDataProp) {
         src={data.image}
         alt={`${data.name} movie cover`}
       />
-    </>
+    </div>
   )
 }

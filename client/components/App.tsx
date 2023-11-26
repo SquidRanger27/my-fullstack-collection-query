@@ -1,3 +1,4 @@
+import { Form } from './Form'
 import { Movies } from './Movies'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       </header>
       <main>
         <Movies />
+        <Form />
       </main>
     </>
   )

@@ -7,6 +7,24 @@ body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
 .movie-image {
   width: 200px;
+  border-radius: 10px;
+}
+
+.movie {
+  background-color: lightblue;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+p {
+  margin: 10px;
 }
