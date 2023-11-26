@@ -7,10 +7,10 @@ function AdminForm(){
   const [text,setText] = useState({
     product_name:'',
     product_price:'',
-    product_image:'',
+    // product_image:'',
     product_type:''
   })
-  // const [fileData,setFileData] = useState({product_image:''})
+  const [fileData,setFileData] = useState({product_image:''})
   const queryClient = useQueryClient()
   const addProductMutation = useMutation({
     mutationFn:addProducts,
@@ -25,23 +25,30 @@ function AdminForm(){
       ...text,
       [key]:e.target.value
     }
-    // const fileObj = {
-    //   ...fileData,
-    //  [e.target.id.product_image]:e.target.files
-    // }
-    // setFileData(fileObj)
+   
+  if (e.target.files) {
+    const fileObj = {
+      ...fileData,
+      [key]: e.target.files[0] // Assuming you want to handle only one file
+    };
+    setFileData(fileObj);
+  }
     setSelectedOption(e.target.value)
     setText(stateObj)
     console.log("this is stateObj",stateObj)
-    // console.log("this is fileData",fileData)
+    console.log("this is fileData",fileData)
   }
 
   function handleClick(e){
     e.preventDefault()
-    
+    const formData = new FormData();
+  formData.append('product_name', text.product_name);
+  formData.append('product_price', text.product_price);
+  formData.append('product_image', fileData.product_image); // Assuming fileData is an object with the property product_image
+  formData.append('product_type', text.product_type);
     // console.log("this is fileData when button pressed",fileData)
     console.log("eto ay text",text)
-    addProductMutation.mutate(text)
+    addProductMutation.mutate(formData)
     console.log("pressed")
   }
 

@@ -27,7 +27,7 @@ router.post('/',upload.single('product_image'),async(req,res)=>{
     const result = {
       product_name:input.product_name,
       product_price:input.product_price,
-      product_image:req.file,
+      product_image:req.file?.filename,
       product_type:input.product_type
     }
     console.log("file from server",req.file)

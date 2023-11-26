@@ -8,6 +8,7 @@ export function displayProducts(){
 export function insertProducts(result:NewProducts){
 
   // const filePath = picture;
+  console.log("database",result)
   return connection('products')
   .insert(result)
   .returning(['product_name','product_price','product_image','product_type'])
