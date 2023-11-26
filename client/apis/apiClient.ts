@@ -17,6 +17,10 @@ export async function postNewArt(){
   await request.get('/api/v1/artworks')
 }
 
-export async function uploadArt(){
-  await request.post('/api/v1/artworks/upload')
+export async function uploadArt(formData){
+  console.log('client side api')
+  console.log(formData)
+  const response = await request
+  .post('/api/v1/artworks/upload')
+  .send(formData)
 }

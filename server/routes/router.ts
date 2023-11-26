@@ -4,12 +4,12 @@ import multer from 'multer'
 
 const router = express.Router()
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    return cb(null, "../../public/")
+const  storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    return cb(null, "public/")
   },
-  filename: function(req, file, cb){
-    return cb(null, file.orginalname)
+  filename: function (req, file, cb) {
+    return cb(null, `${Date.now()}_${file.originalname}`)
   }
 })
 
@@ -22,7 +22,6 @@ const upload = multer({storage})
 router.get('/', async(req,res)=>{
   try{
     const artworks = await db.getArtOverview()
-    console.log(artworks)
     res.json(artworks)
   }
   catch(err){
@@ -61,7 +60,6 @@ router.get('/:id', async(req,res)=>{
 // /api/v1/artworks
 router.post('/', async(req,res)=>{
   try{
-    console.log(req.body)
     const newArt = await db.addArt(req.body)
     res.status(200).json(newArt)
   }catch(error){
@@ -71,36 +69,28 @@ router.post('/', async(req,res)=>{
 
 // ______________________________________
 // upload new image
-router.post('/upload', upload.single('file'), (req,res)=>{
-  console.log(req.body)
-  console.log(req.file)
+router.post('/upload', upload.single('file'), async (req,res)=>{
+  console.log('server side api')
+  const inputObject = {
+    name: req.body.name,
+    description: req.body.description,
+    medium: req.body.medium,
+    imageUrl : `/${req.file?.filename}`,
+    owner: req.body.owner
+  }
+  const newArtID = await db.addArt(inputObject)
 })
 
 
-
-
-
-// const multer = require('multer')
-// const upload = multer({ dest: '../../uploads/' })
-
-// // 3
-// app.post('/', upload.single('image'), (req, res) => {
-//   // 4
-//   const imageName = req.file.filename
-//   const description = req.body.description
-
-//   // Save this data to a database probably
-
-//   console.log(description, imageName)
-//   res.send({description, imageName})
-
-// })
-
-
-// Multer creates a unique name for the file, so the path will be something like images/d54c8136cd238804b67e4a0c56427f8b
-
-// We probably want to save this data to a database so we can query it back later, but we don't care about that right now. This is just a post about uploading images.
-
-
+// {
+//   fieldname: 'file',
+//   originalname: 'sunflowers.jpg',
+//   encoding: '7bit',
+//   mimetype: 'image/jpeg',
+//   destination: 'public/',
+//   filename: '1700949040724_sunflowers.jpg',
+//   path: 'public/1700949040724_sunflowers.jpg',
+//   size: 388210
+// }
 
 export default router

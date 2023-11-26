@@ -6,7 +6,9 @@ function AppLayout() {
       <header className="header">
         <h1>Rose's Art Collection</h1>
       </header>
-      <Outlet />  
+      <div className= 'content'>
+        <Outlet />  
+      </div>
     </>
   )
 }
