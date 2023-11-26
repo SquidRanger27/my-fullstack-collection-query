@@ -10,7 +10,7 @@ function AdminForm(){
     product_image:'',
     product_type:''
   })
-
+  // const [fileData,setFileData] = useState({product_image:''})
   const queryClient = useQueryClient()
   const addProductMutation = useMutation({
     mutationFn:addProducts,
@@ -25,13 +25,21 @@ function AdminForm(){
       ...text,
       [key]:e.target.value
     }
+    // const fileObj = {
+    //   ...fileData,
+    //  [e.target.id.product_image]:e.target.files
+    // }
+    // setFileData(fileObj)
     setSelectedOption(e.target.value)
     setText(stateObj)
-    console.log(stateObj)
+    console.log("this is stateObj",stateObj)
+    // console.log("this is fileData",fileData)
   }
 
   function handleClick(e){
     e.preventDefault()
+    
+    // console.log("this is fileData when button pressed",fileData)
     console.log("eto ay text",text)
     addProductMutation.mutate(text)
     console.log("pressed")
