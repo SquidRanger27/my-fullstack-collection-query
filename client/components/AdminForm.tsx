@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function AdminForm(){
   const [selectedOption, setSelectedOption] = useState('');
-  
+  const [text,setText] = useState()
   function handleSelectChange(e){
 
     setSelectedOption(e.target.value)
@@ -12,7 +12,7 @@ e.preventDefault()
     console.log("piutang ina mo")
   }
   return(
-    <form action="/admin" method="post">
+    <form action="/admin" method="post" encType="multipart/form-data">
       <table>
         <tr>
           <td><label htmlFor="product_name">Product Name:</label></td>
@@ -24,7 +24,7 @@ e.preventDefault()
         </tr>
         <tr>
           <td><label htmlFor="product_image">Upload Image</label></td>
-          <td><input type="file" accept="image/*"  /></td>
+          <td><input type="file" id = "product_image" name = "product_image" accept="image/*"  /></td>
         </tr>
         <tr>
           <td><label htmlFor="dropdown">Product Type:</label></td>

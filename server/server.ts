@@ -1,5 +1,6 @@
 import * as Path from 'node:path'
 import products from './routes/products'
+import admin from './routes/admin'
 import express from 'express'
 
 
@@ -25,4 +26,6 @@ if (process.env.NODE_ENV === 'production') {
 
 
 server.use('/api/v1/products',products)
+server.use('/api/v1/admin',admin)
+
 export default server
