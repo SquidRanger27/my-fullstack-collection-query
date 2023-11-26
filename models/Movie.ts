@@ -10,3 +10,7 @@ export interface MovieData {
   director: string
   image: string
 }
+
+export interface MovieDataProp {
+  data: MovieData
+}

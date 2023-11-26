@@ -1,10 +1,14 @@
+import { Movies } from './Movies'
+
 function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Movies Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <main>
+        <Movies />
+      </main>
     </>
   )
 }
