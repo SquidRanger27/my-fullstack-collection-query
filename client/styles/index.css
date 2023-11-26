@@ -36,6 +36,9 @@ img{
   align-items: center;
   padding: 1rem;
 }
+.detailText{
+  width:80%;
+}
 
 .fill{
   width: 100%;
@@ -92,4 +95,9 @@ label{
 
 .visible{
   display:auto;
+}
+
+.center{
+  justify-content: center;
+  align-items: center;
 }

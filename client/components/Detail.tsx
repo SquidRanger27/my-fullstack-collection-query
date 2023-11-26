@@ -32,10 +32,10 @@ export default function Detail (){
     <>
     <div className="fill">
       <div className="vflex detail">
-        <div className={editing? 'visible': 'hidden'}>
+        <div className={editing? 'visible vflex center': 'hidden vflex center'}>
         <Edit />
         </div>
-        <div className = {editing?'hidden':'visible'} >
+        <div className = {editing?'hidden vflex center':'visible vflex center detailText'} >
           <h2>{artDetail.name}</h2>
           <p>{artDetail.description}</p>  
           <div className='hflex infoLine'>
@@ -44,7 +44,7 @@ export default function Detail (){
           </div>
         </div>
         <br/>
-        <button onClick={handleEditClick}>Edit Details</button>
+        <button onClick={handleEditClick}>{editing? 'Stop editing':'Edit details'}</button>
         <img src={`${artDetail.imageUrl}`}/>
         
       </div>

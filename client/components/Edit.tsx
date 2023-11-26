@@ -1,29 +1,31 @@
-import { useState } from "react"
-import { editDetailsPatch, getArtById } from "../apis/apiClient"
+import { useState } from 'react'
+import { editDetailsPatch, getArtById } from '../apis/apiClient'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useParams } from "react-router-dom"
-import {useQuery} from '@tanstack/react-query'
+import { useParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 
 export default function Edit() {
   const id = useParams().id
-  
-  const {data: artDetail, isLoading, isError} = useQuery({queryKey:['art',id], queryFn: ()=>getArtById(Number(id)),})
-  console.log(artDetail.name)
 
-  const [newName, setNewName]= useState(artDetail.name)
-  const [newDescription, setNewDescription]= useState(artDetail.description)
-  const [newMedium, setNewMedium]= useState(artDetail.medium)
-  const [newOwner, setNewOwner]= useState(artDetail.owner)
+  const {
+    data: artDetail,
+    isLoading,
+    isError,
+  } = useQuery({ queryKey: ['art', id], queryFn: () => getArtById(Number(id)) })
+
+  const [newName, setNewName] = useState(artDetail.name)
+  const [newDescription, setNewDescription] = useState(artDetail.description)
+  const [newMedium, setNewMedium] = useState(artDetail.medium)
+  const [newOwner, setNewOwner] = useState(artDetail.owner)
 
   const queryClient = useQueryClient()
-  let newDetails = {name: "", description: "", medium: "", owner: ""}
+  let newDetails = { name: '', description: '', medium: '', owner: '' }
 
-
-  const editDetailsMutation = useMutation({ 
-    mutationFn: editDetailsPatch, 
-    onSuccess: async()=>{
-      queryClient.invalidateQueries({queryKey:['art',id]})
-    }
+  const editDetailsMutation = useMutation({
+    mutationFn: editDetailsPatch,
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ['art', id] })
+    },
   })
 
   // ()=>{editDetails(formData)}
@@ -31,11 +33,14 @@ export default function Edit() {
   const editDetails = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
     newDetails = {
-      name: newName, description: newDescription, medium: newMedium, owner: newOwner
+      name: newName,
+      description: newDescription,
+      medium: newMedium,
+      owner: newOwner,
     }
-    try{
+    try {
       editDetailsMutation.mutate(newDetails)
-    }catch(error){
+    } catch (error) {
       console.error('An error occurred during uploading:', error)
     }
   }
@@ -43,7 +48,9 @@ export default function Edit() {
   const handleNewNameChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     setNewName(event.target.value)
   }
-  const handleNewDescriptionChange = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleNewDescriptionChange = (
+    event: React.ChangeEvent<HTMLFormElement>
+  ) => {
     setNewDescription(event.target.value)
   }
   const handleNewMediumChange = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -52,67 +59,68 @@ export default function Edit() {
 
   const handleNewOwnerChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     setNewOwner(event.target.value)
-  }  
-  
-  if (isError){
+  }
+
+  if (isError) {
     return <p>hmm, not sure what happened</p>
   }
-  if(!artDetail || isLoading){
+  if (!artDetail || isLoading) {
     return <p>drafting artworks...</p>
   }
 
-  return (<>
-  <div className='addNew vflex'>
-    <h2>Edit artwork details</h2>
-    <form className= 'vflex'>
-    <label className='hflex'>
-        Edit artwork name:
-        <input
-          type="text"
-          name= "newName"
-          value= {newName}
-          onChange={handleNewNameChange}
-        />
-      </label>
-      <br />
+  return (
+    <>
+      <div className="addNew vflex">
+        <h2>Edit artwork details</h2>
+        <form className="vflex">
+          <label className="hflex">
+            Edit artwork name:
+            <input
+              type="text"
+              name="newName"
+              value={newName}
+              onChange={handleNewNameChange}
+            />
+          </label>
+          <br />
 
-      <label className='hflex'>
-        Edit description:
-        <textarea
-          name="newDescription"
-          value={newDescription}
-          onChange={handleNewDescriptionChange}
-        />
-      </label>
-      <br />
+          <label className="hflex">
+            Edit description:
+            <textarea
+              name="newDescription"
+              value={newDescription}
+              onChange={handleNewDescriptionChange}
+            />
+          </label>
+          <br />
 
-      <label className='hflex'>
-        Edit medium:
-        <input
-          type="text"
-          name="newMedium"
-          value={newMedium}
-          onChange={handleNewMediumChange}
-          // value={formData.newMedium}
-          
-        />
-        
-      </label>
-      <br />
-      
-      <label className='hflex'>
-        Edit owner:
-        <input
-          type="text"
-          name="newOwner"
-          value={newOwner}
-          onChange={handleNewOwnerChange}
-        ></input>
-      </label>
-    <br/>
-      <button type="submit" onClick={editDetails}>Save and Submit</button>
-    </form>
-    </div>
+          <label className="hflex">
+            Edit medium:
+            <input
+              type="text"
+              name="newMedium"
+              value={newMedium}
+              onChange={handleNewMediumChange}
+              // value={formData.newMedium}
+            />
+          </label>
+          <br />
+
+          <label className="hflex">
+            Edit owner:
+            <input
+              type="text"
+              name="newOwner"
+              value={newOwner}
+              onChange={handleNewOwnerChange}
+            ></input>
+          </label>
+          <br />
+          <button type="submit" onClick={editDetails}>
+            Save and Submit
+          </button>
+        </form>
+      </div>
     </>
   )
 }
