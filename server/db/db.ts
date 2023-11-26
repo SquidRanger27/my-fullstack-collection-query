@@ -1,8 +1,7 @@
 import knex from 'knex'
 import knexfile from './knexfile'
 import { Movie } from '../../models/Movie'
-
-const db = knex(knexfile.development)
+import db from './connection'
 
 export async function getAllMovies() {
   return await db('movies').select()
