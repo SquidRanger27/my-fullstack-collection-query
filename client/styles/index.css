@@ -23,6 +23,8 @@ main {
   padding: 10px;
   border-radius: 10px;
   display: inline-block;
+  max-width: 200px;
+  height: fit-content;
 }
 
 p {

@@ -1,8 +1,28 @@
-import { useState } from 'react'
-import { MovieData, MovieDataProp } from '../../models/Movie'
+import { FormEvent } from 'react'
+import { MovieProps } from '../../models/Movie'
+import { deleteMovie } from '../apis/apiClient'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-export function Movie(props: MovieDataProp) {
-  const { data } = props
+export function Movie(props: MovieProps) {
+  const { data, shouldEdit } = props
+  const queryClient = useQueryClient()
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteMovie,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['movies'] })
+    },
+  })
+
+  function onDelete(event: FormEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    deleteMutation.mutate(data.id)
+  }
+
+  function onEdit(event: FormEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    shouldEdit(data.id)
+  }
 
   return (
     <div className="movie">
@@ -13,6 +33,8 @@ export function Movie(props: MovieDataProp) {
         src={data.image}
         alt={`${data.name} movie cover`}
       />
+      <button onClick={onEdit}>Edit</button>
+      <button onClick={onDelete}>Delete</button>
     </div>
   )
 }

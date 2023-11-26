@@ -11,6 +11,7 @@ export interface MovieData {
   image: string
 }
 
-export interface MovieDataProp {
+export interface MovieProps {
   data: MovieData
+  shouldEdit: (id: number) => void
 }

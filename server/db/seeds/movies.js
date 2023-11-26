@@ -51,7 +51,7 @@ export async function seed(knex) {
     {
       id: 7,
       name: 'Spider-Man: Into the Spider-Verse',
-      director: 'Bob Persichetti, Peter Ramsey, Rodney Rothman',
+      director: 'Bob Persichetti',
       image:
         'https://image.tmdb.org/t/p/original//iiZZdoQBEYBv6id8su7ImL0oCbD.jpg',
     },
