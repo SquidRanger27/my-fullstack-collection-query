@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { uploadArt } from "../apis/apiClient"
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { renderMatches } from 'react-router-dom'
 
 export default function OneImage() {
   const [file, setFile] = useState()
@@ -8,23 +10,30 @@ export default function OneImage() {
   const [medium, setMedium]= useState("")
   const [owner, setOwner]= useState("")
 
-  const uploadFile = async event => {
-    event.preventDefault()
-    const inputObject = {
-      name,
-      description,
-      medium,
-      imageUrl: '',
-      owner
+  const queryClient = useQueryClient()
+  const formData = new FormData()
+
+  const uploadArtMutation = useMutation({ 
+    mutationFn: uploadArt, 
+    onSuccess: async()=>{
+      queryClient.invalidateQueries({queryKey:['art']})
     }
-    const formData = new FormData()
+  })
+
+  // ()=>{uploadArt(formData)}
+
+  const uploadFile = async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault()
     formData.append('file', file)
     formData.append("name", name);
     formData.append("description", description);
     formData.append("medium", medium);
     formData.append("owner", owner);
-
-    await uploadArt(formData)
+    try{
+      uploadArtMutation.mutate(formData)
+    }catch(error){
+      console.error('An error occurred during uploading:', error)
+    }
   }
 
   const handleNameChange = (event: React.ChangeEvent<HTMLFormElement>) => {

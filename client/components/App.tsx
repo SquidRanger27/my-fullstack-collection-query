@@ -6,19 +6,24 @@ import OneImage from './oneImage'
 
 export default function App (){
   
-  const {data: art, isLoading, isError} = useQuery({queryKey:['art'], queryFn:getAllArtHeadings})
+  const { data: art, isLoading, isError, error } = useQuery(['art'], getAllArtHeadings, {
+    staleTime: 0,
+    refetchOnMount: 'always',
+  })
   if (isError){
+    console.error('error grabbing the art list', error)
     return <p>hmm, not sure what happened</p>
   }
   if(!art || isLoading){
     return <p>drafting artworks...</p>
   }
+
   
   return(
     <>
     <h2>Artwork List</h2>
     <div className="collection hflex">
-      {art.map((item)=>{
+      {art?.map((item)=>{
       return(
         <Link to={`/${item.id}`} key={item.id}>
           <div className='vflex artTile'>
