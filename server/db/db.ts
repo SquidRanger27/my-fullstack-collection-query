@@ -1,4 +1,4 @@
-import { MovieData } from '../../models/movies.ts'
+import { MovieData, Movies } from '../../models/movies.ts'
 import db from './connection.ts'
 
 export async function getAllMovies() {
@@ -13,4 +13,11 @@ export async function addMovie({ name, rating }: MovieData) {
 
 export async function deleteMovie(id: number) {
   return db('movies').delete().where({ id })
+}
+
+export async function editMovie({ name, rating, id }: Movies) {
+  return db('movies')
+    .update({ name, personal_rating: rating })
+    .where({ id })
+    .returning('*')
 }

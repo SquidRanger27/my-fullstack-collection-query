@@ -22,4 +22,11 @@ router.delete('/delete/:id', async (req, res) => {
   res.json(response)
 })
 
+router.patch('/edit', async (req, res) => {
+  const { name, rating, id } = req.body
+  console.log(req.body)
+  const response = await db.editMovie({ name, rating, id })
+  res.json(response)
+})
+
 export default router
