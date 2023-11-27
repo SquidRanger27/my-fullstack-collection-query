@@ -40,13 +40,22 @@ export function getDestinationForPlaces(NZPlaceId: number) {
     .returning('*')
 }
 
-export async function addDestinationForPlaces(
-  destinationInput: DestinationInput
-) {
-  const { NZPlaceId, name, description, image } = destinationInput
+export async function addDestinationForPlaces(destination: DestinationInput) {
+  const { NZPlaceId, name, description, image } = destination
   const [result] = await db('destination')
     .insert({ name, description, image, 'NZ places_id': NZPlaceId })
     .returning(['id', 'name', 'description', 'image', 'NZ places_id'])
 
   return result
+}
+
+export async function deleteDestinationForPlace(id: number) {
+  return db('destination').delete().where('id', id)
+}
+
+export async function updateDestination(
+  id: number,
+  destination: DestinationInput
+) {
+  return db('destination').update(destination).where('id', id).returning('*')
 }
