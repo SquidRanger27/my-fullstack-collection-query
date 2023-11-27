@@ -1,7 +1,5 @@
 import * as Path from 'node:path'
-
 import express from 'express'
-
 import filmRoutes from './routes/films'
 
 const server = express()
