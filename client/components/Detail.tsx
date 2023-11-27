@@ -4,7 +4,9 @@ import {Link, useParams, useNavigate} from 'react-router-dom'
 import { useState } from 'react'
 import Edit from './Edit'
 
+//i want isEditing to change on all of the pages so that I can change it on the Edit component and it will close the editing form in the Detail page. 
 
+// i need to set up a query in my 
 
 export default function Detail (){
   const id = useParams().id

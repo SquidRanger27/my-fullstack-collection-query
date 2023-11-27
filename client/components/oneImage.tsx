@@ -19,6 +19,7 @@ export default function OneImage() {
   const uploadArtMutation = useMutation({ 
     mutationFn: uploadArt, 
     onSuccess: async()=>{
+      console.log("invalidate queries loop for add")
       queryClient.invalidateQueries({queryKey:['art']})
     }
   })

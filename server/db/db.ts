@@ -44,7 +44,7 @@ export async function addArt(newArt: NewArt): Promise<Art> {
 }
 
 export async function editArtDescription(newArtInfo:PatchArtInfo, id:number){
-  await connection('artworks')
+  const result = await connection('artworks')
   .where({id}).update({
     name: newArtInfo.name,
     description: newArtInfo.description,
@@ -52,8 +52,6 @@ export async function editArtDescription(newArtInfo:PatchArtInfo, id:number){
     owner: newArtInfo.owner,
     alt: newArtInfo.alt,
   })
+  return result
 }
-
-// { id: '6' }
-// { name: 'ljh', description: 'jh', medium: 'collage', owner: 'hg' }
 

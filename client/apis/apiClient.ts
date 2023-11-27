@@ -33,4 +33,6 @@ export async function editDetailsPatch(newDetailsAndId:Art.NewDetailsAndId){
   const response = await request
   .patch(`/api/v1/artworks/${id}/edit`)
   .send(newDetails)
+  console.log("this is a thing")
+  return response
 }

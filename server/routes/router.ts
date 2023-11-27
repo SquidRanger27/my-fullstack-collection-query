@@ -91,6 +91,7 @@ router.patch('/:id/edit', async(req,res)=>{
   const id = req.params.id
   const newArtInfo = req.body
   await db.editArtDescription(newArtInfo,id)
+  res.json({})
 })
 
 
