@@ -1,9 +1,11 @@
 import * as Path from 'node:path'
-
 import express from 'express'
+import courseRoutes from './routes/courses.ts'
 
 const server = express()
 server.use(express.json())
+
+server.use('/api/v1/courses', courseRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
