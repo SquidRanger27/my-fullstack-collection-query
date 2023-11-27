@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { useMutation,useQueryClient } from "@tanstack/react-query";
 import { addProducts } from "../apis/apiClient";
-
+import { useNavigate } from "react-router-dom";
 function AdminForm(){
   const [selectedOption, setSelectedOption] = useState('');
   const [text,setText] = useState({
     product_name:'',
     product_price:'',
-    // product_image:'',
     product_type:''
   })
+ 
   const [fileData,setFileData] = useState({product_image:''})
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
   const addProductMutation = useMutation({
     mutationFn:addProducts,
     onSuccess:async()=>{
       queryClient.invalidateQueries(['product'])
+      navigate('/')
     }
   })
 
@@ -29,31 +31,30 @@ function AdminForm(){
   if (e.target.files) {
     const fileObj = {
       ...fileData,
-      [key]: e.target.files[0] // Assuming you want to handle only one file
+      [key]: e.target.files[0] 
     };
     setFileData(fileObj);
   }
     setSelectedOption(e.target.value)
     setText(stateObj)
-    console.log("this is stateObj",stateObj)
-    console.log("this is fileData",fileData)
+    
   }
 
   function handleClick(e){
     e.preventDefault()
     const formData = new FormData();
-  formData.append('product_name', text.product_name);
-  formData.append('product_price', text.product_price);
-  formData.append('product_image', fileData.product_image); // Assuming fileData is an object with the property product_image
-  formData.append('product_type', text.product_type);
-    // console.log("this is fileData when button pressed",fileData)
-    console.log("eto ay text",text)
+    formData.append('product_name', text.product_name);
+    formData.append('product_price', text.product_price);
+    formData.append('product_image', fileData.product_image);  
+    formData.append('product_type', text.product_type);
+    
     addProductMutation.mutate(formData)
-    console.log("pressed")
+    
+    
   }
 
   return(
-    <form action="/admin" method="post" encType="multipart/form-data">
+    <form action="/" method="post" encType="multipart/form-data">
       <table>
         <tr>
           <td><label htmlFor="product_name">Product Name:</label></td>

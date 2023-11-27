@@ -67,3 +67,25 @@ form{
 .title{
   text-align: center;
 }
+.adminButton{
+  position:absolute;
+  right:200px;
+  top:10px;
+  text-decoration: none;
+  color:black;
+  height:30px;
+  width:100px;
+  background-color: rgb(197, 190, 190);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border:1px solid black;
+  border-radius:10px;
+}
+.adminButton:hover{
+  background-color: gray;
+}
+.adminButton:active{
+  height:35px;
+  width:105px;
+}

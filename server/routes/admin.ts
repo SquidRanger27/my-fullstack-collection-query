@@ -30,8 +30,7 @@ router.post('/',upload.single('product_image'),async(req,res)=>{
       product_image:req.file?.filename,
       product_type:input.product_type
     }
-    console.log("file from server",req.file)
-    console.log("input from server",input)
+    
     const response = await insertProducts(result)
     res.status(200).send(response)
     

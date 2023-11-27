@@ -2,6 +2,7 @@ import { getAllProductsAPI } from "../apis/apiClient"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import AdminForm from "./AdminForm"
+import {Link} from 'react-router-dom'
 function App() {
   const {data:products,isLoading,error} = useQuery({queryKey:['products'],queryFn:getAllProductsAPI})
   if (error) {
@@ -14,6 +15,7 @@ function App() {
     <>
       <header className="header">
         <h1 className = "title">Ton's Grocery</h1>
+        <Link className="adminButton" to = "/admin">Admin</Link>
       </header>
       <section className="main">{products.map((data)=>{
         return(

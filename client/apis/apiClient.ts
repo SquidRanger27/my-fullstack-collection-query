@@ -16,8 +16,6 @@ const adminRoute = '/api/v1/admin'
 export async function addProducts(text){
   try{
     const response = await request.post(adminRoute).send(text)
-    console.log("this is from APiclient",text)
-    console.log("this is the response from apiClient",response.body)
     return response.body
   }catch(e){
     throw new Error(`An error occurred while adding product`)
