@@ -103,8 +103,11 @@ const Films: React.FC = () => {
           handleAddFilm()
         }}
       >
+        <label htmlFor="filmTitle">Film Title:</label>
         <input
           type="text"
+          id="filmTitle"
+          name="filmTitle"
           placeholder="Enter a film title"
           value={newFilmTitle}
           onChange={(e) => setNewFilmTitle(e.target.value)}
@@ -116,30 +119,36 @@ const Films: React.FC = () => {
       {updateData && (
         <div>
           <h3>Update Film</h3>
-          <label>
+          <label htmlFor="updateTitle">
             Title:
             <input
               type="text"
+              id="updateTitle"
+              name="updateTitle"
               value={updateData.title || ''}
               onChange={(e) =>
                 setUpdateData({ ...updateData, title: e.target.value })
               }
             />
           </label>
-          <label>
+          <label htmlFor="updateDirector">
             Director:
             <input
               type="text"
+              id="updateDirector"
+              name="updateDirector"
               value={updateData.director || ''}
               onChange={(e) =>
                 setUpdateData({ ...updateData, director: e.target.value })
               }
             />
           </label>
-          <label>
+          <label htmlFor="updateYear">
             Year:
             <input
               type="number"
+              id="updateYear"
+              name="updateYear"
               value={updateData.year || ''}
               onChange={(e) =>
                 setUpdateData({
