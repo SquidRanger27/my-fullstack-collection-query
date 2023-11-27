@@ -14,3 +14,13 @@ export async function addFilmByTitle(title: string) {
 export async function deleteFilmById(id: number): Promise<void> {
   await request.delete(`/api/v1/films/${id}`)
 }
+
+export async function updateFilmById(
+  id: number,
+  updates: { director?: string; year?: number }
+): Promise<void> {
+  await request
+    .patch(`/api/v1/films/${id}`)
+    .send(updates)
+    .set('Content-Type', 'application/json')
+}

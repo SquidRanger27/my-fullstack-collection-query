@@ -47,4 +47,45 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+// PUT (update) a film by ID and Title
+router.patch('/:id', async (req, res) => {
+  const filmId = parseInt(req.params.id, 10)
+  const { title, director, year } = req.body
+
+  if (isNaN(filmId) || filmId <= 0) {
+    return res.status(400).send('Invalid film ID')
+  }
+
+  const updates = {}
+
+  if (title !== undefined) {
+    updates.title = title
+  }
+
+  if (director !== undefined) {
+    updates.director = director
+  }
+
+  if (year !== undefined) {
+    updates.year = year
+  }
+
+  if (Object.keys(updates).length === 0) {
+    return res.status(400).send('No valid updates provided')
+  }
+
+  try {
+    const updatedFilm = await db.updateFilm(filmId, updates)
+
+    if (updatedFilm) {
+      res.json(updatedFilm)
+    } else {
+      res.status(404).send('Film not found')
+    }
+  } catch (err) {
+    console.error(err)
+    res.status(500).send('Something went wrong')
+  }
+})
+
 export default router

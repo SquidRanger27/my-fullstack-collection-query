@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import { getAllFilms, addFilmByTitle } from '../apis/films'
 import { deleteFilmById } from '../apis/films'
+import { updateFilmById } from '../apis/films'
 
 const Films: React.FC = () => {
   const {
@@ -15,6 +16,12 @@ const Films: React.FC = () => {
   })
 
   const [newFilmTitle, setNewFilmTitle] = useState('')
+  const [updateData, setUpdateData] = useState<{
+    id: number
+    title?: string
+    director?: string
+    year?: number
+  } | null>(null)
 
   const { mutate } = useMutation(addFilmByTitle, {
     onSuccess: () => {
@@ -39,6 +46,30 @@ const Films: React.FC = () => {
     })
   }
 
+  const handleUpdateFilm = (
+    id: number,
+    title?: string,
+    director?: string,
+    year?: number
+  ) => {
+    setUpdateData({ id, title, director, year })
+  }
+
+  const handleApplyUpdate = () => {
+    if (updateData) {
+      const { id, title, director, year } = updateData
+
+      updateFilmById(id, { title, director, year })
+        .then(() => {
+          refetch()
+          setUpdateData(null)
+        })
+        .catch((error) => {
+          console.error('Error updating film:', error)
+        })
+    }
+  }
+
   if (isError) {
     return <>Something went wrong</>
   }
@@ -56,6 +87,9 @@ const Films: React.FC = () => {
         <strong>Title:</strong> {film.title}, <strong>Director:</strong>{' '}
         {film.director}, <strong>Year:</strong> {film.year}
         <button onClick={() => handleRemoveFilm(film.id)}>Remove Film</button>
+        <button onClick={() => handleUpdateFilm(film.id, film.title)}>
+          Update Film
+        </button>
       </li>
     )
   }
@@ -78,6 +112,46 @@ const Films: React.FC = () => {
         <button type="submit">Add Film</button>
       </form>
       <ul>{filmItems}</ul>
+
+      {updateData && (
+        <div>
+          <h3>Update Film</h3>
+          <label>
+            Title:
+            <input
+              type="text"
+              value={updateData.title || ''}
+              onChange={(e) =>
+                setUpdateData({ ...updateData, title: e.target.value })
+              }
+            />
+          </label>
+          <label>
+            Director:
+            <input
+              type="text"
+              value={updateData.director || ''}
+              onChange={(e) =>
+                setUpdateData({ ...updateData, director: e.target.value })
+              }
+            />
+          </label>
+          <label>
+            Year:
+            <input
+              type="number"
+              value={updateData.year || ''}
+              onChange={(e) =>
+                setUpdateData({
+                  ...updateData,
+                  year: parseInt(e.target.value, 10) || undefined,
+                })
+              }
+            />
+          </label>
+          <button onClick={handleApplyUpdate}>Apply Update</button>
+        </div>
+      )}
     </div>
   )
 }
