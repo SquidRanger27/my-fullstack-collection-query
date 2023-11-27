@@ -1,5 +1,5 @@
 import connection from './connection'
-import { Book } from '../../models/book'
+import { Book, NewBook } from '../../models/book'
 
 export async function getAllBooksDb(db = connection): Promise<Book[]> {
   return db('books').select(
@@ -25,4 +25,11 @@ export async function getBookByIdDb(
     )
     .where('id', id)
     .first()
+}
+
+export async function addBookDb(
+  bookObject: NewBook,
+  db = connection
+): Promise<NewBook[]> {
+  return await db('books').insert(bookObject).returning('*')
 }

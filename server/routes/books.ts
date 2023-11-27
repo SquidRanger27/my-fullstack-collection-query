@@ -28,4 +28,19 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+// POST /api/v1/books
+router.post('/', async (req, res) => {
+  const newBook = req.body
+  if (!req.body) {
+    res.status(400).send('You do not have access to forbidden knowledge')
+    return
+  }
+  try {
+    const addNewBook = await dbBooks.addBookDb(newBook)
+    res.status(200).json({ addNewBook })
+  } catch (error) {
+    res.status(500).send('Can not add forbidden heretical texts')
+  }
+})
+
 export default router
