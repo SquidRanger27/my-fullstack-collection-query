@@ -31,6 +31,9 @@
   },
   "dependencies": {
     "@devacademy/eslint-config": "^1.9.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
     "express": "^4.17.2",
     "knex": "^2.5.1",
     "sqlite3": "^5.1.6",

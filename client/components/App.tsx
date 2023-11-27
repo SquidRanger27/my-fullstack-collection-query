@@ -1,10 +1,17 @@
+import { Outlet, Link } from 'react-router-dom'
+
 function App() {
   return (
-    <>
+    <> 
       <header className="header">
-        <h1>My Collection</h1>
+      <Link to='/'>Home ---|</Link>
+      <Link to='/books/add-book'>|--- Add a book</Link>
+        <h1>My Book Collection</h1>
+        {/* <Link to="add-book">Add a Book</Link> */}
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section>
+        <Outlet/>
+      </section>
     </>
   )
 }
