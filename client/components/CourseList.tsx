@@ -26,10 +26,18 @@ export default function CourseList() {
         {courses.map((c) => (
           <div className="course" key={c.id}>
             <h2 className="course-name">{c.name}</h2>
-            <p className="course-website">{c.website}</p>
-            <p className="course-host">{c.host}</p>
-            <p className="course-field">{c.field}</p>
-            <p className="course-cost">{c.field}</p>
+            <p className="course-website">
+              <b>Where:</b> {c.website}
+            </p>
+            <p className="course-host">
+              <b>Hosted By:</b> {c.host}
+            </p>
+            <p className="course-field">
+              <b>In:</b> {c.field}
+            </p>
+            <p className="course-cost">
+              <b>Cost:</b> {c.field}
+            </p>
             <a href={c.link} className="course-link">
               Visit Course
             </a>

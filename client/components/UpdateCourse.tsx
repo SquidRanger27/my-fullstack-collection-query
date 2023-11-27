@@ -122,14 +122,16 @@ export default function UpdateCourse({ courseId }: Props) {
               value={updateCourseForm.link}
               onChange={handleInputChange}
             />
-            <label htmlFor="complete">Have you finished this course?: </label>
-            <input
-              type="checkbox"
-              name="complete"
-              id="complete"
-              checked={updateCourseForm.complete}
-              onChange={handleInputChange}
-            />
+            <label htmlFor="complete">
+              Tick Box if you have finished this course:
+              <input
+                type="checkbox"
+                name="complete"
+                id="complete"
+                checked={updateCourseForm.complete}
+                onChange={handleInputChange}
+              />
+            </label>
             <button type="submit" className="form-btn">
               Submit!
             </button>

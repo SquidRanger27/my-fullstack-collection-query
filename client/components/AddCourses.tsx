@@ -3,7 +3,6 @@ import { NewCourse } from '../../models/courses'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { addCoursesApi } from '../apis/apiClient'
 
-
 function AddCourse() {
   const emptyCourse: NewCourse = {
     name: '',
@@ -50,7 +49,7 @@ function AddCourse() {
   return (
     <>
       <div className="add-course">
-        <h3 className="form-title">Add a Course</h3>
+        <h2 className="form-title">Add a Course</h2>
         <form action="/" className="form" onSubmit={handleSubmit} method="POST">
           <label htmlFor="name">Name:</label>
           <input

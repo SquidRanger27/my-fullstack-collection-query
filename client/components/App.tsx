@@ -5,11 +5,15 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Courses I want to Complete!</h1>
       </header>
       <section className="main">
-        <CourseList />
-        <AddCourse />
+        <div className="main-left">
+          <CourseList />
+        </div>
+        <div className="main-right">
+          <AddCourse />
+        </div>
       </section>
     </>
   )
