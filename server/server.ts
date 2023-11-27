@@ -12,7 +12,8 @@ const server = express()
 // Use express.static to serve static files from the 'public' folder
 const publicFolder = path.resolve('public');
 server.use(express.static(publicFolder));
-
+server.use('/api/v1/products',products)
+server.use('/api/v1/admin',admin)
 if (process.env.NODE_ENV === 'production') {
   
   server.use(express.static(Path.resolve('public')))
@@ -24,7 +25,6 @@ if (process.env.NODE_ENV === 'production') {
 
 // server.use(express.urlencoded({extended:true}))
 
-server.use('/api/v1/products',products)
-server.use('/api/v1/admin',admin)
+
 
 export default server
