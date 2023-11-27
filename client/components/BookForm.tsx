@@ -4,11 +4,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { addBookApi } from '../apis/book'
 
 const initialFormData = {
-  author_name: '',
-  book_title: '',
-  series_title: '',
-  entry_number: '',
-}
+  authorName: '',
+  bookTitle: '',
+  seriesTitle: '',
+  entryNumber: 0,
+} as NewBook
 
 export default function BookForm() {
   const [form, setForm] = useState<NewBook>(initialFormData)
@@ -47,44 +47,44 @@ export default function BookForm() {
   return (
     <form onSubmit={handleSubmit} aria-label="Add Book Form">
       <p>
-        <label htmlFor="author_name">Author Name:</label>
+        <label htmlFor="authorName">Author Name:</label>
         <br />
         <input
-          id="author_name"
+          id="authorName"
           onChange={handleChange}
           value={form.authorName}
-          name="author_name"
+          name="authorName"
         />
       </p>
 
       <p>
-        <label htmlFor="book_title">Book Title:</label>
+        <label htmlFor="bookTitle">Book Title:</label>
         <br />
         <input
-          id="book_title"
+          id="bookTitle"
           onChange={handleChange}
           value={form.bookTitle}
-          name="ratingbook_title"
+          name="bookTitle"
         />
       </p>
       <p>
-        <label htmlFor="series_title">Series Title:</label>
+        <label htmlFor="seriesTitle">Series Title:</label>
         <br />
         <input
-          id="series_title"
+          id="seriesTitle"
           onChange={handleChange}
           value={form.seriesTitle}
-          name="series_title"
+          name="seriesTitle"
         />
       </p>
       <p>
-        <label htmlFor="entry_number">Entry Number:</label>
+        <label htmlFor="entryNumber">Entry Number:</label>
         <br />
         <input
-          id="entry_number"
+          id="entryNumber"
           onChange={handleChange}
           value={form.entryNumber}
-          name="entry_number"
+          name="entryNumber"
         />
       </p>
 

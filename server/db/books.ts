@@ -4,10 +4,10 @@ import { Book, NewBook } from '../../models/book'
 export async function getAllBooksDb(db = connection): Promise<Book[]> {
   return db('books').select(
     'id',
-    ' author_name as authorName',
-    ' book_title as bookTitle',
-    ' series_title as seriesTitle',
-    ' entry_number as entryNumber'
+    ' authorName',
+    ' bookTitle',
+    ' seriesTitle',
+    ' entryNumber'
   )
 }
 
@@ -16,13 +16,7 @@ export async function getBookByIdDb(
   db = connection
 ): Promise<Book> {
   return db('books')
-    .select(
-      'id',
-      ' author_name as authorName',
-      ' book_title as bookTitle',
-      ' series_title as seriesTitle',
-      ' entry_number as entryNumber'
-    )
+    .select('id', ' authorName', ' bookTitle', ' seriesTitle', ' entryNumber')
     .where('id', id)
     .first()
 }

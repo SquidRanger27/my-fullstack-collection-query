@@ -21,17 +21,15 @@ export default function BookList() {
       <div>
         <h1 id="bookTitle">Books I have Read</h1>
         <ul id="bookList">
-          {books.map((book) => {
-            return (
-              <li key={book.id}>
-                <div className="bookBox">
-                  <button className="linkButton">
-                    <Link to={`/book/${book.id}`}>{book.bookTitle}</Link>
-                  </button>
-                </div>
-              </li>
-            )
-          })}
+          {books.map((book) => (
+            <li key={book.id}>
+              <div className="bookBox">
+                <button className="linkButton">
+                  <Link to={`/book/${book.id}`}>{book.bookTitle}</Link>
+                </button>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </>
