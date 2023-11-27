@@ -1,6 +1,13 @@
 import connection from './connection'
 const db = connection
 
+export interface DestinationInput {
+  name: string
+  description: string
+  image: string | undefined
+  NZPlaceId: number
+}
+
 export function getAllPlaces() {
   return db('NZ places').select('*')
 }
@@ -33,13 +40,13 @@ export function getDestinationForPlaces(NZPlaceId: number) {
     .returning('*')
 }
 
-export function addDestinationForPlaces(
-  NZPlaceId: number,
-  name: string,
-  description: string,
-  image: string
+export async function addDestinationForPlaces(
+  destinationInput: DestinationInput
 ) {
-  return db('destination')
+  const { NZPlaceId, name, description, image } = destinationInput
+  const [result] = await db('destination')
     .insert({ name, description, image, 'NZ places_id': NZPlaceId })
     .returning(['id', 'name', 'description', 'image', 'NZ places_id'])
+
+  return result
 }
