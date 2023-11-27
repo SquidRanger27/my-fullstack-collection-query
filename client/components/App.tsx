@@ -12,7 +12,7 @@ function App() {
   })
   if (isError) return <p>Error!</p>
   if (!verses || isLoading) return <p>Loading ...</p>
-
+  console.log(verses)
   return (
     <>
       <header>
@@ -23,8 +23,8 @@ function App() {
         </div>
       </header>
       <section className="main">
-        {verses.map((verses) => (
-          <Verses key={verses.id} {...verses} />
+        {verses.map((verse) => (
+          <Verses key={verse.id} {... verse} />
         ))}
       </section>
     </>
