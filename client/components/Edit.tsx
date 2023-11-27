@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 
 export default function Edit() {
   const id = useParams().id
-
+  console.log(id)
   const {
     data: artDetail,
     isLoading,
@@ -38,8 +38,13 @@ export default function Edit() {
       medium: newMedium,
       owner: newOwner,
     }
+    const newDetailsAndId = {
+      newDetails,
+      id,
+    }
     try {
-      editDetailsMutation.mutate(newDetails)
+      console.log(id)
+      editDetailsMutation.mutate(newDetailsAndId)
     } catch (error) {
       console.error('An error occurred during uploading:', error)
     }

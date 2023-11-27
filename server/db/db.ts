@@ -1,5 +1,5 @@
 import connection from './connection';
-import { Art, ArtHeading, NewArt } from '../../models/art';
+import { Art, ArtHeading, NewArt, PatchArtInfo } from '../../models/art';
 
 export async function getArtOverview(): Promise<ArtHeading[]> {
   try {
@@ -41,3 +41,17 @@ export async function addArt(newArt: NewArt): Promise<Art> {
     throw error;
   }
 }
+
+export async function editArtDescription(newArtInfo:PatchArtInfo, id:number){
+  await connection('art')
+  .where({id}).update({
+    name: newArtInfo.name,
+    description: newArtInfo.description,
+    medium: newArtInfo.medium,
+    owner: newArtInfo.owner
+  })
+}
+
+// { id: '6' }
+// { name: 'ljh', description: 'jh', medium: 'collage', owner: 'hg' }
+

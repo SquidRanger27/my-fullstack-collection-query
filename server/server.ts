@@ -15,7 +15,7 @@ server.use(express.json())
 
 // )
 
-
+server.use('/api/v1/artworks', artRoutes)
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
   server.use('/assets', express.static(Path.resolve('./dist/assets')))
@@ -24,6 +24,5 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-server.use('/api/v1/artworks', artRoutes)
 
 export default server

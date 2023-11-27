@@ -1,6 +1,7 @@
 import express from 'express';
 import * as db from '../db/db';
 import multer from 'multer';
+import * as Art from '../../models/art'
 
 const router = express.Router();
 
@@ -83,5 +84,16 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error', details: error.message });
   }
 });
+
+// edit image description
+router.patch('/:id/edit', async(req,res)=>{
+  const id = req.params.id
+  const newArtInfo = req.body
+  console.log(id)
+  console.log(newArtInfo)
+  await db.editArtDescription(newArtInfo,id)
+})
+
+
 
 export default router;

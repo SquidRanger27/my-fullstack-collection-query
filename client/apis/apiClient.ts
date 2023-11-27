@@ -25,8 +25,10 @@ export async function uploadArt(formData){
   .send(formData)
 }
 
-export async function editDetailsPatch(newDetails:Art.NewDetails){
+export async function editDetailsPatch(newDetailsAndId:Art.NewDetailsAndId){
+  const newDetails = newDetailsAndId.newDetails
+  const id = newDetailsAndId.id
   const response = await request
-  .patch('/api/v1/artworks/edit')
+  .patch(`/api/v1/artworks/${id}/edit`)
   .send(newDetails)
 }

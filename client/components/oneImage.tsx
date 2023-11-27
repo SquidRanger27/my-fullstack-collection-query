@@ -96,6 +96,7 @@ export default function OneImage() {
           type="file"
           name='file'
           onChange={handleFileChange}
+          required
         />
       </label>
       <br />
@@ -109,7 +110,7 @@ export default function OneImage() {
         ></input>
       </label>
     <br/>
-      <button type="submit" onClick={uploadFile}>Upload</button>
+      <button type="submit" onClick={uploadFile} disabled={!file}>Upload</button>
     </form>
     </div>
     </>
