@@ -34,6 +34,26 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+//GET destination /api/v1/nzplaces/id/destination
+router.get('/:id/destination', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+  try {
+    const destination = await db.getDestinationForPlaces(id)
+    if (!destination) {
+      res.sendStatus(404)
+      return
+    }
+    res.json(destination)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json('Could not get place')
+  }
+})
+
 //POST /api/v1/nzplaces
 router.post('/', async (req, res) => {
   const { name, description } = req.body

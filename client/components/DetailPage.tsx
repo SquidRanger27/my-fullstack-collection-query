@@ -4,17 +4,18 @@ import { useGetPlaceById } from '../apis/hooks'
 function DetailPage() {
   const { id } = useParams<{ id?: string }>() // useParams returns an object, so use destructuring
   const parsedId = id ? Number(id) : undefined // parse the id to a number
+
   const {
     data: cityDetails,
-    isLoading,
-    isError,
+    isLoading: cityDetailsLoading,
+    isError: cityDetailsError,
   } = useGetPlaceById({ id: parsedId as number })
 
-  if (isLoading) {
+  if (cityDetailsLoading) {
     return <p>Loading...</p>
   }
 
-  if (isError) {
+  if (cityDetailsError) {
     return <p>Error loading city details</p>
   }
 
@@ -24,7 +25,6 @@ function DetailPage() {
         <>
           <h1>{cityDetails.name}</h1>
           <p>This is the detail page for {cityDetails.name}.</p>
-          {/* Add more details as needed */}
         </>
       )}
     </>

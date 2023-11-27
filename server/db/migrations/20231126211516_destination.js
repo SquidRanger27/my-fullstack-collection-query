@@ -3,11 +3,12 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('NZ places', function (table) {
+  return knex.schema.createTable('destination', function (table) {
     table.increments('id')
     table.string('name')
     table.string('description')
     table.string('image')
+    table.integer('NZ places_id').references('NZ places.id')
   })
 }
 
@@ -16,5 +17,5 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('NZ places')
+  return knex.schema.dropTable('destination')
 }

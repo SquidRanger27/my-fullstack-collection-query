@@ -1,0 +1,11 @@
+import { useGetDestination } from '../apis/hooks'
+import { useParams, useState } from 'react-router-dom'
+import { Destination as Model } from '../models/destination'
+
+
+function Destination() {
+const [destination, setDestination] = useState([] as )
+
+
+
+}

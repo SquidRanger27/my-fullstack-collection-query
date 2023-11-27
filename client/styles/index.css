@@ -16,6 +16,10 @@ body {
   padding: 50px 20px; /* Adjust the padding as needed */
 }
 
+.banner-container:hover {
+  cursor: pointer;
+}
+
 #home-page-container {
   max-width: 1000px;
   margin: 0 auto;

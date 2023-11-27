@@ -9,19 +9,26 @@ export function getPlaceById(id: number) {
   return db('NZ places').where({ id }).first()
 }
 
-export function addPlace(name: string, description: string) {
-  return db('NZ places')
-    .insert({ name, description })
-    .returning(['name', 'description'])
-}
+// export function addPlace(name: string, description: string) {
+//   return db('NZ places')
+//     .insert({ name, description })
+//     .returning(['name', 'description'])
+// }
 
-export function updatePlace(id: number, name: string, description: string) {
-  return db('NZ places')
-    .where({ id })
-    .update({ name, description })
-    .returning(['name', 'description'])
-}
+// export function updatePlace(id: number, name: string, description: string) {
+//   return db('NZ places')
+//     .where({ id })
+//     .update({ name, description })
+//     .returning(['name', 'description'])
+// }
 
-export async function deletePlaceById(id: number) {
-  await db('NZ places').where({ id }).delete()
+// export async function deletePlaceById(id: number) {
+//   await db('NZ places').where({ id }).delete()
+// }
+
+export function getDestinationForPlaces(NZPlaceId: number) {
+  return db('destination')
+    .select('id', 'NZ places_id as NZPlaceId', 'description')
+    .where('NZ places_id', NZPlaceId)
+    .returning('*')
 }

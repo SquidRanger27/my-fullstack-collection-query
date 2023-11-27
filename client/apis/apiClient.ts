@@ -12,3 +12,8 @@ export async function getPlaceById(id: number) {
   console.log(placeById)
   return placeById.body
 }
+
+export async function getDestinationForPlaces(id: number) {
+  const destination = await request.get(`/api/v1/nzplaces/${id}/destination`)
+  return destination.body
+}

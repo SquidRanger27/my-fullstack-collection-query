@@ -12,3 +12,10 @@ export const useGetPlaceById = ({ id }: UseGetPlaceByIdProps) => {
     queryFn: () => nz.getPlaceById(id),
   })
 }
+
+export const useGetDestination = (id: number) => {
+  return useQuery({
+    queryKey: ['destination', id],
+    queryFn: () => nz.getDestinationForPlaces(id),
+  })
+}
