@@ -13,7 +13,7 @@ export function AddMovies() {
   const addMovieMutation = useMutation({
     mutationFn: addMovie,
     onSuccess() {
-      queryClient.invalidateQueries[{ queryKey: ['movies'] }]
+      queryClient.invalidateQueries(['movies'])
     },
   })
 
@@ -24,11 +24,16 @@ export function AddMovies() {
       </Link>
       <form
         onSubmit={() => {
-          addMovieMutation.mutate({ name, rating })
+          addMovieMutation.mutate({ name: name, rating: rating })
         }}
       >
         <label htmlFor="name">Movie Name</label>
-        <input id="name" type="text" value={name} />
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <label htmlFor="rating">Personal Rating</label>
         <input
           id="rating"
@@ -36,7 +41,7 @@ export function AddMovies() {
           min="0"
           max="10"
           value={rating}
-          onChange={(e) => setRating(e.target.value)}
+          onChange={(e) => setRating(e.target.valueAsNumber)}
         />
         <button type="submit">Save</button>
       </form>
