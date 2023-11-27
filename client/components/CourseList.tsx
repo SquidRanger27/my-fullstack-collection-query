@@ -1,6 +1,7 @@
 import { getAllCoursesApi } from '../apis/apiClient'
 import { useQuery } from '@tanstack/react-query'
 import DeleteCourse from './DeleteCourse'
+import UpdateCourse from './UpdateCourse'
 export default function CourseList() {
   const {
     data: courses,
@@ -33,6 +34,7 @@ export default function CourseList() {
               Visit Course
             </a>
             <DeleteCourse courseId={c.id} />
+            <UpdateCourse courseId={c.id} />
           </div>
         ))}
       </div>

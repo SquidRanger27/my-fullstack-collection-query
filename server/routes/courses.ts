@@ -40,4 +40,18 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+router.patch('/:id', async (req, res) => {
+  const courseId = parseInt(req.params.id)
+  console.log(courseId)
+  const updatedCourse = req.body
+
+  try {
+    await db.updateCourseInDb(courseId, updatedCourse)
+    res.status(200).send()
+  } catch (error: any) {
+    res.sendStatus(500)
+    console.log(error.message)
+  }
+})
+
 export default router

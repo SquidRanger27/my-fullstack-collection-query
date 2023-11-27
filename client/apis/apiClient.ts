@@ -26,3 +26,14 @@ export async function deleteCoursesApi(courseId: number) {
 
   return response.body
 }
+
+export async function updateCoursesApi(
+  courseId: number,
+  updatedCourse: Courses
+) {
+  const response = await request
+    .patch(rootUrl + `courses/${courseId}`)
+    .send(updatedCourse)
+  console.log(response.body)
+  return response.body
+}

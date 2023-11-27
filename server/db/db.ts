@@ -13,3 +13,11 @@ export async function deleteCourseFromDb(courseId: number) {
   console.log(courseId)
   return db('courses').where('id', courseId).delete()
 }
+
+export async function updateCourseInDb(
+  courseId: number,
+  updatedCourse: Courses
+) {
+  console.log(courseId)
+  return db('courses').where('id', courseId).update(updatedCourse)
+}
