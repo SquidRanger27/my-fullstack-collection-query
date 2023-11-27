@@ -32,3 +32,14 @@ export function getDestinationForPlaces(NZPlaceId: number) {
     .where('NZ places_id', NZPlaceId)
     .returning('*')
 }
+
+export function addDestinationForPlaces(
+  NZPlaceId: number,
+  name: string,
+  description: string,
+  image: string
+) {
+  return db('destination')
+    .insert({ name, description, image, 'NZ places_id': NZPlaceId })
+    .returning(['id', 'name', 'description', 'image', 'NZ places_id'])
+}
