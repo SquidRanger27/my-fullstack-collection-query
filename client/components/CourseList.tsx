@@ -1,6 +1,6 @@
 import { getAllCoursesApi } from '../apis/apiClient'
 import { useQuery } from '@tanstack/react-query'
-
+import DeleteCourse from './DeleteCourse'
 export default function CourseList() {
   const {
     data: courses,
@@ -32,6 +32,7 @@ export default function CourseList() {
             <a href={c.link} className="course-link">
               Visit Course
             </a>
+            <DeleteCourse courseId={c.id} />
           </div>
         ))}
       </div>

@@ -10,10 +10,6 @@ export async function getAllCoursesApi(): Promise<Courses[]> {
 }
 
 export async function addCoursesApi(course: NewCourse) {
-  // const response = await request.post(rootUrl + 'courses').send(course)
-  // console.log(response.body)
-  // return response.body
-
   try {
     const response = await request.post(rootUrl + 'courses').send(course)
     console.log('Response Data:', response.body)
@@ -22,4 +18,11 @@ export async function addCoursesApi(course: NewCourse) {
     console.error('Error in addCoursesApi:', error)
     throw error
   }
+}
+
+export async function deleteCoursesApi(courseId: number) {
+  const response = await request.delete(rootUrl + `courses/${courseId}`)
+  console.log(response.body)
+
+  return response.body
 }

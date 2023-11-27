@@ -3,6 +3,7 @@ import { NewCourse } from '../../models/courses'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { addCoursesApi } from '../apis/apiClient'
 
+
 function AddCourse() {
   const emptyCourse: NewCourse = {
     name: '',

@@ -8,3 +8,8 @@ export async function getAllCourses(): Promise<Courses[]> {
 export async function addCourseToDb(course: any) {
   return await db('courses').insert(course)
 }
+
+export async function deleteCourseFromDb(courseId: number) {
+  console.log(courseId)
+  return db('courses').where('id', courseId).delete()
+}
