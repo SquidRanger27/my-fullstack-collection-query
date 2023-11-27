@@ -2,7 +2,7 @@ export function up(knex) {
   return knex.schema.createTable('courses', (table) => {
     table.increments('id')
     table.string('name')
-    table.string('website_name')
+    table.string('website')
     table.string('host')
     table.string('field')
     table.integer('cost')

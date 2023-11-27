@@ -3,7 +3,7 @@ export async function seed(knex) {
   await knex('courses').insert([
     {
       name: 'Become a Three.js developer',
-      website_name: 'Three JS Journey',
+      website: 'Three JS Journey',
       host: 'Bruno Simon',
       field: 'Web Development',
       cost: 156,
@@ -12,7 +12,7 @@ export async function seed(knex) {
     },
     {
       name: 'React Front to Back',
-      website_name: 'Udemy',
+      website: 'Udemy',
       host: 'Brad Traversy',
       field: 'Web Development',
       cost: 10,
@@ -21,7 +21,7 @@ export async function seed(knex) {
     },
     {
       name: 'Modern JavaScript From the Beginning',
-      website_name: 'Udemy',
+      website: 'Udemy',
       host: 'Brad Traversy',
       field: 'Web Development',
       cost: 10,

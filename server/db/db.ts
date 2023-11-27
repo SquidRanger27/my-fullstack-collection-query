@@ -2,14 +2,9 @@ import db from './connection'
 import { Courses } from '../../models/courses'
 
 export async function getAllCourses(): Promise<Courses[]> {
-  return db('courses').select(
-    'id',
-    'name',
-    'website_name as websiteName',
-    'host',
-    'field',
-    'cost',
-    'link',
-    'complete'
-  )
+  return db('courses').select()
+}
+
+export async function addCourseToDb(course: any) {
+  return await db('courses').insert(course)
 }
