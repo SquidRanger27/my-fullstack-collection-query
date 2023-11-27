@@ -6,13 +6,6 @@ export const useGetAllPlaces = () => {
   return useQuery({ queryKey: ['places'], queryFn: nz.getAllPlaces })
 }
 
-// export const useGetPlaceById = ({ id }: UseGetPlaceByIdProps) => {
-//   return useQuery({
-//     queryKey: ['placeById', id],
-//     queryFn: () => nz.getPlaceById(id),
-//   })
-// }
-
 export const useGetDestination = (id: number) => {
   return useQuery({
     queryKey: ['destination', id],

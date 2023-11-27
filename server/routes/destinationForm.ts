@@ -22,44 +22,51 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 //POST /api/v1/nzplaces/:id/destination
-router.post('/:id/destination', upload.single('image'), async (req, res) => {
-  const id = Number(req.params.id)
-  try {
-    console.log('ID:', id)
-    console.log('Request Body:', req.body)
-    const input = req.body
+router.post(
+  '/:id/destination',
+  upload.single('image'),
+  async (req, res): Promise<void> => {
+    const id = Number(req.params.id)
+    try {
+      console.log('ID:', id)
+      console.log('Request Body:', req.body)
+      const input = req.body
 
-    const result = {
-      name: input.name,
-      description: input.description,
-      image: req.file?.filename,
-      NZPlaceId: id,
+      const result = {
+        name: input.name,
+        description: input.description,
+        image: req.file?.filename,
+        NZPlaceId: id,
+      }
+
+      const response = await addDestinationForPlaces(result)
+      console.log('Response:', response)
+      res.status(200).send(response)
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Broken')
     }
-
-    const response = await addDestinationForPlaces(result)
-    console.log('Response:', response)
-    res.status(200).send(response)
-  } catch (error) {
-    console.error(error)
-    res.status(500).send('Broken')
   }
-})
+)
 
 // DELETE /api/v1/nzplaces/destination/:destinationId
-router.delete('/destination/:destinationId', async (req, res) => {
-  const destinationId = Number(req.params.destinationId)
-  try {
-    const response = await deleteDestinationForPlace(destinationId) // Implement this function in your db module
-    console.log('Delete Response:', response)
-    res.sendStatus(200)
-  } catch (error) {
-    console.error(error)
-    res.status(500).send('Broken')
+router.delete(
+  '/destination/:destinationId',
+  async (req, res): Promise<void> => {
+    const destinationId = Number(req.params.destinationId)
+    try {
+      const response = await deleteDestinationForPlace(destinationId) // Implement this function in your db module
+      console.log('Delete Response:', response)
+      res.sendStatus(200)
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Broken')
+    }
   }
-})
+)
 
 // PUT or PATCH /api/v1/nzplaces/destination/:destinationId
-router.patch('/destination/:destinationId', async (req, res) => {
+router.patch('/destination/:destinationId', async (req, res): Promise<void> => {
   const destinationId = Number(req.params.destinationId)
   const updateData = req.body // Assuming the request body contains the updated data
 
