@@ -11,6 +11,9 @@ interface AddMovie {
 }
 
 export async function addMovie({ name, rating }: AddMovie): Promise<void> {
-  console.log('we in the api function')
   await request.post('/api/v1/movies/add').send({ name, rating })
+}
+
+export async function deleteMovie(id: number): Promise<void> {
+  await request.delete(`/api/v1/movies/delete/${id}`)
 }

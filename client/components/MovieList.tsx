@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
-import { getAllMovies } from '../apis/apiClient'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { deleteMovie, getAllMovies } from '../apis/apiClient'
 import * as Models from '../../models/movies'
 import { Link } from 'react-router-dom'
 
@@ -11,6 +11,15 @@ export function MovieList() {
   } = useQuery({
     queryKey: ['movies'],
     queryFn: () => getAllMovies(),
+  })
+
+  const queryClient = useQueryClient()
+
+  const delMovieMutation = useMutation({
+    mutationFn: deleteMovie,
+    onSuccess() {
+      queryClient.invalidateQueries(['movies'])
+    },
   })
 
   if (!movies || isLoading) {
@@ -31,6 +40,9 @@ export function MovieList() {
         {movies.map((movie: Models.Movies) => (
           <li key={movie.id}>
             {movie.name} - My rating: {movie.personal_rating}/10{' '}
+            <button onClick={() => delMovieMutation.mutate(movie.id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>

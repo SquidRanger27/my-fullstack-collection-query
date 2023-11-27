@@ -6,8 +6,11 @@ export async function getAllMovies() {
 }
 
 export async function addMovie({ name, rating }: MovieData) {
-  console.log('we in the db')
   return db('movies')
     .insert([{ name, personal_rating: rating }])
     .returning('*')
+}
+
+export async function deleteMovie(id: number) {
+  return db('movies').delete().where({ id })
 }

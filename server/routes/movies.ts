@@ -9,9 +9,16 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/add', async (req, res) => {
-  console.log('we in the routes function')
   const { name, rating } = req.body
   const response = await db.addMovie({ name, rating })
+  res.json(response)
+})
+
+router.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params
+  console.log(req.params.id)
+
+  const response = await db.deleteMovie(Number(id))
   res.json(response)
 })
 

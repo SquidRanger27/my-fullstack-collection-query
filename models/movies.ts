@@ -5,6 +5,6 @@ export interface Movies {
 }
 
 export interface MovieData {
-  title: string
+  name: string
   rating: number
 }
