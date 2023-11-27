@@ -45,7 +45,7 @@ export default function Detail (){
         </div>
         <br/>
         <button onClick={handleEditClick}>{editing? 'Stop editing':'Edit details'}</button>
-        <img src={`${artDetail.imageUrl}`} alt={artDetail.description}/>
+        <img src={`${artDetail.imageUrl}`} alt={artDetail.alt}/>
         
       </div>
       

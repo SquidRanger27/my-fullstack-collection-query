@@ -9,6 +9,7 @@ export default function OneImage() {
   const [description, setDescription]= useState("")
   const [medium, setMedium]= useState("")
   const [owner, setOwner]= useState("")
+  const [alt, setAlt]= useState("")
 
   const queryClient = useQueryClient()
   const formData = new FormData()
@@ -29,6 +30,7 @@ export default function OneImage() {
     formData.append("description", description);
     formData.append("medium", medium);
     formData.append("owner", owner);
+    formData.append("alt", alt);
     try{
       uploadArtMutation.mutate(formData)
     }catch(error){
@@ -50,6 +52,9 @@ export default function OneImage() {
   }
   const handleOwnerChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     setOwner(event.target.value)
+  }
+  const handleAltChange = (event: React.ChangeEvent<HTMLFormElement>) => {
+    setAlt(event.target.value)
   }
 
   return (<>
@@ -110,7 +115,17 @@ export default function OneImage() {
         ></input>
       </label>
     <br/>
-      <button type="submit" onClick={uploadFile} disabled={!file}>Upload</button>
+    <label className='hflex'>
+        Alt Text (required)
+        <input
+          type="text"
+          name="owner"
+          onChange={handleAltChange}
+          required
+        ></input>
+      </label>
+    <br/>
+      <button type="submit" onClick={uploadFile} disabled={!file||!alt}>Upload</button>
     </form>
     </div>
     </>

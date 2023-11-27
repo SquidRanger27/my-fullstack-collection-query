@@ -5,12 +5,14 @@ export interface Art{
   medium: string
   imageUrl: string
   owner: string
+  alt: string
 }
 
 export interface ArtHeading{
   id:number
   name: string
   imageUrl: string
+  alt: string
 }
 
 export interface NewArt{
@@ -19,6 +21,7 @@ export interface NewArt{
   medium: string
   imageUrl: string
   owner: string
+  alt:string
 }
 export interface NewDetailsAndId{
     newDetails: {
@@ -26,6 +29,7 @@ export interface NewDetailsAndId{
         description: string;
         medium: string;
         owner: string;
+        alt: string;
     };
     id: string | undefined;
 }
@@ -36,4 +40,5 @@ export interface PatchArtInfo{
   medium: string
   imageUrl: string
   owner: string
+  alt:string
 }

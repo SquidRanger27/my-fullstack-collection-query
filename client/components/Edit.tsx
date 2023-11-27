@@ -17,9 +17,10 @@ export default function Edit() {
   const [newDescription, setNewDescription] = useState(artDetail.description)
   const [newMedium, setNewMedium] = useState(artDetail.medium)
   const [newOwner, setNewOwner] = useState(artDetail.owner)
+  const [newAlt, setNewAlt] = useState(artDetail.alt)
 
   const queryClient = useQueryClient()
-  let newDetails = { name: '', description: '', medium: '', owner: '' }
+  let newDetails = { name: '', description: '', medium: '', owner: '', alt:'' }
 
   const editDetailsMutation = useMutation({
     mutationFn: editDetailsPatch,
@@ -37,6 +38,7 @@ export default function Edit() {
       description: newDescription,
       medium: newMedium,
       owner: newOwner,
+      alt: newAlt,
     }
     const newDetailsAndId = {
       newDetails,
@@ -64,6 +66,10 @@ export default function Edit() {
 
   const handleNewOwnerChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     setNewOwner(event.target.value)
+  }
+
+  const handleNewAltChange = (event: React.ChangeEvent<HTMLFormElement>) => {
+    setNewAlt(event.target.value)
   }
 
   if (isError) {
@@ -118,6 +124,16 @@ export default function Edit() {
               name="newOwner"
               value={newOwner}
               onChange={handleNewOwnerChange}
+            ></input>
+          </label>
+          <br />
+          <label className="hflex">
+            Edit Alt Text:
+            <input
+              type="text"
+              name="newAlt"
+              value={newAlt}
+              onChange={handleNewAltChange}
             ></input>
           </label>
           <br />

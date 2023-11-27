@@ -75,6 +75,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       medium: req.body.medium,
       imageUrl: `/${req.file.filename}`,
       owner: req.body.owner,
+      alt: req.body.alt
     };
 
     const newArtID = await db.addArt(inputObject);

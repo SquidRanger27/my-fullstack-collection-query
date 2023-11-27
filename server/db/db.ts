@@ -3,7 +3,7 @@ import { Art, ArtHeading, NewArt, PatchArtInfo } from '../../models/art';
 
 export async function getArtOverview(): Promise<ArtHeading[]> {
   try {
-    const result = await connection('art').select('id', 'name', 'imageUrl');
+    const result = await connection('artworks').select('id', 'name', 'imageUrl', 'alt');
     return result;
   } catch (error) {
     console.error('Error in getArtOverview:', error);
@@ -13,7 +13,7 @@ export async function getArtOverview(): Promise<ArtHeading[]> {
 
 export async function getArtById(id: number): Promise<Art> {
   try {
-    const result = await connection('art')
+    const result = await connection('artworks')
       .where('id', id)
       .select('*')
       .first();
@@ -26,12 +26,13 @@ export async function getArtById(id: number): Promise<Art> {
 
 export async function addArt(newArt: NewArt): Promise<Art> {
   try {
-    const [insertedId] = await connection('art').insert({
+    const [insertedId] = await connection('artworks').insert({
       name: newArt.name,
       description: newArt.description,
       medium: newArt.medium,
       imageUrl: newArt.imageUrl,
       owner: newArt.owner,
+      alt: newArt.alt,
     });
 
     const insertedArt = await getArtById(insertedId);
@@ -43,12 +44,13 @@ export async function addArt(newArt: NewArt): Promise<Art> {
 }
 
 export async function editArtDescription(newArtInfo:PatchArtInfo, id:number){
-  await connection('art')
+  await connection('artworks')
   .where({id}).update({
     name: newArtInfo.name,
     description: newArtInfo.description,
     medium: newArtInfo.medium,
-    owner: newArtInfo.owner
+    owner: newArtInfo.owner,
+    alt: newArtInfo.alt,
   })
 }
 
