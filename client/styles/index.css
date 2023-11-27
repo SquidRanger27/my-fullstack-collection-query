@@ -33,6 +33,15 @@ body {
   font-size: x-large;
 }
 
+#detail-page-title {
+  text-align: center;
+  color: black;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  font-size: x-large;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
 .city-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Three columns in the grid */
@@ -70,4 +79,9 @@ body {
 
 .city-link {
   text-decoration: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }

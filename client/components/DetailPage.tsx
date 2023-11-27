@@ -20,7 +20,10 @@ function DetailPage() {
     <>
       {cityDetails && destination && (
         <>
-          <h1>{cityDetails.name}</h1>
+          <h1 id="detail-page-title">{cityDetails.name}</h1>
+          <div className="center">
+            <button className="add-button">Add a destination</button>
+          </div>
           <div id="home-page-container">
             <div className="city-container">
               {destination.map((d) => (
