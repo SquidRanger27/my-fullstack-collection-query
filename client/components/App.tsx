@@ -16,7 +16,7 @@ export default function App (){
     return <p>drafting artworks...</p>
   }
 
-  console.log(art)
+
   return(
     <>
     <h2>Artwork List</h2>

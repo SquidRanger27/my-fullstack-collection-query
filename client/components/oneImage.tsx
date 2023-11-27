@@ -2,6 +2,7 @@ import { useState } from "react"
 import { uploadArt } from "../apis/apiClient"
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { renderMatches } from 'react-router-dom'
+import { useParams } from "react-router-dom"
 
 export default function OneImage() {
   const [file, setFile] = useState()
@@ -10,6 +11,7 @@ export default function OneImage() {
   const [medium, setMedium]= useState("")
   const [owner, setOwner]= useState("")
   const [alt, setAlt]= useState("")
+  const id = useParams().id
 
   const queryClient = useQueryClient()
   const formData = new FormData()

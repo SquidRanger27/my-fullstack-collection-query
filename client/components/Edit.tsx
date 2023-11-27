@@ -6,7 +6,6 @@ import { useQuery } from '@tanstack/react-query'
 
 export default function Edit() {
   const id = useParams().id
-  console.log(id)
   const {
     data: artDetail,
     isLoading,
@@ -24,12 +23,10 @@ export default function Edit() {
 
   const editDetailsMutation = useMutation({
     mutationFn: editDetailsPatch,
-    onSuccess: async () => {
-      queryClient.invalidateQueries({ queryKey: ['art', id] })
-    },
+    onSuccess: async()=>{
+      queryClient.invalidateQueries({queryKey:['art']})
+    }
   })
-
-  // ()=>{editDetails(formData)}
 
   const editDetails = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -45,7 +42,6 @@ export default function Edit() {
       id,
     }
     try {
-      console.log(id)
       editDetailsMutation.mutate(newDetailsAndId)
     } catch (error) {
       console.error('An error occurred during uploading:', error)

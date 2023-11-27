@@ -90,8 +90,6 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 router.patch('/:id/edit', async(req,res)=>{
   const id = req.params.id
   const newArtInfo = req.body
-  console.log(id)
-  console.log(newArtInfo)
   await db.editArtDescription(newArtInfo,id)
 })
 

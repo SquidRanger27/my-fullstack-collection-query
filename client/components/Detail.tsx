@@ -10,6 +10,8 @@ export default function Detail (){
   const id = useParams().id
   const navigate = useNavigate() 
   const [editing, setEditing] = useState(false)
+  
+
 
   const {data: artDetail, isLoading, isError} = useQuery({queryKey:['art',id], queryFn: ()=>getArtById(id),})
   if (isError){
