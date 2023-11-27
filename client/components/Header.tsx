@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <header>
-      <div></div>
       <nav>
-        <span>
+        <button>
           <Link to={'/'}>Home</Link>
-        </span>
+        </button>
+        <button>
+          <Link to={'books'}>Books</Link>
+        </button>
       </nav>
     </header>
   )
