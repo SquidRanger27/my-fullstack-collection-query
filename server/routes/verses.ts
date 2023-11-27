@@ -2,7 +2,7 @@ import { Router } from 'express'
 import * as db from '../db/connection.ts'
 
 const router = Router()
-// GET /api/v1/verse
+// GET /api/v1/verses
 router.get('/', async (req, res) => {
   try {
     const verses = await db.getAllVerses()
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// DELETE 
+// DELETE /api/v1/verses/:id
 router.delete('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   if (isNaN(id)) {

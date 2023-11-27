@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom'
-import Header from './Header'
 
-export default function App() {
+export default function SingleVerse() {
   return (
     <>
-      <Header />
+      <p>Sample Page</p>
       <Outlet />
     </>
   )
