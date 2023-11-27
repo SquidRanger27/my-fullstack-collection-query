@@ -4,6 +4,8 @@ The goal of this project is to create a product for subscribers of The Cheese Wh
 
 Here we have the bones of a basic app with CRUD functionality. As it stands, a user is able to record cheeses and add a rating, update their cheeses, and delete them from their collection. But there's room for improvement! The team at the Cheese Wheel are keen to add the following functionality:
 
+### MVP
+
 Authentication
 
 - Create a registration and login page.
@@ -17,6 +19,8 @@ Improve the UI
 
 - Designed the user interface using Figma for a more polished and professional look.
 - Let users save their favourite cheeses and post comments/ratings
+
+### Stretch
 
 ## Setup
 
@@ -37,7 +41,7 @@ Improve the UI
 
   </details>
 
-## Requirements
+## Documentation
 
 ### KANBAN workflow:
 
@@ -81,12 +85,57 @@ Make sure that:
 | Component   | DeleteCheese    |
 | Component   | UpdateCheese    |
 
+## Database
+
+### Link to Database Diagram
+
+https://dbdiagram.io/d/Havarti-Your-Say-655bd4283be149578761a439
+
+### Cheeses (already set up)
+
+| COLUMN NAME  | DATA TYPE | PURPOSE                            |
+| ------------ | --------- | ---------------------------------- |
+| id           | integer   | unique identifier                  |
+| cheese_box   | integer   | cheese box number from the website |
+| name         | string    | cheese name                        |
+| maker        | string    | name of the cheese maker           |
+| description  | string    | description of the cheese          |
+| region       | string    | location of product origin         |
+| type_of_milk | string    | specifies the cheese's milk type   |
+
+### Users (not set up)
+
+| COLUMN NAME | DATA TYPE | PURPOSE                         |
+| ----------- | --------- | ------------------------------- |
+| id          | string    | unique identifier for each user |
+
+### Favourite Cheeses (not set up)
+
+| COLUMN NAME | DATA TYPE | PURPOSE |
+| ----------- | --------- | ------- |
+
 ## Server API endpoints
 
-| METHOD | ENDPOINT              | USAGE                     | RETURNS                  |
-| ------ | --------------------- | ------------------------- | ------------------------ |
-| GET    | `/api/v1/cheeses`     | Gets a list of cheeses    | An array of cheeses      |
-| GET    | `/api/v1/cheeses/:id` | Get an individual cheese  | An array of blog posts   |
-| POST   | `/api/v1/cheeses`     | Add a new cheese          | The newly created cheese |
-| DELETE | `/api/v1/cheeses/:id` | Delete an existing cheese | Nothing (status OK)      |
-| PATCH  | `/api/v1/cheeses/:id` | Update an existing cheese | The updated cheese       |
+| METHOD | ENDPOINT              | USAGE                     | RETURNS                            |
+| ------ | --------------------- | ------------------------- | ---------------------------------- |
+| GET    | `/api/v1/cheeses`     | Gets a list of cheeses    | An array of cheeses                |
+| GET    | `/api/v1/cheeses/:id` | Get an individual cheese  | An object of the individual cheese |
+| POST   | `/api/v1/cheeses`     | Add a new cheese          | The newly created cheese           |
+| DELETE | `/api/v1/cheeses/:id` | Delete an existing cheese | Nothing (status OK)                |
+| PATCH  | `/api/v1/cheeses/:id` | Update an existing cheese | The updated cheese                 |
+
+## Views Client Side
+
+| PAGE                 | MVP? | PURPOSE                                                                     |
+| -------------------- | ---- | --------------------------------------------------------------------------- |
+| Home                 | Yes  | Welcomes the user and allows them to register for an account and login      |
+| Register             | Yes  | View for the user to create an account                                      |
+| Login                | Yes  | View for the user to log into their account                                 |
+| Cheese list          | Yes  | Allows the user to view all the cheeses in the database and save favourites |
+| My favourite cheeses | Yes  | Allows the user to view their saved favourite cheeses                       |
+
+## Authentication
+
+## Human Skills Assignment - link to conflict resolution plan
+
+https://docs.google.com/document/d/1yp-sKGSqoBdrwnCrR-KEHai1Pg_nWRAttEzwPM_fzLM/edit?pli=1

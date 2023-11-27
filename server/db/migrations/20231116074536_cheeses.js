@@ -1,5 +1,5 @@
 export function up(knex) {
-  return knex.schema.createTable('cheese', (table) => {
+  return knex.schema.createTable('cheeses', (table) => {
     table.increments('id')
     table.varchar('name')
     table.varchar('description')
@@ -9,5 +9,5 @@ export function up(knex) {
 }
 
 export function down(knex) {
-  return knex.schema.dropTable('cheese')
+  return knex.schema.dropTable('cheeses')
 }

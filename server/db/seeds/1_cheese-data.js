@@ -1,7 +1,7 @@
 export async function seed(knex) {
   // Deletes ALL existing entries
-  await knex('cheese').del()
-  await knex('cheese').insert([
+  await knex('cheeses').del()
+  await knex('cheeses').insert([
     {
       id: 1,
       name: 'Pecorino dei Malatesta al Sangiovese',
