@@ -26,7 +26,7 @@ export default function App (){
         <Link to={`/${item.id}`} key={item.id}>
           <div className='vflex artTile'>
           <h3>{item.name}</h3>
-          <img src={item.imageUrl}/>
+          <img src={item.imageUrl} alt={`image of an artwork called ${item.name}`}/>
           </div>
         </Link>
       )
