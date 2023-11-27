@@ -1,6 +1,5 @@
 import { getAllVerses } from '../apis/verses'
-import { isError, useQuery } from '@tanstack/react-query'
-import { Outlet } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 import Verses from './Verses'
 function App() {
   const {
@@ -16,10 +15,12 @@ function App() {
 
   return (
     <>
-      <header className="header">
-        <h1>
-          <em>Essential Verses</em>
-        </h1>
+      <header>
+        <div className="header">
+          <h1>
+            <em>Essential Verses</em>
+          </h1>
+        </div>
       </header>
       <section className="main">
         {verses.map((verses) => (

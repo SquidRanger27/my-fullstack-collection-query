@@ -13,4 +13,21 @@ router.get('/', async (req, res) => {
   }
 })
 
+// DELETE 
+router.delete('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+
+  try {
+    await db.deleteVerse(id)
+    res.sendStatus(200)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Could not delete verse')
+  }
+})
+
 export default router

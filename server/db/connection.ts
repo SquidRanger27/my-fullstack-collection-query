@@ -9,7 +9,11 @@ import knex from 'knex'
 const db = knex(knexfile.development)
 
 export async function getAllVerses() {
-  return db.table('verses').select('*')
+  return db('verses').select('*')
+}
+
+export async function deleteVerse(id: number): Promise<void> {
+  await db('verses').where({ id }).delete()
 }
 
 export function close() {
