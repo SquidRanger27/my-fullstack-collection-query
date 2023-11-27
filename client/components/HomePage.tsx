@@ -1,4 +1,4 @@
-import { useGetAllPlaces } from '../apis/hooks'
+import { useGetAllPlaces } from '../apis/hooks/hooks'
 import { Link } from 'react-router-dom'
 
 function HomePage() {
@@ -17,7 +17,7 @@ function HomePage() {
         {places.map((place) => (
           <Link
             key={place.id}
-            to={`/api/v1/nzplaces/${place.id}`}
+            to={`/destination/${place.id}`}
             className="city-link"
           >
             <div key={place.id} className="city-card">

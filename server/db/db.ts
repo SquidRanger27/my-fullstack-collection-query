@@ -28,7 +28,7 @@ export function getPlaceById(id: number) {
 
 export function getDestinationForPlaces(NZPlaceId: number) {
   return db('destination')
-    .select('id', 'NZ places_id as NZPlaceId', 'description')
+    .select('id', 'name', 'NZ places_id as NZPlaceId', 'description', 'image')
     .where('NZ places_id', NZPlaceId)
     .returning('*')
 }

@@ -45,6 +45,7 @@ export async function seed(knex) {
       description:
         "Dunedin, on the South Island's southeast coast, has a rich Scottish heritage and is known for its Victorian and Edwardian architecture. The city is home to the University of Otago, New Zealand's oldest university. The Otago Peninsula, just outside Dunedin, is famous for its wildlife, including albatross and penguin colonies, making it a haven for nature enthusiasts.",
       image: 'client/public/Major Cities/dunedin.jpg',
+
       'NZ places_id': 3,
     },
     {

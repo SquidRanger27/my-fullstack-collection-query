@@ -7,6 +7,6 @@ import DetailPage from './components/DetailPage'
 export const routes = createRoutesFromElements(
   <Route element={<AppLayout />}>
     <Route index element={<HomePage />} />
-    <Route path="/api/v1/nzplaces/:id" element={<DetailPage />} />
+    <Route path="/destination/:id" element={<DetailPage />} />
   </Route>
 )
