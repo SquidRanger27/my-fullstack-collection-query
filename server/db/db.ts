@@ -4,27 +4,30 @@ import { Cheese } from '../../models/cheese'
 
 // GET all cheeses
 
-export async function getAllCheeses(): Promise<Cheese[]> {
+export async function getAllCheesesDb(): Promise<Cheese[]> {
   return connection('cheese').select()
+}
+
+// GET one cheese
+
+export async function getOneCheeseDb(cheeseId: number) {
+  return connection('cheese').where({ id: cheeseId }).first()
 }
 
 // ADD cheese
 
-export async function addCheeseToDb(cheese: any) {
+export async function addCheeseDb(cheese: any) {
   return connection('cheese').insert(cheese)
 }
 
 // DELETE cheese
 
-export async function deleteCheeseFromDb(cheeseId: number) {
+export async function deleteCheeseDb(cheeseId: number) {
   return connection('cheese').where({ id: cheeseId }).delete()
 }
 
 // UPDATE cheese
 
-export async function updateCheeseInDb(
-  cheeseId: number,
-  updatedCheese: Cheese
-) {
+export async function updateCheeseDb(cheeseId: number, updatedCheese: Cheese) {
   return connection('cheese').where({ id: cheeseId }).update(updatedCheese)
 }

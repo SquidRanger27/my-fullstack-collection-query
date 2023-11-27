@@ -7,8 +7,21 @@ import * as db from '../db/db.ts'
 
 router.get('/', async (req, res) => {
   try {
-    const cheeses = await db.getAllCheeses()
+    const cheeses = await db.getAllCheesesDb()
     res.json(cheeses)
+  } catch (error: any) {
+    res.sendStatus(500)
+    console.log(error.message)
+  }
+})
+
+// GET /api/v1/cheeses/:id
+
+router.get('/:id', async (req, res) => {
+  const cheeseId = Number(req.params.id)
+  try {
+    const cheese = await db.getOneCheeseDb(cheeseId)
+    res.json(cheese)
   } catch (error: any) {
     res.sendStatus(500)
     console.log(error.message)
@@ -20,7 +33,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const cheese = req.body
   try {
-    const addedCheese = await db.addCheeseToDb(cheese)
+    const addedCheese = await db.addCheeseDb(cheese)
     res.json(addedCheese)
   } catch (error: any) {
     res.sendStatus(500)
@@ -28,12 +41,12 @@ router.post('/', async (req, res) => {
   }
 })
 
-//DELETE /api/v1/cheeses
+//DELETE /api/v1/cheeses/:id
 
 router.delete('/:id', async (req, res) => {
   const cheeseId = Number(req.params.id)
   try {
-    await db.deleteCheeseFromDb(cheeseId)
+    await db.deleteCheeseDb(cheeseId)
     res.status(200).send()
   } catch (error: any) {
     res.sendStatus(500)
@@ -41,13 +54,14 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-//PATCH /api/v1/cheeses
+//PATCH /api/v1/cheeses/:id
 
 router.patch('/:id', async (req, res) => {
   const cheeseId = Number(req.params.id)
   const updatedCheese = req.body
   try {
-    await db.updateCheeseInDb(cheeseId, updatedCheese)
+    await db.updateCheeseDb(cheeseId, updatedCheese)
+    res.json(updatedCheese)
     res.status(200).json({ message: 'Cheese updated successfully' })
   } catch (error: any) {
     console.error('Error updating cheese:', error.message)

@@ -6,9 +6,15 @@ const cheesesUrl = 'api/v1/cheeses'
 // GET all cheeses
 
 export async function getCheesesApi(): Promise<Cheese[]> {
-  const cheesesResponse = await request.get(cheesesUrl)
-  console.log(cheesesResponse)
-  return cheesesResponse.body
+  const response = await request.get(cheesesUrl)
+  return response.body
+}
+
+// GET one cheese
+
+export async function getOneCheeseApi(cheeseId: number) {
+  const response = await request.get(`${cheesesUrl}/${cheeseId}`)
+  return response.body
 }
 
 // ADD cheese

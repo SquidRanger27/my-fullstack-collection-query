@@ -24,6 +24,8 @@ export default function UpdateCheese({ cheeseId }: Props) {
     },
   })
 
+  const fetchCheeseData = async () => {}
+
   const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -47,6 +49,7 @@ export default function UpdateCheese({ cheeseId }: Props) {
     setEditing(!editing)
     if (!editing) {
       setUpdateCheeseForm({
+        ...updateCheeseForm,
         name: '',
         description: '',
         comment: '',
