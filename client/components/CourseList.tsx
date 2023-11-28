@@ -13,11 +13,11 @@ export default function CourseList() {
   })
 
   if (!courses || isLoading) {
-    return <p>Shit is Loading my brother</p>
+    return <p>Loading......</p>
   }
 
   if (isError) {
-    return <p>Shit broken biatch!!</p>
+    return <p>Something has broken! Please refresh</p>
   }
 
   return (
