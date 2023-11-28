@@ -13,6 +13,10 @@ export async function getAllVerses(): Promise<Verse[]> {
   return db('verses').select('*')
 }
 
+export async function getVerseById(id: number): Promise<Verse[]> {
+  return db('verses').select('description', 'verse').where({ id }).first()
+}
+
 export async function deleteVerse(id: number): Promise<void> {
   await db('verses').where({ id }).delete()
 }

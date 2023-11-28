@@ -13,6 +13,19 @@ router.get('/', async (req, res) => {
   }
 })
 
+// GET /api/v1/verses/:id
+router.get('/:id', async (req, res) => {
+  const verseId = parseInt(req.params.id)
+  try {
+    const verseById = await db.getVerseById(verseId)
+    
+    res.json(verseById)
+  } catch (err) {
+    res.sendStatus(500)
+    console.error((err as any).message)
+  }
+})
+
 // DELETE /api/v1/verses/
 router.delete('/:id', async (req, res) => {
   const id = parseInt(req.params.id)

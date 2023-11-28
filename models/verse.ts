@@ -3,3 +3,8 @@ export interface Verse {
   description: string
   verse: string
 }
+
+export interface SingleVerse {
+  description: string
+  verse: string
+}
