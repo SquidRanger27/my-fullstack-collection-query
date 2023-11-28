@@ -8,7 +8,9 @@ export async function seed(knex) {
   await knex('todo').insert([
     { description: 'consume API',type:"mvp",status:0},
     { description: 'create add from',type:"mvp",status:1},
-    { description: 'consume API',type:"mvp",status:2},
+    { description: 'consume trello',type:"mvp",status:2},
+    { description: 'Css Style',type:"mvp",status:3},
+    { description: 'consume nuggets',type:"mvp",status:0},
 
 
     
