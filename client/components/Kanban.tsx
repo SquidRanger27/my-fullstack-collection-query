@@ -1,20 +1,15 @@
 import { getTasks } from '../apis/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-
 import DndList from './DndList'
 
 export default function Tasks() {
-  const [taskState, setTaskState] = useState({
-    title: '',
-    details: '',
-    isStretch: '',
-    colour: '',
-  })
-
-  const queryClient = useQueryClient()
-
-
+  // const [taskState, setTaskState] = useState({
+  //   title: '',
+  //   details: '',
+  //   isStretch: '',
+  //   colour: '',
+  // })
 
   const {
     data: tasks,

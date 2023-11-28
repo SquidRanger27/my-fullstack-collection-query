@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     res.json(tasks)
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Somthing went wrong!' })
+    res.status(500).json({ message: 'Could not get tasks' })
   }
 })
 
@@ -29,13 +29,20 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.log(error)
 
-    res.status(500).json({ message: 'Somthing went wrong!' })
+    res.status(500).json({ message: 'Could not add task' })
   }
 })
 
 
 //DELETE task
-router.delete
+router.delete('/:id', async (req, res) => {
+  try {
+    await db.deleteTask(Number(req.params.id))
+    res.sendStatus(200)
+  } catch (error) {
+    res.send(error).status(400)
+  }
+})
 
 
 // router.patch('/', async (req, res) => {

@@ -1,3 +1,5 @@
+
+
 .dnd-list {
   display: flex;
   flex-direction: row; /* Change the direction to row */
@@ -15,6 +17,7 @@
 
 .dnd-item.dragging {
   background-color: #f0f0f0; /* Change the background color during drag */
+
 }
 
 .dnd-column {

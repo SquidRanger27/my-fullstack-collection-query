@@ -8,6 +8,7 @@ export interface Task {
 }
 
 export interface NewTask {
+  id: number
   title: string
   details: string
   isStretch: boolean

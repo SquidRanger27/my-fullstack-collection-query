@@ -25,4 +25,6 @@ export async function addTask(task: any): Promise<Task> {
   return res.body
 }
 
-
+export async function delTask(id: number): Promise<void> {
+  await request.delete(rootUrl + '/kanban/' + id)
+}

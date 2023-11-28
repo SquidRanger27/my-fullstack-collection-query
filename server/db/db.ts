@@ -27,6 +27,6 @@ export async function insertTask(
 }
 
 
-// export function deleteTask(taskId: number): {
-//   return connection('task').where('id', taskId).del();
-// }
+export async function deleteTask(id: number) {
+  return await connection('task').delete().where('id', id)
+}
