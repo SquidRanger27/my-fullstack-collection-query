@@ -26,5 +26,6 @@ interface DeleteVerse {
   id: Verse['id']
 }
 export async function deleteVerse({ id }: DeleteVerse): Promise<void> {
+  console.log({ id })
   await request.delete(rootUrl + `/verses/${id}`)
 }
