@@ -1,13 +1,11 @@
-
-import Movies from './Movies'
+import { Outlet } from 'react-router-dom'
+import Header from './Header'
 
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>My Collection</h1>
-      </header>
-      <section className="main"><Movies /></section>
+      <Header />
+      <Outlet />
     </>
   )
 }

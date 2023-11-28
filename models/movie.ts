@@ -5,3 +5,14 @@ export interface movies {
     director: string
     leadActor: string
   }
+
+  export interface newMovie {
+    name: string
+    description: string 
+    director: string
+    leadActor: string
+  }
+
+  export interface movieId {
+    id: number
+  }
