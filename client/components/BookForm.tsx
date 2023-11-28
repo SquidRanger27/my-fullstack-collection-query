@@ -14,13 +14,6 @@ export default function BookForm() {
   const [form, setForm] = useState<NewBook>(initialFormData)
   const queryClient = useQueryClient()
 
-  // const deleteBookMutation = useMutation({
-  //   mutationFn: deleteBookApi,
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({ queryKey: ['books'] })
-  //   },
-  // })
-
   const bookMutation = useMutation({
     mutationFn: addBookApi,
     onSuccess: async (newBook) => {
@@ -36,11 +29,6 @@ export default function BookForm() {
       }
     },
   })
-
-  // function handleDeleteClick() {
-  //   deleteBookMutation.mutate({ id })
-  //   console.log('deleting', id)
-  // }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target
@@ -104,9 +92,6 @@ export default function BookForm() {
 
         <button>Add Book</button>
       </form>
-      <span><p>
-        <button onClick={handleDeleteClick}>Delete</button>
-      </p></span>
     </>
   )
 }

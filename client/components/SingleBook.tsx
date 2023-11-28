@@ -2,6 +2,7 @@ import { Book } from '../../models/book'
 import { getSingleBookApi } from '../apis/book'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
+import BookDelete from './BookDelete'
 
 export default function SingleBook() {
   const { id } = useParams()
@@ -24,7 +25,6 @@ export default function SingleBook() {
   if (!book || isLoading) {
     return <p>Collecting book from the shelf...</p>
   }
-  
 
   return (
     <>
@@ -42,10 +42,10 @@ export default function SingleBook() {
         <p>
           <strong>Volume:</strong> {book.entryNumber}
         </p>
-        <span><p>
-        <button onClick={handleDeleteClick}>Delete</button>
-      </p></span>
       </div>
+      <>
+        <BookDelete id={book.id} />
+      </>
     </>
   )
 }

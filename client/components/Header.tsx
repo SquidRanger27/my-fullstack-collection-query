@@ -7,9 +7,6 @@ export default function Header() {
         <button>
           <Link to={'/'}>Home</Link>
         </button>
-        <button>
-          <Link to={'books'}>Books</Link>
-        </button>
       </nav>
     </header>
   )

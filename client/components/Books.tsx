@@ -19,15 +19,13 @@ export default function BookList() {
   return (
     <>
       <div>
-        <h1 id="bookTitle">Books I have Read</h1>
+        <header>
+          <h1 id="bookTitle">Books I have Read</h1>
+        </header>
         <ul id="bookList">
           {books.map((book) => (
             <li key={book.id}>
-              <div className="bookBox">
-                <button className="linkButton">
-                  <Link to={`/book/${book.id}`}>{book.bookTitle}</Link>
-                </button>
-              </div>
+              <Link to={`/book/${book.id}`}>{book.bookTitle}</Link>
             </li>
           ))}
         </ul>

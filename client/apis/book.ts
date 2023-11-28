@@ -32,6 +32,6 @@ export async function addBookApi(newBook: NewBook): Promise<Book> {
   return response.body
 }
 
-export async function deleteBookApi({ id }: NewBook): Promise<void> {
-  await request.delete(`api/v1/books/${id}`)
+export async function deleteBookApi(id: number): Promise<void> {
+  await request.delete(`${bookURL}/${id}`)
 }
