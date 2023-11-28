@@ -25,7 +25,7 @@ export default function Update({name, description, director, leadActor} : Props)
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         console.log('Submitting:', event)
-        const sid = await updateMovieApi(item, id)
+        const sid = await updateMovieApi(id, item)
         setMovie([...movie, {...item, sid: sid[0]}])
       }
 

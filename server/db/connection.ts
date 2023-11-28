@@ -52,7 +52,7 @@ export async function addAMovie(movie : Promise<newMovie>) {
   }
 
   
-  export async function updateAMovie(movie : Promise<movies>, id : movieId) : Promise<movies> {
+  export async function updateAMovie(movie : Promise<newMovie>, id : movieId) : Promise<movies> {
     // TODO: use knex to insert movie data from to database
     try{
       return await connection('movies').update(movie).where('id', id).returning('*')
