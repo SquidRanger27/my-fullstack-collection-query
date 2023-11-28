@@ -8,7 +8,7 @@ export async function getAllVerses(): Promise<Verse[]> {
   return response.body
 }
 
-export async function getSingleVerse(id): Promise<SingleVerse> {
+export async function getSingleVerse(id: number): Promise<SingleVerse> {
   const response = await request.get(`/api/v1/verses/${id}`)
   return response.body
 }

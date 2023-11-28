@@ -2,12 +2,16 @@
   "name": "my-fullstack-collection-query",
   "type": "module",
   "version": "0.1.0",
+  "engines": {
+    "node": "18.6.0"
+  },
   "description": "Build a fullstack collection app",
   "engines": {
     "node": "18.x"
   },
   "repository": "https://https://github.com/dev-academy-challenges/my-fullstack-collection-query",
   "main": "server/index.ts",
+  
   "scripts": {
     "start": "node dist/server.js",
     "dev": "run-p dev:client dev:server",
