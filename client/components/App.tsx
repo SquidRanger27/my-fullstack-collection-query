@@ -1,31 +1,39 @@
 import { Backlog } from "./Backlog"
 import { useMutation,useQueryClient } from "@tanstack/react-query"
+import AddTodo from "./AddTodo"
 import {Todo} from "./Todo"
 import {Wip} from "./Wip"
 import {Done} from "./Done"
 import { useQuery } from "@tanstack/react-query"
 import * as api from '../apis/apiClient'
+import { Link } from "react-router-dom"
 
 function App() {
   const {data:todo ,error,isLoading} = useQuery({queryKey:['todo'],queryFn:api.displayTodos})
-if (error) {
-  return <p>This is an Error</p>
-}
-if (!todo|| isLoading) {
-  return <p>Internal Server Error</p>
-}
+  // const queryClient = useQueryClient()
 
-console.log(todo)
-function handleAdd(){
+  // const addTodoMutation = useMutation({
+  //   mutationFn:api.addTodo,
+  //   onSuccess:async()=>{
+  //     queryClient.invalidateQueries(['todo'])
+  //   }
+  // })
+  if (error) {
+    return <p>This is an Error</p>
+  }
+  if (!todo|| isLoading) {
+    return <p>Internal Server Error</p>
+  }
 
-}
+
+
   return (
     <>
       <header className="header">
         <h1>Kanban Board</h1>
-        <table>
+        <table className = "kanbanTable">
           <tr>
-            <th>backlog <button onClick = {handleAdd}>+</button></th>
+            <th>backlog <Link  to = "/add"><button>+</button></Link></th>
             <th>todo</th>
             <th>wip</th>
             <th>done</th>

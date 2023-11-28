@@ -14,3 +14,6 @@ export function deleteTodo(id){
 export function addTodo(body){
   return connection('todo').insert(body)
 }
+export function editTodo(body){
+  return connection('todo').update(body).where("id",body.id)
+}

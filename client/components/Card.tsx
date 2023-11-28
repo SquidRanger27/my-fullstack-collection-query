@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useQueryClient } from "@tanstack/react-query"
 import * as api from '../apis/apiClient'
+import { Link } from "react-router-dom"
 export function Card(info){
   const proceedTextArray = ["choose","proceed","done","delete"]
   const proceedText = proceedTextArray[info.status]
@@ -47,7 +48,7 @@ export function Card(info){
 
       {info.status==0?
       <div className = "statusButton">
-      <button>edit</button><button onClick={handleDelete}>delete</button>
+      <Link to = {`/${info.id}/edit`}><button>edit</button></Link><button onClick={handleDelete}>delete</button>
       </div>:undefined}
 
 

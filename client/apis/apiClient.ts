@@ -11,3 +11,9 @@ export async function updateStatus(body){
 export async function deleteTodo(id){
   await request.delete(route).send(id)
 }
+export async function addTodo(body){
+  await request.post(`${route}/addTodo`).send(body)
+}
+export async function editTodo(body){
+  await request.patch(`${route}/editTodo`).send(body)
+}

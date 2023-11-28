@@ -14,9 +14,10 @@
   align-items: center;
   flex-direction: column;
 }
-table{
+.kanbanTable{
   border:1px solid black;
   width:90%;
+  height: 100vh;
 }
 td{
   width:700px;
@@ -34,4 +35,26 @@ td{
 .statusButton{
   display:flex;
   justify-content: center;
+}
+.addTodoForm{
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+  padding:100px;
+  border: 1px solid black;
+  width:500px;
+  height:50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+.tableForm{
+  margin-bottom: 50px;
+}
+.tableForm * td{
+  border:0px;
 }
