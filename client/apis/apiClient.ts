@@ -21,12 +21,13 @@ export async function getDestinationForPlaces(
   return destination.body
 }
 
-export async function addDestination(
+export async function addDestination(destinationData: {
   destination: DestinationInput
-): Promise<Destination> {
+  NZPlaceId: number
+}): Promise<Destination> {
   const toAdd = await request
-    .post(`/api/v1/nzplaces/${destination.cityId}/destination`)
-    .send({ destination })
+    .post(`/api/v1/nzplaces/${destinationData.NZPlaceId}/destination`)
+    .send(destinationData.destination)
   return toAdd.body
 }
 

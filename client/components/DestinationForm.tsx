@@ -22,7 +22,7 @@ function DestinationForm() {
   const addDestinationMutation = useMutation<
     Destination,
     Error,
-    { destination: DestinationInput; cityId: number }
+    { destination: DestinationInput; NZPlaceId: number }
   >(
     async ({ destination }) => {
       return api.addDestination(destination)
@@ -43,9 +43,9 @@ function DestinationForm() {
     formData.append('description', text.description)
     formData.append('image', fileData.image)
 
-    if (parsedCityId !== undefined) {
-      formData.append('cityId', String(parsedCityId))
-    }
+    // Append NZPlaceId as 'id'
+    formData.append('id', String(parsedCityId))
+
     const destinationData = {
       destination: {
         name: text.name,
@@ -53,7 +53,7 @@ function DestinationForm() {
         image: fileData.image,
         NZPlaceId: Number(parsedCityId),
       },
-      cityId: Number(parsedCityId),
+      NZPlaceId: Number(parsedCityId),
     }
 
     addDestinationMutation.mutate(destinationData)
@@ -79,7 +79,7 @@ function DestinationForm() {
 
   return (
     <>
-      <form onSubmit={handlesubmit} method="post" encType="multipart/form-data">
+      <form onSubmit={handlesubmit} method="POST" encType="multipart/form-data">
         <label htmlFor="name">Destination Name:</label>
         <input
           type="text"
@@ -97,6 +97,7 @@ function DestinationForm() {
         <input
           type="file"
           id="image"
+          name="image"
           accept="image/png, image/jpeg"
           onChange={handleImageChange}
         />

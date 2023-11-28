@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/Major Cities')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname)
+    cb(null, file.originalname + Date.now())
   },
 })
 
@@ -27,15 +27,18 @@ router.post(
   upload.single('image'),
   async (req, res): Promise<void> => {
     console.log('Request Params:', req.params)
-    const id = Number(req.params.id)
+    console.log('Full Request Object:', req.body)
+    const id = req.params.id ? Number(req.params.id) : 0
+
     try {
       console.log('ID:', id)
-      console.log('Request Body:', req.body.destination)
+      console.log('Request Body:', req.body)
 
       const result = {
-        ...req.body,
-        cityId: id,
+        name: req.body.name,
+        description: req.body.description,
         image: req.file?.filename,
+        NZPlaceId: id,
       }
 
       const response = await addDestinationForPlaces(result)
