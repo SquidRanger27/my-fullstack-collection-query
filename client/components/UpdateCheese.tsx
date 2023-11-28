@@ -1,7 +1,7 @@
 //UpdateCheese.tsx
 import { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { updateCheeseApi } from '../apiClient'
+import { updateCheeseApi } from '../api/api-cheeses'
 
 interface Props {
   cheeseId: number

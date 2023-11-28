@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { NewCheese } from '../../models/cheese'
-import { addCheeseApi } from '../apiClient'
+import { addCheeseApi } from '../api/api-cheeses'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 
 const emptyCheese: NewCheese = {

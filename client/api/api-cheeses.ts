@@ -1,6 +1,6 @@
 //apiClient.ts
 import request from 'superagent'
-import { Cheese } from '../models/cheese'
+import { Cheese } from '../../models/cheese'
 const cheesesUrl = 'api/v1/cheeses'
 
 // GET all cheeses

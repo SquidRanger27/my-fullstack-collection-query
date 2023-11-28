@@ -1,7 +1,7 @@
 //routes cheese.ts
 import express from 'express'
 const router = express.Router()
-import * as db from '../db/db.ts'
+import * as db from '../db/db-all-cheeses.ts'
 
 // GET /api/v1/cheeses
 

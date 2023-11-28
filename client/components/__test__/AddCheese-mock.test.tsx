@@ -3,9 +3,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import './__test__/setup.ts'
-import * as api from '../apiClient.ts'
-import AddCheese from './AddCheese.tsx'
+import './setup.ts'
+import * as api from '../../api/api-cheeses.ts'
+import AddCheese from '../AddCheese.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 //isolate out system under test (SUT)

@@ -1,6 +1,6 @@
 //db.ts
 import connection from './connection.ts'
-import { Cheese } from '../../models/cheese'
+import { Cheese } from '../../models/cheese.ts'
 
 // GET all cheeses
 

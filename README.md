@@ -1,8 +1,8 @@
 # Final Project Pitch - Havarti Your Say
 
-The goal of this project is to create a product for subscribers of The Cheese Wheel, a local cheese subscription business based in Wellington. Check out their website here: https://thecheesewheel.co.nz/.
+The goal of this project is to create a product for the subscribers of The Cheese Wheel (TCW), a local cheese subscription business based in Wellington. Check out their website here: https://thecheesewheel.co.nz/.
 
-Here we have the bones of a basic app with CRUD functionality. As it stands, a user is able to record cheeses and add a rating, update their cheeses, and delete them from their collection. But there's room for improvement! The team at the Cheese Wheel are keen to add the following functionality:
+Here we have the bones of a basic app with CRUD functionality. As it stands, a user is able to record cheeses, add a rating & comment, update their cheeses, and delete them from their collection. But there's room for improvement! The team at The Cheese Wheel are keen to develop a test product for their clients that has the following functionality:
 
 ### MVP
 
@@ -17,7 +17,7 @@ Search and Filtering
 
 Improve the UI
 
-- Designed the user interface using Figma for a more polished and professional look.
+- Design the user interface using Figma for a more polished and professional look.
 - Let users save their favourite cheeses and post comments/ratings
 
 ### Stretch
@@ -26,7 +26,7 @@ Improve the UI
 
 ### 0. Cloning and installation
 
-- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
+- Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
@@ -42,6 +42,13 @@ Improve the UI
   </details>
 
 ## Documentation
+
+### Roles
+
+Scrum Facilitator
+Git Keeper
+Vibes Watcher
+Product Owner
 
 ### KANBAN workflow:
 
@@ -67,23 +74,27 @@ Make sure that:
 
 ## Naming conventions
 
-| STACK LAYER | FUNCTION NAME   |
-| ----------- | --------------- |
-| Database    | getAllCheesesDb |
-| Database    | getOneCheeseDb  |
-| Database    | addCheeseDb     |
-| Database    | deleteCheeseDb  |
-| Database    | updateCheeseDb  |
-| API Client  | getCheesesApi   |
-| API Client  | getOneCheeseApi |
-| API Client  | addCheeseApi    |
-| API Client  | deleteCheeseApi |
-| API Client  | updateCheeseApi |
-| Component   | AddCheese       |
-| Component   | App             |
-| Component   | CheeseList      |
-| Component   | DeleteCheese    |
-| Component   | UpdateCheese    |
+| STACK LAYER | FILE NAME         | FUNCTION NAME   |
+| ----------- | ----------------- | --------------- |
+| Database    | db-all-cheeses.ts | getAllCheesesDb |
+| Database    | db-all-cheeses.ts | getOneCheeseDb  |
+| Database    | db-all-cheeses.ts | addCheeseDb     |
+| Database    | db-all-cheeses.ts | deleteCheeseDb  |
+| Database    | db-all-cheeses.ts | updateCheeseDb  |
+| Database    | db-fav-cheeses.ts | getFavCheeseDb  |
+| Database    | db-fav-cheeses.ts | addFavCheeseDb  |
+| API Client  | api-cheeses.ts    | getCheesesApi   |
+| API Client  | api-cheeses.ts    | getOneCheeseApi |
+| API Client  | api-cheeses.ts    | addCheeseApi    |
+| API Client  | api-cheeses.ts    | deleteCheeseApi |
+| API Client  | api-cheeses.ts    | updateCheeseApi |
+| Component   | components        | AddCheese       |
+| Component   | components        | App             |
+| Component   | components        | CheeseList      |
+| Component   | components        | DeleteCheese    |
+| Component   | components        | UpdateCheese    |
+| Component   | components        | SignIn          |
+| Component   | components        | SignOut         |
 
 ## Database
 
@@ -91,7 +102,7 @@ Make sure that:
 
 https://dbdiagram.io/d/Havarti-Your-Say-655bd4283be149578761a439
 
-### Cheeses (already set up)
+### Cheeses Table
 
 | COLUMN NAME  | DATA TYPE | PURPOSE                            |
 | ------------ | --------- | ---------------------------------- |
@@ -103,36 +114,45 @@ https://dbdiagram.io/d/Havarti-Your-Say-655bd4283be149578761a439
 | region       | string    | location of product origin         |
 | type_of_milk | string    | specifies the cheese's milk type   |
 
-### Users (not set up)
+### Users Table
 
-| COLUMN NAME | DATA TYPE | PURPOSE                         |
-| ----------- | --------- | ------------------------------- |
-| id          | string    | unique identifier for each user |
+| COLUMN NAME | DATA TYPE | PURPOSE                             |
+| ----------- | --------- | ----------------------------------- |
+| id          | string    | unique identifier for each user     |
+| email       | string    | used to log into user account       |
+| auth0_id    | string    | unique identifier supplied by auth0 |
+| given_name  | string    | user's first name                   |
+| family_name | string    | user's last name                    |
 
-### Favourite Cheeses (not set up)
+### Favourite Cheeses Table (many-to-many join)
 
-| COLUMN NAME | DATA TYPE | PURPOSE |
-| ----------- | --------- | ------- |
+| COLUMN NAME | DATA TYPE | PURPOSE                                |
+| ----------- | --------- | -------------------------------------- |
+| id          | integer   | unique identifier                      |
+| cheese_id   | integer   | identifies which cheese was saved      |
+| user_id     | integer   | identifies which user saved the cheese |
+
+Add rating and comment options?
 
 ## Server API endpoints
 
-| METHOD | ENDPOINT              | USAGE                     | RETURNS                            |
-| ------ | --------------------- | ------------------------- | ---------------------------------- |
-| GET    | `/api/v1/cheeses`     | Gets a list of cheeses    | An array of cheeses                |
-| GET    | `/api/v1/cheeses/:id` | Get an individual cheese  | An object of the individual cheese |
-| POST   | `/api/v1/cheeses`     | Add a new cheese          | The newly created cheese           |
-| DELETE | `/api/v1/cheeses/:id` | Delete an existing cheese | Nothing (status OK)                |
-| PATCH  | `/api/v1/cheeses/:id` | Update an existing cheese | The updated cheese                 |
+| METHOD | ENDPOINT              | USAGE                     | RETURNS                  |
+| ------ | --------------------- | ------------------------- | ------------------------ |
+| GET    | `/api/v1/cheeses`     | gets a list of cheeses    | an array of cheeses      |
+| GET    | `/api/v1/cheeses/:id` | gets an individual cheese | an object                |
+| POST   | `/api/v1/cheeses`     | add a new cheese          | the newly created cheese |
+| DELETE | `/api/v1/cheeses/:id` | delete an existing cheese | nothing (status OK)      |
+| PATCH  | `/api/v1/cheeses/:id` | update an existing cheese | the updated cheese       |
 
 ## Views Client Side
 
 | PAGE                 | MVP? | PURPOSE                                                                     |
 | -------------------- | ---- | --------------------------------------------------------------------------- |
-| Home                 | Yes  | Welcomes the user and allows them to register for an account and login      |
-| Register             | Yes  | View for the user to create an account                                      |
-| Login                | Yes  | View for the user to log into their account                                 |
-| Cheese list          | Yes  | Allows the user to view all the cheeses in the database and save favourites |
-| My favourite cheeses | Yes  | Allows the user to view their saved favourite cheeses                       |
+| Home                 | yes  | welcomes the user and allows them to register for an account and login      |
+| Register             | yes  | view for the user to create an account                                      |
+| Login                | yes  | view for the user to log into their account                                 |
+| Cheese list          | yes  | allows the user to view all the cheeses in the database and save favourites |
+| My favourite cheeses | yes  | allows the user to view their saved favourite cheeses                       |
 
 ## Authentication
 

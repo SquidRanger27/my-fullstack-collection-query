@@ -2,8 +2,8 @@
 
 // @vitest-environment node
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest'
-import connection from './connection'
-import { getAllCheeses, addCheeseToDb } from './db'
+import connection from '../connection'
+import { getAllCheesesDb, addCheeseDb } from '../db-all-cheeses'
 
 beforeAll(async () => {
   await connection.migrate.latest()
@@ -23,7 +23,7 @@ describe('getCheeses', () => {
     const expectedCheeses = await connection('cheese').select()
 
     //ACT
-    const actualCheeses = await getAllCheeses()
+    const actualCheeses = await getAllCheesesDb()
 
     //ASSERT
     expect(actualCheeses).toStrictEqual(expectedCheeses)
@@ -40,10 +40,10 @@ describe('addCheese', () => {
       rating: 1,
     }
     //ACT
-    await addCheeseToDb(cheeseToAdd)
+    await addCheeseDb(cheeseToAdd)
 
     //ASSERT
-    const cheesesInDb = await getAllCheeses()
+    const cheesesInDb = await getAllCheesesDb()
     const addedCheese = cheesesInDb.find(
       (cheese) => cheese.name === cheeseToAdd.name
     )

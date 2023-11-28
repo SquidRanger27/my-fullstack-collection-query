@@ -1,4 +1,4 @@
-import { getCheesesApi } from '../apiClient'
+import { getCheesesApi } from '../api/api-cheeses'
 import PacmanLoader from 'react-spinners/PacmanLoader'
 import { useQuery } from '@tanstack/react-query'
 import DeleteCheese from './DeleteCheese'

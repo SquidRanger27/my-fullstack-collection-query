@@ -1,6 +1,6 @@
 import * as Path from 'node:path'
 import express from 'express'
-import cheeseRoutes from './routes/cheese'
+import cheeseRoutes from './routes/routes-all-cheeses'
 
 const server = express()
 

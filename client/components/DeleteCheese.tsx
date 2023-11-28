@@ -1,5 +1,5 @@
 //DeleteCheese.tsx
-import { deleteCheeseApi } from '../apiClient'
+import { deleteCheeseApi } from '../api/api-cheeses'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 
 interface Props {
