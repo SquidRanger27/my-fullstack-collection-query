@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.1.0",
   "description": "Build a fullstack collection app",
+  "engines": {
+    "node": "18.x"
+  },
   "repository": "https://https://github.com/dev-academy-challenges/my-fullstack-collection-query",
   "main": "server/index.ts",
   "scripts": {
@@ -35,7 +38,6 @@
     "knex": "^2.5.1",
     "sqlite3": "^5.1.6",
     "superagent": "7.1.1"
-
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
@@ -46,6 +48,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
     "@types/express": "^4.17.14",
+    "@types/node": "^20.10.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/superagent": "^4.1.18",
@@ -72,10 +75,7 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "vitest": "^0.34.4",
-    "build": "run-s build:client build:server",
-    "build:client": "vite build",
-    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts"
+    "vitest": "^0.34.4"
   },
   "prettier": {
     "semi": false,
