@@ -99,14 +99,19 @@ function AddCourse() {
             value={formData.link}
             onChange={handleInputChange}
           />
-          <label htmlFor="complete">Have you finished this course?: </label>
-          <input
-            type="checkbox"
-            name="complete"
-            id="complete"
-            checked={formData.complete}
-            onChange={handleInputChange}
-          />
+          <fieldset id="fieldset">
+            <legend></legend>
+            <label htmlFor="complete">
+              Tick Box if you have finished this course:{' '}
+            </label>
+            <input
+              type="checkbox"
+              name="complete"
+              id="complete"
+              checked={formData.complete}
+              onChange={handleInputChange}
+            />
+          </fieldset>
           <button type="submit" className="form-btn">
             Submit!
           </button>

@@ -74,64 +74,67 @@ export default function UpdateCourse({ courseId }: Props) {
             onSubmit={handleEditSubmit}
             method="POST"
           >
-            <label htmlFor="name">Name:</label>
+            <label htmlFor={`update-name-${courseId}`}>Name:</label>
             <input
-              id="name"
+              id={`update-name-${courseId}`}
               type="text"
               name="name"
               value={updateCourseForm.name}
               onChange={handleInputChange}
             />
-            <label htmlFor="website">Website Name: </label>
+            <label htmlFor={`update-website-${courseId}`}>Website Name: </label>
             <input
-              id="website"
+              id={`update-website-${courseId}`}
               type="text"
               name="website"
               value={updateCourseForm.website}
               onChange={handleInputChange}
             />
-            <label htmlFor="host">Hosted By: </label>
+            <label htmlFor={`update-host-${courseId}`}>Hosted By: </label>
             <input
-              id="host"
+              id={`update-host-${courseId}`}
               type="text"
               name="host"
               value={updateCourseForm.host}
               onChange={handleInputChange}
             />
-            <label htmlFor="field">Course Field:</label>
+            <label htmlFor={`update-field-${courseId}`}>Course Field:</label>
             <input
-              id="field"
+              id={`update-field-${courseId}`}
               type="text"
               name="field"
               value={updateCourseForm.field}
               onChange={handleInputChange}
             />
-            <label htmlFor="cost">Cost: </label>
+            <label htmlFor={`update-cost-${courseId}`}>Cost: </label>
             <input
-              id="cost"
+              id={`update-cost-${courseId}`}
               type="number"
               name="cost"
               value={updateCourseForm.cost}
               onChange={handleInputChange}
             />
-            <label htmlFor="link">Link: </label>
+            <label htmlFor={`update-link-${courseId}`}>Link: </label>
             <input
-              id="link"
+              id={`update-link-${courseId}`}
               type="text"
               name="link"
               value={updateCourseForm.link}
               onChange={handleInputChange}
             />
-            <label htmlFor="complete">
-              Tick Box if you have finished this course:
-              <input
-                type="checkbox"
-                name="complete"
-                id="complete"
-                checked={updateCourseForm.complete}
-                onChange={handleInputChange}
-              />
-            </label>
+            <fieldset id="update-fieldset">
+              <legend></legend>
+              <label htmlFor={`update-complete-${courseId}`}>
+                Tick Box if you have finished this course:
+                <input
+                  type="checkbox"
+                  name="complete"
+                  id={`update-complete-${courseId}`}
+                  checked={updateCourseForm.complete}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </fieldset>
             <button type="submit" className="form-btn">
               Submit!
             </button>
