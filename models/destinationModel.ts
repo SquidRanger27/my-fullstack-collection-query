@@ -1,8 +1,8 @@
 export interface DestinationInput {
   name: string
   description: string
-  image: string | undefined
-  NZPlaceId: number
+  image: string | Blob | undefined
+  cityId: number
 }
 
 export interface Destination extends DestinationInput {

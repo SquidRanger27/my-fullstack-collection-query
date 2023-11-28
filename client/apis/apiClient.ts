@@ -22,17 +22,20 @@ export async function getDestinationForPlaces(
 }
 
 export async function addDestination(
-  destination: DestinationInput,
-  id: DestinationInput['NZPlaceId']
+  destination: DestinationInput
 ): Promise<Destination> {
   const toAdd = await request
-    .post(`/api/v1/nzplaces/${id}/destination`)
+    .post(`/api/v1/nzplaces/${destination.cityId}/destination`)
     .send({ destination })
   return toAdd.body
 }
 
-export async function deleteDestination(id: number) {
-  await request.delete(`/api/v1/nzplaces/destination/${id}`)
+export async function deleteDestination(id: number): Promise<void> {
+  const response = await request.delete(`/api/v1/nzplaces/destination/${id}`)
+
+  if (!response.ok) {
+    throw new Error(`Failed to delete destination with ID ${id}`)
+  }
 }
 
 export async function updateDestination(
@@ -41,6 +44,6 @@ export async function updateDestination(
 ): Promise<Destination> {
   const newDestination = await request
     .patch(`/api/v1/nzplaces/destination/${id}`)
-    .send({ updatedData })
+    .send(updatedData)
   return newDestination.body
 }

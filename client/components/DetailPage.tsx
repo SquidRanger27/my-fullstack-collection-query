@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useGetAllPlaces, useGetDestination } from '../apis/hooks/hooks'
 
 function DetailPage() {
-  const { id } = useParams<{ id?: string }>() // useParams returns an object, so use destructuring
-  const parsedId = id ? Number(id) : undefined // parse the id to a number
+  const { cityId } = useParams<{ cityId?: string }>() // useParams returns an object, so use destructuring
+  const parsedId = cityId ? Number(cityId) : undefined // parse the id to a number
 
   const {
     data: city,
@@ -35,7 +35,9 @@ function DetailPage() {
             {selectedCity.name}
           </h1>
           <div className="center">
-            <button className="add-button">Add a destination</button>
+            <Link to={`/destination/${parsedId}/add`}>
+              <button className="add-button">Add a destination</button>
+            </Link>
           </div>
           <div id="home-page-container">
             <div className="city-container">

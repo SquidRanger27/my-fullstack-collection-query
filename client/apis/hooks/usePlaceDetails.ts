@@ -1,3 +1,4 @@
+//this file is not being used
 import { useState, useEffect } from 'react'
 import { getPlaceById, getDestinationForPlaces } from '../apiClient'
 
@@ -23,6 +24,6 @@ export function usePlaceDetails(id) {
     }
     fetchData()
   }, [id])
-  console.log(destination)
+
   return { cityDetails, destination, loading, error }
 }
