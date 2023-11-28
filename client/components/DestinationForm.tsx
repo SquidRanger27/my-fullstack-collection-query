@@ -6,9 +6,9 @@ import { Destination, DestinationInput } from '../../models/destinationModel'
 
 function DestinationForm() {
   const { cityId } = useParams<{ cityId?: string }>()
-  console.log(cityId)
+
   const parsedCityId = cityId ? Number(cityId) : undefined
-  console.log(parsedCityId)
+
   const [text, setText] = useState({
     name: '',
     description: '',
