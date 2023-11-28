@@ -10,7 +10,7 @@ export async function getBooksApi(): Promise<Book[]> {
   } catch (error) {
     throw console.error('Error obtaining book.', error)
   }
-} 
+}
 
 export async function getSingleBookApi(id: number): Promise<Book> {
   try {
@@ -28,6 +28,10 @@ export async function getSingleBookApi(id: number): Promise<Book> {
 }
 
 export async function addBookApi(newBook: NewBook): Promise<Book> {
-  const response = await request.post('/api/v1/books').send({ newBook })
-  return response.body.book
+  const response = await request.post(bookURL).send(newBook)
+  return response.body
+}
+
+export async function deleteBookApi({ id }: NewBook): Promise<void> {
+  await request.delete(`api/v1/books/${id}`)
 }

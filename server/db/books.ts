@@ -22,8 +22,12 @@ export async function getBookByIdDb(
 }
 
 export async function addBookDb(
-  bookObject: NewBook,
+  newBook: NewBook,
   db = connection
 ): Promise<NewBook[]> {
-  return await db('books').insert(bookObject).returning('*')
+  return await db('books').insert(newBook).returning('*')
+}
+
+export async function deleteBookDb(id: number, db = connection): Promise<void> {
+  await db('books').where('id', id).delete()
 }

@@ -24,6 +24,7 @@ export default function SingleBook() {
   if (!book || isLoading) {
     return <p>Collecting book from the shelf...</p>
   }
+  
 
   return (
     <>
@@ -41,6 +42,9 @@ export default function SingleBook() {
         <p>
           <strong>Volume:</strong> {book.entryNumber}
         </p>
+        <span><p>
+        <button onClick={handleDeleteClick}>Delete</button>
+      </p></span>
       </div>
     </>
   )
