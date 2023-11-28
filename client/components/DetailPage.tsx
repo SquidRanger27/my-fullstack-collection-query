@@ -1,26 +1,39 @@
 import { useParams } from 'react-router-dom'
-import { usePlaceDetails } from '../apis/hooks/usePlaceDetails'
+import { useGetAllPlaces, useGetDestination } from '../apis/hooks/hooks'
 
 function DetailPage() {
   const { id } = useParams<{ id?: string }>() // useParams returns an object, so use destructuring
   const parsedId = id ? Number(id) : undefined // parse the id to a number
 
-  const { cityDetails, destination, loading, error } = usePlaceDetails(parsedId)
-  console.log(destination)
+  const {
+    data: city,
+    isLoading: cityLoading,
+    isError: cityError,
+  } = useGetAllPlaces()
 
-  if (loading) {
+  const {
+    data: destination,
+    isLoading: destinationLoading,
+    isError: destinationError,
+  } = useGetDestination(parsedId as number)
+
+  if (cityLoading || destinationLoading) {
     return <p>Loading...</p>
   }
 
-  if (error) {
+  if (cityError || destinationError) {
     return <p>Error loading city details</p>
   }
 
+  const selectedCity = city?.find((c) => c.id === parsedId)
+
   return (
     <>
-      {cityDetails && destination && (
+      {selectedCity && destination && (
         <>
-          <h1 id="detail-page-title">{cityDetails.name}</h1>
+          <h1 key={selectedCity.id} id="detail-page-title">
+            {selectedCity.name}
+          </h1>
           <div className="center">
             <button className="add-button">Add a destination</button>
           </div>
