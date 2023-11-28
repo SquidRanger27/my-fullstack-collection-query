@@ -35,6 +35,7 @@
     "knex": "^2.5.1",
     "sqlite3": "^5.1.6",
     "superagent": "7.1.1"
+
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
@@ -71,7 +72,10 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.4",
+    "build": "run-s build:client build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts"
   },
   "prettier": {
     "semi": false,

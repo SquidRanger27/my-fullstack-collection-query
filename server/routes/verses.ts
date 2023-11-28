@@ -1,5 +1,16 @@
-import { Router } from 'express'
+import express, { Router } from 'express'
 import * as db from '../db/connection.ts'
+import * as Path from 'node:path'
+import server from '../server.ts'
+
+//Set up our express app to serve static assets(Deployment Requirement)
+if (process.env.NODE_ENV === 'production') {
+  server.use(express.static(Path.resolve('public')))
+  server.use('/assets', express.static(Path.resolve('./dist/assets')))
+  server.get('*', (req, res) => {
+    res.sendFile(Path.resolve('./dist/index.html'))
+  })
+}
 
 const router = Router()
 // GET /api/v1/verses
@@ -18,7 +29,7 @@ router.get('/:id', async (req, res) => {
   const verseId = parseInt(req.params.id)
   try {
     const verseById = await db.getVerseById(verseId)
-    
+
     res.json(verseById)
   } catch (err) {
     res.sendStatus(500)
