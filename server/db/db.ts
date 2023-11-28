@@ -20,18 +20,18 @@ export async function deleteComic(id: number) {
   await connection('comics').where({ id }).delete()
 }
 
-export async function updateComic(
-  id: number,
-  updates: Partial<Comics[]>
-): Promise<Comics | undefined> {
-  try {
-    const [updatedComic] = await connection('comics')
-      .where({ id })
-      .update(updates, [id, name, issue_number])
-      .returning([id, name, issue_number])
-    return updatedComic
-  } catch (err) {
-    console.error('Could not update comic', err)
-    return undefined
-  }
-}
+// export async function updateComic(
+//   id: number,
+//   updates: Partial<Comics[]>
+// ): Promise<Comics | undefined> {
+//   try {
+//     const [updatedComic] = await connection('comics')
+//       .where({ id })
+//       .update(updates, [id, name, issue_number])
+//       .returning([id, name, issue_number])
+//     return updatedComic
+//   } catch (err) {
+//     console.error('Could not update comic', err)
+//     return undefined
+//   }
+// }
