@@ -12,5 +12,16 @@ body {
 } */
 
 button {
-  display: contents;
+margin-left: 5px;
+}
+
+.singleVerseDiv {
+border: thick dashed darksalmon ;
+display: flex;
+justify-content: space-between;
+}
+
+.verseDiv {
+border: thick dashed darksalmon ;
+padding: 10px;
 }

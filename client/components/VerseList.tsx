@@ -23,12 +23,19 @@ export default function VerseList() {
     <>
       <div>
         <h2>Bible Verses to look back to:</h2>
+        <div className='verseDiv'>
         {verseList.map((verse) => (
-          <Link to={`/verses/${verse.id}`} key={verse.id}>
-            {verse.verse}
+          <>
+            <div className="singleVerseDiv">
+              <Link to={`/verses/${verse.id}`} key={verse.id}>
+                {verse.verse}
+              </Link>
+              <button type="button">Delete</button>
+            </div>
             <br />
-          </Link>
+          </>
         ))}
+        </div>
       </div>
     </>
   )
