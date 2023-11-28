@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   let newMovie = {"name": req.body.name, "description": req.body.description, "director": req.body.director}
   newMovie = Object.assign( {"lead_actor" : req.body.leadActor}, newMovie)
-  console.log(newMovie)
+  //console.log(newMovie)
   const posts = await db.addAMovie(newMovie)
   res.json(posts)
 })
@@ -22,9 +22,19 @@ router.get('/:id', async (req, res) => {
   res.json(posts)
 })
 
+
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  let newMovie = {"name": req.body.name, "description": req.body.description, "director": req.body.director}
+  newMovie = Object.assign( {"lead_actor" : req.body.leadActor}, newMovie)
+  const posts = await db.updateAMovie(newMovie, id)
+  res.json(posts)
+})
+
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
   const posts = await db.deleteAMovie(id)
   res.json(posts)
 })
+
 export default router

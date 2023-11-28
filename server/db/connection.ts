@@ -1,6 +1,6 @@
 import knexFile from './knexfile.js'
 import knex from 'knex'
-import { movies, newMovie } from '../../models/movie.js' 
+import { movies, newMovie , movieId} from '../../models/movie.js' 
 
 type Environment = 'production' | 'test' | 'development'
 
@@ -45,6 +45,17 @@ export async function addAMovie(movie : Promise<newMovie>) {
     // TODO: use knex to insert movie data from to database
     try{
       return await connection('movies').delete().where('id', id).returning('*')
+    } catch (err){
+      console.log(err.message)
+      return err.message
+    }
+  }
+
+  
+  export async function updateAMovie(movie : Promise<movies>, id : movieId) : Promise<movies> {
+    // TODO: use knex to insert movie data from to database
+    try{
+      return await connection('movies').update(movie).where('id', id).returning('*')
     } catch (err){
       console.log(err.message)
       return err.message

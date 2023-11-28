@@ -17,7 +17,7 @@ export default function Movies() {
   if (!movies || isLoading) {
     return <p>Fetching Movies from the 90's...</p>
   }
-  console.log(movies[0].id)
+  //console.log(movies[0].id)
   return (
     <>
       <div>
@@ -25,10 +25,13 @@ export default function Movies() {
         <ul id="">
           {movies.map((movie) => {
             return (
-              <li key={movie.id}><Link to={`/${movie.id}`}>Name: {movie.name}, Director {movie.director}</Link> <Delete movieId={movie.id}/>
+              <li key={movie.id}>
+                <Link to={`/${movie.id}`}>{movie.name}, Director {movie.director}</Link>  
+                  |  
+                <Delete movieId={movie.id}/>
               </li>
             )
-          })}
+          })} 
         </ul>
       </div>
     </>

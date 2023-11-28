@@ -31,8 +31,15 @@ export async function getMoviesApi(): Promise<movies[]> {
   }
 
   export async function deleteMovieApi(id : movieId) {
-    console.log(id)
+    //console.log(id)
     const widgetData = await request.delete(`/api/v1/movies/${id}`)
+  
+    return widgetData.body
+  }
+
+  export async function updateMovieApi(movie : movies, id : movieId) {
+    //console.log(id)
+    const widgetData = await request.patch(`/api/v1/movies/${id}`)
   
     return widgetData.body
   }
