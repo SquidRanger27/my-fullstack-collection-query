@@ -1,3 +1,4 @@
+import { Verse } from '../../models/verse.js'
 import knexfile from './knexfile.js'
 import knex from 'knex'
 
@@ -8,7 +9,7 @@ import knex from 'knex'
 
 const db = knex(knexfile.development)
 
-export async function getAllVerses() {
+export async function getAllVerses(): Promise<Verse[]> {
   return db('verses').select('*')
 }
 

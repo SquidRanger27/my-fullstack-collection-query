@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { type Verse } from '../../models/verse'
+import { Verse } from '../../models/verse'
 
 const rootUrl = '/api/v1'
 
@@ -8,8 +8,8 @@ export async function getAllVerses(): Promise<Verse[]> {
   return response.body
 }
 
-export function addVerse(newVerse: Verse): Promise<void[]> {
-  return request
+export async function addVerse(newVerse: Verse): Promise<void[]> {
+  return await request
     .post(rootUrl + '/verses/add')
     .send(newVerse)
     .then((res) => {

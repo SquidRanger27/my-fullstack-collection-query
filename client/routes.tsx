@@ -3,10 +3,9 @@ import App from './components/App'
 import SingleVerse from './components/SingleVerse'
 import VerseList from './components/VerseList'
 
-
 export const routes = createRoutesFromElements(
   <Route element={<App />}>
     <Route index element={<VerseList />} />
-    <Route path="/verse/:id" element={<SingleVerse />} />
+    <Route path="/verses/:id" element={<SingleVerse />} />
   </Route>
 )

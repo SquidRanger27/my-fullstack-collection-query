@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// DELETE /api/v1/verses/:id
+// DELETE /api/v1/verses/
 router.delete('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   if (isNaN(id)) {
