@@ -2,12 +2,12 @@ import { Verse } from '../../models/verse.js'
 import knexfile from './knexfile.js'
 import knex from 'knex'
 
-// type Environment = 'production' | 'test' | 'development'
+type Environment = 'production' | 'test' | 'development'
 
-// const environment = (process.env.NODE_ENV || 'development') as Environment
-// const config = knexFile[environment]
+const environment = (process.env.NODE_ENV || 'development') as Environment
+const config = knexfile[environment]
 
-const db = knex(knexfile.development)
+const db = knex(config)
 
 export async function getAllVerses(): Promise<Verse[]> {
   return db('verses').select('*')

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as db from '../db/connection'
+import * as db from '../db/connection.ts'
 
 const router = Router()
 // GET /api/v1/verses
