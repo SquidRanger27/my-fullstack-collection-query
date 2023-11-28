@@ -35,25 +35,26 @@ function AddTodo(){
     console.log(selectedOption)
   }
 return (
+ 
   
   <form className = "addTodoForm" action="/" method = "post">
-    <table className = "tableForm">
-      <tr>
-        <td><label htmlFor="description">Description:</label></td>
-        <td> <input type="text" id = "description" name = "description" value = {text.description} onChange={handleSelectChange}/></td>
-      </tr>
+  <h1>Add To Do</h1>
+      
+        <label htmlFor="description">Description:
+         <input type="text" id = "description" name = "description" value = {text.description} onChange={handleSelectChange}/>
+         </label>
 
-      <tr>
-        <td> <label htmlFor="type">Type:</label></td>
-        <td>
+     
+         <label htmlFor="type">Type:
+        
           <select id="type" value = {selectedOption} onChange = {handleSelectChange}>
             <option value="">Select Type</option>
             <option value="mvp">MVP</option>
             <option value="stretch">Stretch</option>
           </select>
-        </td>
-      </tr>
-    </table>
+          </label>
+      
+   
     
    
    
@@ -64,6 +65,7 @@ return (
       navigate('/')
     }}>Cancel</button>
   </form>
+  
 )
 }
 export default AddTodo

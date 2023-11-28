@@ -49,7 +49,8 @@ td{
   height:50vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  
  
 }
 .tableForm{
@@ -57,4 +58,7 @@ td{
 }
 .tableForm * td{
   border:0px;
+}
+label{
+  margin-bottom:50px;
 }
