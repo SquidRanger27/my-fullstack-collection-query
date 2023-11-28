@@ -56,19 +56,20 @@ export function NewTaskForm({ onAddTask }, props: NewTask) {
   }
 
   return (
-    <form action="/" onSubmit={handleSubmit} method="post">
+    <form action="/" onSubmit={handleSubmit} method="post" >
       <label htmlFor="title">Title: </label>
       <input
         type="text"
-        name="title"
+        id="title"
         value={taskState.title}
         onChange={handleTitleChange}
         required={true}
+        placeholder="Your task title"
       />
       <label htmlFor="details">Task: </label>
       <input
         type="text"
-        name="details"
+        id="details"
         value={taskState.details}
         onChange={handleDetailsChange}
         required={true}
@@ -76,7 +77,7 @@ export function NewTaskForm({ onAddTask }, props: NewTask) {
       <label htmlFor="colour">Colour: </label>
       <input
         type="text"
-        name="colour"
+        id="colour"
         value={taskState.colour}
         onChange={handleColourChange}
       />
