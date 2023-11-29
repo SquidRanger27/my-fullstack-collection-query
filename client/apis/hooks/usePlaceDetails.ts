@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { getPlaceById, getDestinationForPlaces } from '../apiClient'
 
-export function usePlaceDetails(id) {
+export function usePlaceDetails(id: number) {
   const [cityDetails, setCityDetails] = useState(null)
   const [destination, setDestination] = useState(null)
   const [loading, setLoading] = useState(true)

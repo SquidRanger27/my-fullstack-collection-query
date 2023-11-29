@@ -25,10 +25,17 @@ export async function addDestination(destinationData: {
   destination: DestinationInput
   NZPlaceId: number
 }): Promise<Destination> {
-  const toAdd = await request
+  const { image, ...data } = destinationData.destination
+
+  const res = await request
     .post(`/api/v1/nzplaces/${destinationData.NZPlaceId}/destination`)
-    .send(destinationData.destination)
-  return toAdd.body
+    .field('name', data.name)
+    .field('description', data.description)
+    .field('NZPlaceId', data.NZPlaceId)
+    /* @ts-expect-error superagent types use the wrong Blob type */
+    .attach('image', image)
+
+  return res.body
 }
 
 export async function deleteDestination(id: number): Promise<void> {

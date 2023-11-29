@@ -19,13 +19,9 @@ function DestinationForm() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
 
-  const addDestinationMutation = useMutation<
-    Destination,
-    Error,
-    { destination: DestinationInput; NZPlaceId: number }
-  >(
-    async ({ destination }) => {
-      return api.addDestination(destination)
+  const addDestinationMutation = useMutation(
+    async (data: { destination: DestinationInput; NZPlaceId: number }) => {
+      return api.addDestination(data)
     },
     {
       onSuccess: async () => {
@@ -37,14 +33,6 @@ function DestinationForm() {
 
   const handlesubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
-
-    const formData = new FormData()
-    formData.append('name', text.name)
-    formData.append('description', text.description)
-    formData.append('image', fileData.image)
-
-    // Append NZPlaceId as 'id'
-    formData.append('id', String(parsedCityId))
 
     const destinationData = {
       destination: {

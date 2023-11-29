@@ -43,11 +43,7 @@ function DetailPage() {
             <div className="city-container">
               {destination.map((d) => (
                 <div key={d.id} className="city-card">
-                  <img
-                    src={`/${d.image}`}
-                    alt={d.name}
-                    className="city-image"
-                  />
+                  <img src={`${d.image}`} alt={d.name} className="city-image" />
                   <div className="city-details">
                     <h3 className="city-name link-text">{d.name}</h3>
                     <p className="link-text">{d.description}</p>
