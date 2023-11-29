@@ -16,3 +16,4 @@ coverage
 # Dotenv env settings
 .env
 
+uploads

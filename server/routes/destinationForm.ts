@@ -1,4 +1,5 @@
 import express from 'express'
+import * as Path from 'node:path'
 import {
   addDestinationForPlaces,
   deleteDestinationForPlace,
@@ -10,9 +11,14 @@ const router = express.Router()
 router.use(express.urlencoded({ extended: true }))
 router.use(express.json())
 
+const UPLOADS_PATH =
+  process.env.NODE_ENV === 'production'
+    ? '/app/storage/uploads'
+    : Path.resolve('uploads')
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/Major Cities')
+    cb(null, UPLOADS_PATH)
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname + Date.now())
@@ -37,7 +43,7 @@ router.post(
       const result = {
         name: req.body.name,
         description: req.body.description,
-        image: req.file?.filename,
+        image: `/api/v1/uploads/${req.file?.filename}`,
         NZPlaceId: id,
       }
 
