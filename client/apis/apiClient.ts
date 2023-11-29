@@ -14,10 +14,6 @@ export async function getArtById(id:number){
   return artDetails.body
 }
 
-export async function postNewArt(){
-  console.log('postNewArt has run')
-  await request.get('/api/v1/artworks')
-}
 
 export async function uploadArt(formData){
   console.log('uploadArt has run')
