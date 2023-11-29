@@ -22,18 +22,12 @@ export async function getDestinationForPlaces(
 }
 
 export async function addDestination(destinationData: {
-  destination: DestinationInput
+  destination: FormData
   NZPlaceId: number
 }): Promise<Destination> {
-  const { image, ...data } = destinationData.destination
-
   const res = await request
     .post(`/api/v1/nzplaces/${destinationData.NZPlaceId}/destination`)
-    .field('name', data.name)
-    .field('description', data.description)
-    .field('NZPlaceId', data.NZPlaceId)
-    /* @ts-expect-error superagent types use the wrong Blob type */
-    .attach('image', image)
+    .send(destinationData.destination) // Directly send the FormData
 
   return res.body
 }

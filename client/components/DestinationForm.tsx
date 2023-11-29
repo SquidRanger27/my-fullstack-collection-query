@@ -14,7 +14,9 @@ function DestinationForm() {
     description: '',
   })
 
-  const [fileData, setFileData] = useState({ image: '' as File | string })
+  const [fileData, setFileData] = useState<{ image: string | File | FormData }>(
+    { image: '' }
+  )
 
   const queryClient = useQueryClient()
   const navigate = useNavigate()
@@ -31,16 +33,27 @@ function DestinationForm() {
     }
   )
 
+  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    const formData = new FormData()
+    formData.append('image', file || '')
+
+    setFileData((prevFileData) => ({
+      ...prevFileData,
+      image: formData,
+    }))
+  }
+
   const handlesubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
 
+    const formData = new FormData()
+    formData.append('name', text.name)
+    formData.append('description', text.description)
+    formData.append('image', fileData.image)
+
     const destinationData = {
-      destination: {
-        name: text.name,
-        description: text.description,
-        image: fileData.image,
-        NZPlaceId: Number(parsedCityId),
-      },
+      destination: formData,
       NZPlaceId: Number(parsedCityId),
     }
 
@@ -54,14 +67,6 @@ function DestinationForm() {
     setText((prevText) => ({
       ...prevText,
       [id]: value,
-    }))
-  }
-
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    setFileData((prevFileData) => ({
-      ...prevFileData,
-      image: file || '',
     }))
   }
 

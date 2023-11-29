@@ -8,7 +8,7 @@ body {
 /* HomePage.css */
 
 .banner-container {
-  background-image: url('../../client/public/Major Cities/banner.png'); /* Replace with the path to your banner image */
+  background-image: url('banner.png'); /* Replace with the path to your banner image */
   background-size: 1200px 400px;
   background-repeat: no-repeat;
   background-position: center;
