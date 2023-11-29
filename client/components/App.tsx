@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import OneImage from './oneImage'
+import { deleteArt } from '../apis/apiClient'
 
 export default function App() {
   const [editing, isEditing] = useState(false)
@@ -39,6 +40,7 @@ export default function App() {
   function handleClick() {
     isEditing(!editing)
   }
+
   function handleDeleteClick(id) {
     deleteArtMutation.mutate(id)
   }

@@ -32,3 +32,8 @@ export async function editDetailsPatch(newDetailsAndId:Art.NewDetailsAndId){
   console.log("this is a thing")
   return response
 }
+
+export async function deleteArt(id){
+  const response = await request
+  .delete(`/api/v1/artworks/${id}/delete`)
+}
