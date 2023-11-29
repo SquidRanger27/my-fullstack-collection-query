@@ -30,7 +30,7 @@ export default function Detail (){
 
  
   function handleEditClick(event: React.MouseEvent<HTMLElement>){
-     //pass this as props to child in the mutation (false)
+ 
     setEditing(!editing)
   }
   
@@ -39,7 +39,7 @@ export default function Detail (){
     <div className="fill">
       <div className="vflex detail">
         <div className={editing? 'visible vflex center': 'hidden vflex center'}>
-        <Edit />
+        <Edit setEditing={setEditing}/>
         </div>
         <div className = {editing?'hidden vflex center':'visible vflex center detailText'} >
           <h2>{artDetail.name}</h2>

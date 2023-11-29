@@ -1,11 +1,12 @@
 import {useQuery} from '@tanstack/react-query'
 import { getAllArtHeadings } from "../apis/apiClient"
+import { useState } from 'react'
 import {Link} from 'react-router-dom'
 import AddForm from './AddForm'
 import OneImage from './oneImage'
 
 export default function App (){
-  
+  const [editing, isEditing] = useState(false)
   const { data: art, isLoading, isError, error } = useQuery(['art'], getAllArtHeadings, {
   })
   if (isError){
@@ -16,6 +17,9 @@ export default function App (){
     return <p>drafting artworks...</p>
   }
 
+  function handleClick (){
+    isEditing(!editing)
+  }
 
   return(
     <>
@@ -32,8 +36,10 @@ export default function App (){
       )
       })}
     </div>
+    <button onClick={handleClick} className= {!editing? "visible":"hidden"}>Add New Image</button>
+    <div className= {editing? "visible":"hidden"}>
       <OneImage />
-      {/* <AddForm /> */}
+    </div>
     </>
   )
 }
