@@ -30,9 +30,11 @@ export async function addBookApi(book: Book[]) {
   }
 }
 
-export async function deleteBookApi(id: Number){
+export async function deleteBookApi(id: number){
   try{
-  const response = await request.delete(`${rootUrl}/books/:id/delete`).send(id)
+    console.log(id)
+  const response = await request.delete(`${rootUrl}/books/${id}/delete`)
+  console.log(response)
   return response.body
   } catch (err){
     console.log(err as Error)

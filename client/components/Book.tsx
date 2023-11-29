@@ -1,17 +1,25 @@
 import { deleteBookApi, getBookByIdApi } from '../apis/api'
-import { useQuery, useMutation } from '@tanstack/react-query'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { BookData } from '../../models/books'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 export function Book(){
   const { id } = useParams()
 
+  const queryClient = useQueryClient()
+
   const deleteBookMutation  = useMutation({
     mutationFn: deleteBookApi,
     onSuccess: () => {
-      
+      queryClient.invalidateQueries({queryKey:['books']})
     },
   })
+
+  function handleDelete(){
+    console.log(id)
+    deleteBookMutation.mutate(parseInt(id))
+  }
+
 
   const {
     data: book,
@@ -34,10 +42,7 @@ export function Book(){
 
   
   
-  function handleDelete(){
-    deleteBookMutation.mutate(parseInt(id))
-  }
-
+ 
   return(
     <>
       <div className="bookDetails">
@@ -45,7 +50,7 @@ export function Book(){
         <p>{book.author}</p>
         <p>{book.genre}</p>
       </div>
-      <button submit={handleDelete}>Delete this Book</button>
+      <button onClick={handleDelete}>Delete this Book</button>
     </>
   )
 }

@@ -53,6 +53,7 @@ router.post('/add', async (req: express.Request, res: express.Response) => {
 
 router.delete('/:id/delete', async (req: express.Request, res: express.Response) =>{
   const id = parseInt(req.params.id)
+  console.log(req.body)
   if (isNaN(id)) {
     res.status(400).send('Bad Request: ID must be a number')
     return

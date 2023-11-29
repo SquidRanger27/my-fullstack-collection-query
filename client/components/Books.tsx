@@ -20,13 +20,11 @@ export function Books() {
       <div className="bookListContainer">
         {books?.map((books: BookData) => {
           return (
-            <>
               <li key={books.id}>
                 <button className="linkButton">
                   <Link to={`/books/${books.id}`}>{books.title}</Link>
                 </button>
                </li>
-            </>
           )
         })}
       </div>
