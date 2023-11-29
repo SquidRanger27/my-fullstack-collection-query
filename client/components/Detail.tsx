@@ -14,7 +14,6 @@ export default function Detail (){
   const [editing, setEditing] = useState(false)
   
 
-
   const {data: artDetail, isLoading, isError} = useQuery({queryKey:['art',id], queryFn: ()=>getArtById(id),})
   if (isError){
     return <p>hmm, not sure what happened</p>
