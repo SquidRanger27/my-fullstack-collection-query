@@ -28,7 +28,10 @@ export default function Detail (){
     navigate('/')
   }
 
+
+ 
   function handleEditClick(event: React.MouseEvent<HTMLElement>){
+     //pass this as props to child in the mutation (false)
     setEditing(!editing)
   }
   
