@@ -5,8 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Destination, DestinationInput } from '../../models/destinationModel'
 
 function DestinationForm() {
+  const queryClient = useQueryClient()
+  const navigate = useNavigate()
   const { cityId } = useParams<{ cityId?: string }>()
-
   const parsedCityId = cityId ? Number(cityId) : undefined
 
   const [text, setText] = useState({
@@ -14,15 +15,12 @@ function DestinationForm() {
     description: '',
   })
 
-  const [fileData, setFileData] = useState<{ image: string | File | FormData }>(
-    { image: '' }
-  )
-
-  const queryClient = useQueryClient()
-  const navigate = useNavigate()
+  // const [fileData, setFileData] = useState<{ image: string | File | FormData }>(
+  //   { image: '' }
+  // )
 
   const addDestinationMutation = useMutation(
-    async (data: { destination: DestinationInput; NZPlaceId: number }) => {
+    async (data: { destination: FormData; NZPlaceId: number }) => {
       return api.addDestination(data)
     },
     {
@@ -33,30 +31,30 @@ function DestinationForm() {
     }
   )
 
+  const [fileData, setFileData] = useState<File | null>(null)
+
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
-    const formData = new FormData()
-    formData.append('image', file || '')
-
-    setFileData((prevFileData) => ({
-      ...prevFileData,
-      image: formData,
-    }))
+    setFileData(file)
   }
 
-  const handlesubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
 
     const formData = new FormData()
     formData.append('name', text.name)
     formData.append('description', text.description)
-    formData.append('image', fileData.image)
+    if (fileData) {
+      formData.append('image', fileData)
+    }
+    formData.append('NZPlaceId', String(parsedCityId))
 
     const destinationData = {
       destination: formData,
       NZPlaceId: Number(parsedCityId),
     }
 
+    console.log(destinationData)
     addDestinationMutation.mutate(destinationData)
   }
 
@@ -72,7 +70,7 @@ function DestinationForm() {
 
   return (
     <>
-      <form onSubmit={handlesubmit} method="POST" encType="multipart/form-data">
+      <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
         <label htmlFor="name">Destination Name:</label>
         <input
           type="text"
@@ -86,7 +84,7 @@ function DestinationForm() {
           value={text.description}
           onChange={handleChange}
         />
-        <label htmlFor="image">Upload Image:</label>
+        <label htmlFor="file">Upload Image:</label>
         <input
           type="file"
           id="image"
