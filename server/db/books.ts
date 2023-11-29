@@ -17,3 +17,12 @@ export async function insertBookDb(newBook: Promise<BookData[]>){
     'genre'
   ])
 }
+
+export async function deleteBookDb(id: number): Promise<BookData[]>{
+  return await connection('Books').delete(id).where({id}).returning([
+    'id',
+    'title',
+    'author',
+    'genre'
+  ])
+}

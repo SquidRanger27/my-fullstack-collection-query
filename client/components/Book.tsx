@@ -1,10 +1,18 @@
-import { getBookByIdApi } from '../apis/api'
-import { useQuery } from '@tanstack/react-query'
+import { deleteBookApi, getBookByIdApi } from '../apis/api'
+import { useQuery, useMutation } from '@tanstack/react-query'
 import { BookData } from '../../models/books'
 import { useParams, Link } from 'react-router-dom'
 
 export function Book(){
   const { id } = useParams()
+
+  const deleteBookMutation  = useMutation({
+    mutationFn: deleteBookApi,
+    onSuccess: () => {
+      
+    },
+  })
+
   const {
     data: book,
     isError,
@@ -24,6 +32,12 @@ export function Book(){
     return 'error cannot find'
   }
 
+  
+  
+  function handleDelete(){
+    deleteBookMutation.mutate(parseInt(id))
+  }
+
   return(
     <>
       <div className="bookDetails">
@@ -31,6 +45,7 @@ export function Book(){
         <p>{book.author}</p>
         <p>{book.genre}</p>
       </div>
+      <button submit={handleDelete}>Delete this Book</button>
     </>
   )
 }

@@ -49,4 +49,21 @@ router.post('/add', async (req: express.Request, res: express.Response) => {
   }
 })
 
+//DELETE /api/v1/books/:id/delete
+
+router.delete('/:id/delete', async (req: express.Request, res: express.Response) =>{
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+
+  try {
+    await db.deleteBookDb(id)
+    res.sendStatus(200)
+  } catch (error) {
+    res.status(500).send('Failed to reach DB')
+  }
+})
+
 export default router

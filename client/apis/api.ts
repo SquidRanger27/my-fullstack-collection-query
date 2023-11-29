@@ -22,6 +22,20 @@ export async function getBookByIdApi(id: number) {
 }
 
 export async function addBookApi(book: Book[]) {
+  try{
   const response = await request.post(`${rootUrl}/books/add`).send(book)
   return response.body
+  } catch (err) {
+    console.log(err as Error)
+  }
+}
+
+export async function deleteBookApi(id: Number){
+  try{
+  const response = await request.delete(`${rootUrl}/books/:id/delete`).send(id)
+  return response.body
+  } catch (err){
+    console.log(err as Error)
+  }
+
 }
