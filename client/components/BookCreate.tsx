@@ -39,7 +39,7 @@ export function BookCreate() {
     <>
       <div className="create">
         <form style={{ display: 'flex', flexDirection: 'column' }} method="post" onSubmit={handleSubmit} aria-label="Add Book Form">
-          <label htmlFor="bookName">Book Title:</label>
+          <label htmlFor="title">Book Title:</label>
           <input 
             type="text"
             value={details.title}
@@ -47,7 +47,7 @@ export function BookCreate() {
             onChange={handleChange}
             required
           />
-          <label htmlFor="bookAuthor">Book Author:</label>
+          <label htmlFor="author">Book Author:</label>
           <input 
             type="text"
             value={details.author}
@@ -55,7 +55,7 @@ export function BookCreate() {
             onChange={handleChange}
             required
           />
-          <label htmlFor="bookGenre">Book Genre:</label>
+          <label htmlFor="genre">Book Genre:</label>
           <input 
             type="text"
             value={details.genre}
