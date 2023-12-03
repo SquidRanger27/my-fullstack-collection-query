@@ -3,7 +3,6 @@ import db from './connection.ts'
 
 
 export async function getAllGames():Promise<GameData[]>{
-    console.log('hi')
     return db('games').select('*')
 }
 
@@ -22,6 +21,6 @@ export async function getAllGames():Promise<GameData[]>{
 //     return db('games').where({ title }).update({ title }).returning(['title', 'rating'])
 //   }
   
-//   export async function deleteGame(title: string): Promise<void> {
-//     await db('games').where({ title }).delete()
-//   }
+  export async function deleteGame(title: string) {
+    await db('games').delete().where('title', title)
+  }

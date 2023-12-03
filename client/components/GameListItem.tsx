@@ -3,10 +3,11 @@ import { useMutation } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import { GameList } from './GameList'
 import { GameData } from '../../models/games'
+import { deleteGame } from '../apis/games'
 
 interface Props {
   title: string
-  releaseDate: Date
+  releaseDate: any
   hoursPlayed: number
   rating: number
 
@@ -19,12 +20,12 @@ export default function GameListItem({ title, releaseDate, hoursPlayed, rating }
 
   const queryClient = useQueryClient()
 
-  // const deleteGameMutation = useMutation({
-  //   mutationFn: deleteGame,
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({ queryKey: ['games'] })
-  //   },
-  // })
+  const deleteGameMutation = useMutation({
+    mutationFn: deleteGame,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['games'] })
+    },
+  })
 
   // const renameGameMutation = useMutation({
   //   mutationFn: renameGame,
@@ -33,10 +34,10 @@ export default function GameListItem({ title, releaseDate, hoursPlayed, rating }
   //   },
   // })
 
-  // const handleDeleteClick = () => {
-  //   deleteGameMutation.mutate( title )
-  //   console.log('deleting', title)
-  // }
+  const handleDeleteClick = () => {
+    deleteGameMutation.mutate( 'title')
+    console.log('deleting', title)
+  }
 
   // const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault()
@@ -74,10 +75,10 @@ export default function GameListItem({ title, releaseDate, hoursPlayed, rating }
         </form>
       ) : (
         <p>
-          {title} - {hoursPlayed} -{' '}
+          {title} - {hoursPlayed} hours played <br></br>released on {releaseDate} My rating: {rating} {" "}
           <span>
             <button onClick={handleStartEditingClick}>Rename</button>
-            <button>Delete</button>
+            <button onClick={handleDeleteClick}>Delete</button>
           </span>
         </p>
       )}

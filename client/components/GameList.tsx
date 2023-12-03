@@ -15,15 +15,12 @@ export function GameList(){
     
     return (
         <div>
-            <h1>GAME LIST!!!</h1>
-        <li>{games.map((a) => (
-            <GameListItem title={a.title} releaseDate={a.releaseDate} hoursPlayed={a.hoursPlayed} rating={a.rating} />
-        ))}</li>
+        <h1>GAME LIST!!!</h1>
+            <ul>
+                {games.map((a) => (
+                <GameListItem title={a.title} releaseDate={a.releaseDate} hoursPlayed={a.hoursPlayed} rating={a.rating} />
+            ))}
+            </ul>
         </div>
         )
-    
-
-
-
-
 }

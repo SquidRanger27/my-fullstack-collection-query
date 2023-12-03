@@ -3,7 +3,8 @@ import express from 'express'
 import games from './routes/games.ts'
 const server = express()
 server.use(express.json())
-server.use('/games', games)
+server.use(express.urlencoded({ extended: true }))
+server.use('/', games)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
