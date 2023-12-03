@@ -15,7 +15,7 @@ export async function seed(knex) {
       },
       {
         title: "League of Legends",
-        releaseDate: "i forgor",
+        releaseDate: "27/10/2009",
         hoursPlayed: 700,
         rating: 0,
       },
