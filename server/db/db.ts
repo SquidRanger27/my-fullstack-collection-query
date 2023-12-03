@@ -3,6 +3,7 @@ import db from './connection.ts'
 
 
 export async function getAllGames():Promise<GameData[]>{
+    console.log('hi')
     return db('games').select('*')
 }
 

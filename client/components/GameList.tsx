@@ -16,7 +16,7 @@ export function GameList(){
     return (
         <div>
             <h1>GAME LIST!!!</h1>
-        <li>{games?.map((a) => (
+        <li>{games.map((a) => (
             <GameListItem title={a.title} releaseDate={a.releaseDate} hoursPlayed={a.hoursPlayed} rating={a.rating} />
         ))}</li>
         </div>

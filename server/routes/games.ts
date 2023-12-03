@@ -4,7 +4,7 @@ const router = express.Router()
 
 
 
-router.get(`/`, async (req, res) =>{
+router.get(`/games`, async (req, res) =>{
     try{
         const games = await db.getAllGames()
         res.json(games)
@@ -14,3 +14,5 @@ router.get(`/`, async (req, res) =>{
         res.status(500).send('Error!')
     }
 })
+
+export default router
