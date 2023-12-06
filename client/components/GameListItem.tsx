@@ -35,7 +35,7 @@ export default function GameListItem({ title, releaseDate, hoursPlayed, rating }
   // })
 
   const handleDeleteClick = () => {
-    deleteGameMutation.mutate( 'title')
+    deleteGameMutation.mutate(title)
     console.log('deleting', title)
   }
 

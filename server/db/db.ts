@@ -6,6 +6,10 @@ export async function getAllGames():Promise<GameData[]>{
     return db('games').select('*')
 }
 
+export async function deleteGame(title: any) {
+  await db('games').delete('title').where({title : title} )
+}
+
 
 // export async function addGame(name: string): Promise<GameData> {
 //     return db('games').insert({ name }).returning(['title', 'rating'])
@@ -20,7 +24,3 @@ export async function getAllGames():Promise<GameData[]>{
 //   ): Promise<GameData | undefined> {
 //     return db('games').where({ title }).update({ title }).returning(['title', 'rating'])
 //   }
-  
-  export async function deleteGame(title: string) {
-    await db('games').delete().where('title', title)
-  }
