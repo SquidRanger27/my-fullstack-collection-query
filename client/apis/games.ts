@@ -7,7 +7,8 @@ export async function getAllGames() {
     return res.body as GameData[]
 }
 
-export async function deleteGame(title: string){
-    const deleteGame = await request.delete(rooturl + "/" + title)
-    return deleteGame.body
-}
+export async function deleteGame(title : string) {
+    const gameData = await request.delete(`/api/v1/games/${title}`)
+    return gameData.body
+  }
+  
