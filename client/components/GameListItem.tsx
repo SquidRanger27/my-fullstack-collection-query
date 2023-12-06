@@ -1,29 +1,27 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
-import { GameList } from './GameList'
-import { GameData } from '../../models/games'
 import { deleteGame } from '../apis/games'
 
 interface Props {
-  title: any
+  title: string
   releaseDate: any
   hoursPlayed: number
   rating: number
-  id: number
+
 }
 
 
-export default function GameListItem({ title, releaseDate, hoursPlayed, rating, id }: Props ) {
+export default function GameListItem({ title, releaseDate, hoursPlayed, rating }: Props ) {
   const [editing, setEditing] = useState(false)
-  const [text, setText] = useState(id)
+  const [text, setText] = useState(title)
 
   const queryClient = useQueryClient()
 
   const deleteGameMutation = useMutation({
     mutationFn: deleteGame,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['id'] })
+      queryClient.invalidateQueries({ queryKey: ['games'] })
     },
   })
 
@@ -35,8 +33,8 @@ export default function GameListItem({ title, releaseDate, hoursPlayed, rating, 
   // })
 
   const handleDeleteClick = () => {
-    deleteGameMutation.mutate(id)
-    console.log('deleting', id)
+    deleteGameMutation.mutate( 'title')
+    console.log('deleting', title)
   }
 
   // const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {

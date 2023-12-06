@@ -18,7 +18,7 @@ export function GameList(){
         <h1>GAME LIST!!!</h1>
             <ul>
                 {games.map((a) => (
-                <GameListItem title={a.title} releaseDate={a.releaseDate} hoursPlayed={a.hoursPlayed} rating={a.rating} id={a.id} />
+                <GameListItem title={a.title} releaseDate={a.releaseDate} hoursPlayed={a.hoursPlayed} rating={a.rating} />
             ))}
             </ul>
         </div>
