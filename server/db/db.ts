@@ -6,8 +6,8 @@ export async function getAllGames():Promise<GameData[]>{
     return db('games').select('*')
 }
 
-export function deleteGame(title: string) {
-  return db('games').where({ title: title }).delete()
+export function deleteGame(id: number) {
+  return db('games').where({ id: id }).delete()
 }
 
 

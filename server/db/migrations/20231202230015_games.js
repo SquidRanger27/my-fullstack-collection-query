@@ -8,6 +8,7 @@ export async function up(knex) {
         table.timestamp('releaseDate');
         table.integer('hoursPlayed');
         table.integer('rating');
+        table.increments('id');
     })
   }
   

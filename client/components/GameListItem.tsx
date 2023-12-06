@@ -6,24 +6,24 @@ import { GameData } from '../../models/games'
 import { deleteGame } from '../apis/games'
 
 interface Props {
-  title: string
+  title: any
   releaseDate: any
   hoursPlayed: number
   rating: number
-
+  id: number
 }
 
 
-export default function GameListItem({ title, releaseDate, hoursPlayed, rating }: Props ) {
+export default function GameListItem({ title, releaseDate, hoursPlayed, rating, id }: Props ) {
   const [editing, setEditing] = useState(false)
-  const [text, setText] = useState(title)
+  const [text, setText] = useState(id)
 
   const queryClient = useQueryClient()
 
   const deleteGameMutation = useMutation({
     mutationFn: deleteGame,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['games'] })
+      queryClient.invalidateQueries({ queryKey: ['id'] })
     },
   })
 
@@ -35,8 +35,8 @@ export default function GameListItem({ title, releaseDate, hoursPlayed, rating }
   // })
 
   const handleDeleteClick = () => {
-    deleteGameMutation.mutate(title)
-    console.log('deleting', title)
+    deleteGameMutation.mutate(id)
+    console.log('deleting', id)
   }
 
   // const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
