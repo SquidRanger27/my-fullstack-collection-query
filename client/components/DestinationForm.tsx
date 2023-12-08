@@ -70,30 +70,37 @@ function DestinationForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
-        <label htmlFor="name">Destination Name:</label>
-        <input
-          type="text"
-          id="name"
-          value={text.name}
-          onChange={handleChange}
-        />
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={text.description}
-          onChange={handleChange}
-        />
-        <label htmlFor="file">Upload Image:</label>
-        <input
-          type="file"
-          id="image"
-          name="image"
-          accept="image/png, image/jpeg"
-          onChange={handleImageChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="destination-container">
+        <form
+          onSubmit={handleSubmit}
+          method="POST"
+          encType="multipart/form-data"
+          className="destination-form center"
+        >
+          <label htmlFor="name">Destination Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={text.name}
+            onChange={handleChange}
+          />
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            value={text.description}
+            onChange={handleChange}
+          />
+          <label htmlFor="file">Upload Image:</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/png, image/jpeg"
+            onChange={handleImageChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
   )
 }

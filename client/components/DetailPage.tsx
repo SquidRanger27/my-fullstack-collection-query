@@ -2,8 +2,8 @@ import { useParams, Link } from 'react-router-dom'
 import { useGetAllPlaces, useGetDestination } from '../apis/hooks/hooks'
 
 function DetailPage() {
-  const { cityId } = useParams<{ cityId?: string }>() // useParams returns an object, so use destructuring
-  const parsedId = cityId ? Number(cityId) : undefined // parse the id to a number
+  const { cityId } = useParams<{ cityId?: string }>()
+  const parsedId = cityId ? Number(cityId) : undefined
 
   const {
     data: city,
