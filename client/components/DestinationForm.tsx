@@ -35,7 +35,7 @@ function DestinationForm() {
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
-    setFileData(file)
+    setFileData(file as File)
   }
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
