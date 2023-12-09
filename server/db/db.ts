@@ -7,7 +7,7 @@ export async function getAllGames():Promise<GameData[]>{
 }
 
 export async function deleteGame(title: string) {
-  await db('games').delete('title').where({title : title}  )
+  await db('games').delete('title').where({title : title})
 }
 
 

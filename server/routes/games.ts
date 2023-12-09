@@ -18,9 +18,9 @@ router.get(`/api/v1/games`, async (req, res) =>{
 export default router
 
 
-router.delete('/:title', async (req, res) =>{
-    const title = req.params.title
+router.delete(`/:title`, async (req, res) =>{
     try{
+        const title = req.params.title
         await db.deleteGame(title)
         res.sendStatus(200)
     }
