@@ -1,7 +1,9 @@
+// components/CollectionViewer.tsx
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import request from 'superagent'
+import { fetchGames } from './Api'
 import UpdateForm from './UpdateForm'
+import GameListItem from './GameListItem'
 
 interface Game {
   id: number
@@ -10,18 +12,8 @@ interface Game {
   year: number
 }
 
-const fetchGames = async () => {
-  const apiUrl = '/api/v1/games'
-  const response = await request.get(apiUrl)
-  return response.body
-}
-
 const CollectionViewer: React.FC = () => {
-  const {
-    data: games,
-    isLoading,
-    isError,
-  } = useQuery<Game[], Error>(['games'], fetchGames)
+  const { data: games, isLoading, isError } = useQuery(['games'], fetchGames)
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -36,15 +28,7 @@ const CollectionViewer: React.FC = () => {
       <h1>PC Games Collection</h1>
       <ul>
         {games &&
-          games.map((game) => (
-            <li key={game.id}>
-              <strong>{game.title}</strong>
-              <p>Developer: {game.developer}</p>
-              <p>Year Released: {game.year}</p>
-              {/* Include the UpdateForm component for each game */}
-              <UpdateForm gameId={game.id} />
-            </li>
-          ))}
+          games.map((game) => <GameListItem key={game.id} game={game} />)}
       </ul>
     </div>
   )

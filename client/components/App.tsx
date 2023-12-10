@@ -1,16 +1,15 @@
 import React from 'react'
-import CollectionViewer from './CollectionViewer'
+import GameList from './GameList'
+import AddGameButton from './AddGameButton.tsx'
 
 const App: React.FC = () => {
+  const refetchGames = React.useCallback(async () => {}, [])
+
   return (
-    <>
-      <header className="header">
-        <h1>My PC Game Collection:</h1>
-      </header>
-      <section className="main">
-        <CollectionViewer />
-      </section>
-    </>
+    <div>
+      <AddGameButton refetchGames={refetchGames} />
+      <GameList refetchGames={refetchGames} />
+    </div>
   )
 }
 

@@ -1,41 +1,52 @@
-import React, { useState } from 'react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import request from 'superagent'
+import React, { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { updateGame } from './Api';
 
 interface Game {
-  id: number
-  title: string
-  developer: string
-  year: number
+  id: number;
+  title: string;
+  developer: string;
+  year: number;
 }
 
 interface UpdateFormProps {
-  gameId: number
+  game: Game;
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const UpdateForm: React.FC<UpdateFormProps> = ({ gameId }) => {
-  const queryClient = useQueryClient()
+const UpdateForm: React.FC<UpdateFormProps> = ({ game, setEditMode }) => {
+  const queryClient = useQueryClient();
 
   const [updatedGame, setUpdatedGame] = useState<Game>({
-    id: gameId,
-    title: '',
-    developer: '',
-    year: 0,
-  })
+    id: game.id,
+    title: game.title,
+    developer: game.developer,
+    year: game.year,
+  });
 
-  const { mutate } = useMutation(
-    (updatedGameData: Game) =>
-      request.put(`/api/v1/games/${gameId}`).send(updatedGameData),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['games'])
-      },
-    }
-  )
+  const { mutate } = useMutation(() => updateGame(game.id, updatedGame), {
+    onSuccess: (data) => {
+      // Update the local state directly without refetching
+      queryClient.setQueryData(['games'], (prevGames: Game[] | undefined) => {
+        if (prevGames) {
+          return prevGames.map((prevGame) =>
+            prevGame.id === data.id ? data : prevGame
+          );
+        }
+        return prevGames;
+      });
+
+      setEditMode(false);
+    },
+  });
 
   const handleUpdate = () => {
-    mutate(updatedGame)
-  }
+    mutate();
+  };
+
+  const handleCancel = () => {
+    setEditMode(false);
+  };
 
   return (
     <div>
@@ -70,6 +81,9 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ gameId }) => {
         />
         <button type="button" onClick={handleUpdate}>
           Update Game
+        </button>
+        <button type="button" onClick={handleCancel}>
+          Cancel
         </button>
       </form>
     </div>

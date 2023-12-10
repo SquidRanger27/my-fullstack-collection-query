@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import request from 'superagent'
+import { addGame } from './Api'
 
 interface GameFormProps {
   onSuccess: () => void
+  refetchGames: () => Promise<void>
 }
 
-const GameForm: React.FC<GameFormProps> = ({ onSuccess }) => {
+const GameForm: React.FC<GameFormProps> = ({ onSuccess, refetchGames }) => {
   const queryClient = useQueryClient()
 
   const [formData, setFormData] = useState({
@@ -15,63 +16,47 @@ const GameForm: React.FC<GameFormProps> = ({ onSuccess }) => {
     year: 0,
   })
 
-  const createGame = async (newGameData: any) => {
-    const apiUrl = '/api/v1/games'
-    const response = await request.post(apiUrl).send(newGameData)
-    return response.body
-  }
-
-  const mutation = useMutation(createGame, {
+  const mutation = useMutation(() => addGame(formData), {
     onSuccess: () => {
       queryClient.invalidateQueries(['games'])
       onSuccess()
+      refetchGames() // Assuming refetchGames is meant to refetch the game list
     },
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    mutation.mutate(formData)
-  }
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    mutation.mutate()
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add a New Game</h2>
-      <label>
-        Title:
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Developer:
-        <input
-          type="text"
-          name="developer"
-          value={formData.developer}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Year:
-        <input
-          type="number"
-          name="year"
-          value={formData.year}
-          onChange={handleChange}
-          required
-        />
-      </label>
+      <label htmlFor="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        value={formData.title}
+        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+      />
+      <label htmlFor="developer">Developer</label>
+      <input
+        type="text"
+        id="developer"
+        value={formData.developer}
+        onChange={(e) =>
+          setFormData({ ...formData, developer: e.target.value })
+        }
+      />
+      <label htmlFor="year">Year</label>
+      <input
+        type="number"
+        id="year"
+        value={formData.year}
+        onChange={(e) =>
+          setFormData({ ...formData, year: Number(e.target.value) })
+        }
+      />
       <button type="submit" disabled={mutation.isLoading}>
         {mutation.isLoading ? 'Adding...' : 'Add Game'}
       </button>
@@ -80,4 +65,3 @@ const GameForm: React.FC<GameFormProps> = ({ onSuccess }) => {
 }
 
 export default GameForm
-

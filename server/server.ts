@@ -1,6 +1,6 @@
 import * as Path from 'node:path'
 import express from 'express'
-import gamesRoutes from './routes/gamesRoutes.ts'
+import gamesRoutes from './routes/gamesRoutes'
 
 const server = express()
 

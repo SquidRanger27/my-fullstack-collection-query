@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import request from 'superagent'
+import { fetchGames, deleteGame } from './Api'
+import UpdateForm from './UpdateForm'
+import GameListItem from './GameListItem'
 
 interface Game {
   id: number
@@ -8,21 +10,21 @@ interface Game {
   year: number
 }
 
-const GameList: React.FC = () => {
+interface GameListProps {
+  refetchGames: () => Promise<void>
+}
+
+const GameList: React.FC<GameListProps> = ({ refetchGames }) => {
   const [games, setGames] = useState<Game[]>([])
 
   useEffect(() => {
-    const apiUrl = '/api/v1/games'
-
-    request.get(apiUrl).end((err, res) => {
-      if (err) {
-        console.error(err)
-        return
-      }
-
-      setGames(res.body)
-    })
+    fetchGames().then((data) => setGames(data))
   }, [])
+
+  const handleDeleteGame = async (gameId: number) => {
+    await deleteGame(gameId)
+    await refetchGames()
+  }
 
   return (
     <div>
@@ -30,9 +32,7 @@ const GameList: React.FC = () => {
       <ul>
         {games.map((game) => (
           <li key={game.id}>
-            <strong>{game.title}</strong>
-            <p>Developer: {game.developer}</p>
-            <p>Year Released: {game.year}</p>
+            <GameListItem game={game} onDelete={handleDeleteGame} />
           </li>
         ))}
       </ul>
