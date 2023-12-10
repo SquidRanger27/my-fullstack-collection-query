@@ -1,3 +1,4 @@
+import React from 'react'
 import Comics from './Comics'
 
 function App() {
