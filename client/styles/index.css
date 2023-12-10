@@ -88,11 +88,11 @@ body {
 
 .destination-form {
   width: 100%;
-  background-image: url('pngwing.com.png'); /* Replace with the path to your banner image */
+  background-image: url('island.png'); /* Replace with the path to your banner image */
   background-size: 1200px 400px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(182, 136, 26);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -142,7 +142,7 @@ label {
 
 .submit {
   display: block;
-  background-color: #08d;
+  background-color: rgb(35, 160, 41);
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
