@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "types": ["vite/client"],
-    "target": "es2020", 
+    "target": "es2020",
     "jsx": "react-jsx",
-    "module": "ES2020",
-    "moduleResolution": "Bundler", 
+    "module": "es2020",  // Corrected from "ES2020" to "es2020"
+    "moduleResolution": "node",
     "noEmit": true,
-    "isolatedModules": true, 
+    "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

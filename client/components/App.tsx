@@ -1,15 +1,17 @@
 import React from 'react'
-import GameList from './GameList'
-import AddGameButton from './AddGameButton.tsx'
+import Header from './Header'
+import { Outlet } from 'react-router-dom'
+import Footer from './Footer'
 
-const App: React.FC = () => {
-  const refetchGames = React.useCallback(async () => {}, [])
-
+function App() {
   return (
-    <div>
-      <AddGameButton refetchGames={refetchGames} />
-      <GameList refetchGames={refetchGames} />
-    </div>
+    <>
+      <main>
+        <Header />
+        <Outlet />
+        <Footer />
+      </main>
+    </>
   )
 }
 

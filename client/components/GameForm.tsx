@@ -1,67 +1,87 @@
-import React, { useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { addGame } from './Api'
+import { Game, NewGame } from '../../models/game'
+import { addGameApi } from '../apis/game'
 
-interface GameFormProps {
-  onSuccess: () => void
-  refetchGames: () => Promise<void>
-}
+const initialFormData = {
+  title: '',
+  developer: '',
+  year: 0,
+} as NewGame
 
-const GameForm: React.FC<GameFormProps> = ({ onSuccess, refetchGames }) => {
+
+export default function GameForm() {
+  const [form, setForm] = useState<NewGame>(initialFormData)
   const queryClient = useQueryClient()
 
-  const [formData, setFormData] = useState({
-    title: '',
-    developer: '',
-    year: 0,
-  })
-
-  const mutation = useMutation(() => addGame(formData), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['games'])
-      onSuccess()
-      refetchGames() // Assuming refetchGames is meant to refetch the game list
+  const gameMutation = useMutation({
+    mutationFn: addGameApi,
+    onSuccess: async (newGame) => {
+      console.log('New Game', newGame)
+      setForm(initialFormData)
+      const currentGames: Game[] | undefined = queryClient.getQueryData([
+        'game',
+      ])
+      if (currentGames) {
+        queryClient.setQueryData(['games'], [...currentGames, newGame])
+      } else {
+        queryClient.invalidateQueries({ queryKey: ['game'] })
+      }
     },
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    mutation.mutate()
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target
+    const newForm = { ...form, [name]: value }
+    console.log('name', name)
+    setForm(newForm)
   }
 
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    gameMutation.mutate(form)
+  }
+
+  if (gameMutation.isLoading) {
+    return <div>Compiling Games</div>
+  }
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add a New Game</h2>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        id="title"
-        value={formData.title}
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-      />
-      <label htmlFor="developer">Developer</label>
-      <input
-        type="text"
-        id="developer"
-        value={formData.developer}
-        onChange={(e) =>
-          setFormData({ ...formData, developer: e.target.value })
-        }
-      />
-      <label htmlFor="year">Year</label>
-      <input
-        type="number"
-        id="year"
-        value={formData.year}
-        onChange={(e) =>
-          setFormData({ ...formData, year: Number(e.target.value) })
-        }
-      />
-      <button type="submit" disabled={mutation.isLoading}>
-        {mutation.isLoading ? 'Adding...' : 'Add Game'}
-      </button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} aria-label="Add Game Form">
+        <p>
+          <label htmlFor="title">Title:</label>
+          <br />
+          <input
+            id="title"
+            onChange={handleChange}
+            value={form.title}
+            name="title"
+          />
+        </p>
+
+        <p>
+          <label htmlFor="developer">Developer:</label>
+          <br />
+          <input
+            id="developer"
+            onChange={handleChange}
+            value={form.developer}
+            name="developer"
+          />
+        </p>
+        <p>
+          <label htmlFor="year">Year Released:</label>
+          <br />
+          <input
+            id="year"
+            onChange={handleChange}
+            value={form.year}
+            name="year"
+          />
+        </p>
+
+        <button>Add New Game</button>
+      </form>
+    </>
   )
 }
-
-export default GameForm
