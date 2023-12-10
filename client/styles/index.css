@@ -125,12 +125,13 @@ label {
   color: rgb(11, 10, 10);
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: rgba(100, 122, 136, 0.459);
+  padding-left: 3px;
 }
 
 .form-input {
   width: clamp(120px, 50vw, 420px);
   height: 2.5rem;
-  padding: 0 3vw;
+  padding: 0 0.5px;
   border: 1px solid black;
   border-radius: 2px;
   margin: 0.625rem auto;
