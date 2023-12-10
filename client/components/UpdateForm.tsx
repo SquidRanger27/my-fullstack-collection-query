@@ -28,7 +28,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ gameId }) => {
       request.put(`/api/v1/games/${gameId}`).send(updatedGameData),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('games')
+        queryClient.invalidateQueries(['games'])
       },
     }
   )

@@ -21,7 +21,7 @@ const CollectionViewer: React.FC = () => {
     data: games,
     isLoading,
     isError,
-  } = useQuery<Game[], Error>('games', fetchGames)
+  } = useQuery<Game[], Error>(['games'], fetchGames)
 
   if (isLoading) {
     return <div>Loading...</div>

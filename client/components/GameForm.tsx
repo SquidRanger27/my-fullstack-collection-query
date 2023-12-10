@@ -23,7 +23,7 @@ const GameForm: React.FC<GameFormProps> = ({ onSuccess }) => {
 
   const mutation = useMutation(createGame, {
     onSuccess: () => {
-      queryClient.invalidateQueries('games')
+      queryClient.invalidateQueries(['games'])
       onSuccess()
     },
   })
@@ -80,3 +80,4 @@ const GameForm: React.FC<GameFormProps> = ({ onSuccess }) => {
 }
 
 export default GameForm
+
