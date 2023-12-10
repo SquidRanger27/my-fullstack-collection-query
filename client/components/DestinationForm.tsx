@@ -75,10 +75,11 @@ function DestinationForm() {
           onSubmit={handleSubmit}
           method="POST"
           encType="multipart/form-data"
-          className="destination-form center"
+          className="destination-form"
         >
           <label htmlFor="name">Destination Name:</label>
           <input
+            className="form-input"
             type="text"
             id="name"
             value={text.name}
@@ -86,6 +87,7 @@ function DestinationForm() {
           />
           <label htmlFor="description">Description:</label>
           <textarea
+            className="form-input"
             id="description"
             value={text.description}
             onChange={handleChange}
@@ -98,7 +100,10 @@ function DestinationForm() {
             accept="image/png, image/jpeg"
             onChange={handleImageChange}
           />
-          <button type="submit">Submit</button>
+
+          <button type="submit" className="submit">
+            Submit
+          </button>
         </form>
       </div>
     </>
