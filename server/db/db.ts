@@ -1,13 +1,13 @@
 import { connect } from 'superagent'
-import { Comics } from '../../models/comics.ts'
+import { comics as comics } from '../../models/comics.ts'
 import connection from '../db/connection.ts'
 import db from '../db/connection.ts'
 
-export async function getAllComics(): Promise<Comics[]> {
+export async function getAllComics(): Promise<comics[]> {
   return db('comics').select('*')
 }
 
-export async function getComicById(id: number): Promise<Comics[]> {
+export async function getComicById(id: number): Promise<comics[]> {
   return db('comics').where({ id }).first()
 }
 
@@ -20,18 +20,19 @@ export async function deleteComic(id: number) {
   await connection('comics').where({ id }).delete()
 }
 
-// export async function updateComic(
-//   id: number,
-//   updates: Partial<Comics[]>
-// ): Promise<Comics | undefined> {
-//   try {
-//     const [updatedComic] = await connection('comics')
-//       .where({ id })
-//       .update(updates, [id, name, issue_number])
-//       .returning([id, name, issue_number])
-//     return updatedComic
-//   } catch (err) {
-//     console.error('Could not update comic', err)
-//     return undefined
-//   }
-// }
+export async function updateComic(
+  id: number,
+  comics: Partial<comics>
+): Promise<comics | undefined> {
+  try {
+    const [updatedComic] = await connection('comics')
+      .where({ id })
+      .update(comics)
+      .returning('*')
+
+    return updatedComic as comics
+  } catch (err) {
+    console.error('Could not update comic', err)
+    return undefined
+  }
+}

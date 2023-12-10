@@ -1,5 +1,6 @@
 import express from 'express'
 import * as db from '../db/db.ts'
+import { comics as comics } from '../../models/comics.ts'
 
 const router = express.Router()
 
@@ -71,39 +72,39 @@ router.delete('/:id', async (req, res) => {
 })
 
 // -- PUT/update comic by ID
-// router.patch('/:id', async (req, res) => {
-//   const comicId = parseInt(req.params.id)
-//   const { name, issue_number } = req.body
+router.patch('/:id', async (req, res) => {
+  const comicId = parseInt(req.params.id)
+  const { name, issue_number } = req.body
 
-//   if (isNaN(comicId)) {
-//     return res.status(400).send('please input a valid ID')
-//   }
+  if (isNaN(comicId)) {
+    return res.status(400).send('please input a valid ID')
+  }
 
-//   const updates = {}
-//   if (name !== undefined) {
-//     updates.name = name
-//   }
+  const updates = {} as Partial<comics>
+  if (name !== undefined && typeof name === 'string') {
+    updates.name = name
+  }
 
-//   if (issue_number !== undefined) {
-//     updates.issue_number = issue_number
-//   }
+  if (issue_number !== undefined && typeof issue_number === 'string') {
+    updates.issue_number = issue_number
+  }
 
-//   if (Object.keys(updates).length === 0) {
-//     return res.status(400).send('no updates detected')
-//   }
+  if (Object.keys(updates).length === 0) {
+    return res.status(400).send('no updates detected')
+  }
 
-//   try {
-//     const updatedComic = await db.updateComic(comicId, updates)
+  try {
+    const updatedComic = await db.updateComic(comicId, updates)
 
-//     if (updatedComic) {
-//       res.json(updatedComic)
-//     } else {
-//       res.status(404).send('comic not found')
-//     }
-//   } catch (err) {
-//     console.error(err)
-//     res.status(500).send('update failed')
-//   }
-// })
+    if (updatedComic) {
+      res.json(updatedComic)
+    } else {
+      res.status(404).send('comic not found')
+    }
+  } catch (err) {
+    console.error(err)
+    res.status(500).send('update failed')
+  }
+})
 
 export default router
