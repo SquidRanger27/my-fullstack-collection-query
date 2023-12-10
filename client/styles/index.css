@@ -92,7 +92,7 @@ body {
   background-size: 1200px 400px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgb(182, 136, 26);
+  background-color: rgb(187, 219, 215);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -109,7 +109,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 2rem 2rem 1.5rem;
-  background-color: #d8dbce;
+  background-color: rgb(128, 113, 70);
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -143,17 +143,15 @@ label {
 
 .submit {
   display: block;
-  background-color: rgb(35, 160, 41);
-  border-radius: 12px;
+  padding: 8px 10px;
   border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 50px;
-  margin-top: 38px;
-  text-align: center;
-  width: 20%;
+  background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+  border-radius: 3px;
+  margin-top: 10px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Rubik', sans-serif;
+  width: 10vw;
 }
 
 .submit:active {
