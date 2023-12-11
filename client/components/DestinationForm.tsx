@@ -2,7 +2,6 @@ import { ChangeEvent, useState } from 'react'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import * as api from '../apis/apiClient'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Destination, DestinationInput } from '../../models/destinationModel'
 
 function DestinationForm() {
   const queryClient = useQueryClient()
@@ -100,10 +99,19 @@ function DestinationForm() {
             accept="image/png, image/jpeg"
             onChange={handleImageChange}
           />
-
-          <button type="submit" className="submit">
-            Submit
-          </button>
+          <div>
+            <button type="submit" className="submit">
+              Submit
+            </button>
+            <button
+              className="submit"
+              onClick={() => {
+                navigate(`/destination/${parsedCityId}`)
+              }}
+            >
+              Back
+            </button>
+          </div>
         </form>
       </div>
     </>
