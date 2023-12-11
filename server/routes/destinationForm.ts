@@ -61,9 +61,9 @@ router.post(
 router.delete(
   '/destination/:destinationId',
   async (req, res): Promise<void> => {
-    const destinationId = Number(req.params.destinationId)
+    const id = Number(req.params.destinationId)
     try {
-      const response = await deleteDestinationForPlace(destinationId) // Implement this function in your db module
+      const response = await deleteDestinationForPlace(id) // Implement this function in your db module
       console.log('Delete Response:', response)
       res.sendStatus(200)
     } catch (error) {

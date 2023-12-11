@@ -29,7 +29,7 @@ export async function addDestinationForPlaces(
 }
 
 export async function deleteDestinationForPlace(id: number) {
-  return db('destination').delete().where('id', id)
+  await db('destination').where({ id }).delete()
 }
 
 export async function updateDestination(

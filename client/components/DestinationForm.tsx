@@ -14,10 +14,6 @@ function DestinationForm() {
     description: '',
   })
 
-  // const [fileData, setFileData] = useState<{ image: string | File | FormData }>(
-  //   { image: '' }
-  // )
-
   const addDestinationMutation = useMutation(
     async (data: { destination: FormData; NZPlaceId: number }) => {
       return api.addDestination(data)

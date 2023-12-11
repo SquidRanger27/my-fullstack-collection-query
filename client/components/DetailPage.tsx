@@ -1,9 +1,27 @@
 import { useParams, Link } from 'react-router-dom'
 import { useGetAllPlaces, useGetDestination } from '../apis/hooks/hooks'
+import { useQueryClient, useMutation } from '@tanstack/react-query'
+import * as api from '../apis/apiClient'
 
 function DetailPage() {
   const { cityId } = useParams<{ cityId?: string }>()
   const parsedId = cityId ? Number(cityId) : undefined
+  const queryClient = useQueryClient()
+
+  const deleteMutation = useMutation(
+    async (id: number) => {
+      return api.deleteDestination(id)
+    },
+    {
+      onSuccess: async () => {
+        queryClient.invalidateQueries(['destination'])
+      },
+    }
+  )
+
+  const handleDeleteClick = (id: number) => {
+    deleteMutation.mutate(id)
+  }
 
   const {
     data: city,
@@ -47,8 +65,13 @@ function DetailPage() {
                   <div className="city-details">
                     <h3 className="city-name link-text">{d.name}</h3>
                     <p className="link-text">{d.description}</p>
+                    <button
+                      className="right"
+                      onClick={() => handleDeleteClick(d.id)}
+                    >
+                      Delete
+                    </button>
                     <button className="right">Edit</button>
-                    <button className="right">Delete</button>
                   </div>
                 </div>
               ))}
