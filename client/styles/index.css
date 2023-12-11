@@ -141,6 +141,13 @@ label {
   }
 }
 
+button {
+  margin: 8px 3px;
+}
+
+.right {
+  float: right;
+}
 .submit {
   display: inline-block;
 
@@ -148,7 +155,7 @@ label {
   border: 0;
   background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
   border-radius: 3px;
-  margin: 10px 5px;
+
   color: #fff;
   letter-spacing: 1px;
   font-family: 'Rubik', sans-serif;

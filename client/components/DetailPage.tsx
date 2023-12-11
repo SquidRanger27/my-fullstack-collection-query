@@ -47,6 +47,8 @@ function DetailPage() {
                   <div className="city-details">
                     <h3 className="city-name link-text">{d.name}</h3>
                     <p className="link-text">{d.description}</p>
+                    <button className="right">Edit</button>
+                    <button className="right">Delete</button>
                   </div>
                 </div>
               ))}
