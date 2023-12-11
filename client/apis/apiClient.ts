@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Destination, DestinationInput } from '../../models/destinationModel'
+import { Destination } from '../../models/destinationModel'
 
 export async function getAllPlaces(): Promise<Destination[]> {
   const AllPlaces = await request.get('/api/v1/nzplaces')
@@ -40,12 +40,13 @@ export async function deleteDestination(id: number): Promise<void> {
   }
 }
 
-export async function updateDestination(
-  id: number,
-  updatedData: DestinationInput
-): Promise<Destination> {
-  const newDestination = await request
-    .patch(`/api/v1/nzplaces/destination/${id}`)
-    .send(updatedData)
-  return newDestination.body
+export async function updateDestination(destinationData: {
+  destination: FormData
+  NZPlaceId: number
+}): Promise<Destination> {
+  const res = await request
+    .patch(`/api/v1/nzplaces/${destinationData.NZPlaceId}/destination`)
+    .send(destinationData.destination) // Directly send the FormData
+
+  return res.body
 }

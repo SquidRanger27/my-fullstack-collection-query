@@ -57,6 +57,36 @@ router.post(
   }
 )
 
+// PUT or PATCH /api/v1/nzplaces/:id/destination
+router.patch(
+  '/:id/destination',
+  upload.single('image'),
+  async (req, res): Promise<void> => {
+    console.log('Request Params:', req.params)
+    console.log('Full Request Object:', req.body)
+    const id = req.params.id ? Number(req.params.id) : 0
+
+    try {
+      console.log('ID:', id)
+      console.log('Request Body:', req.body)
+
+      const result = {
+        name: req.body.name,
+        description: req.body.description,
+        image: `/api/v1/uploads/${req.file?.filename}`,
+        NZPlaceId: id,
+      }
+
+      const response = await updateDestination(result)
+      console.log('Response:', response)
+      res.status(200).send(response)
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Broken')
+    }
+  }
+)
+
 // DELETE /api/v1/nzplaces/destination/:destinationId
 router.delete(
   '/destination/:destinationId',
@@ -72,23 +102,5 @@ router.delete(
     }
   }
 )
-
-// PUT or PATCH /api/v1/nzplaces/destination/:destinationId
-router.patch('/destination/:destinationId', async (req, res): Promise<void> => {
-  const destinationId = Number(req.params.destinationId)
-  const updateData = req.body // Assuming the request body contains the updated data
-
-  try {
-    const updatedDestination = await updateDestination(
-      destinationId,
-      updateData
-    ) // Implement this function in your db module
-    console.log('Update Response:', updatedDestination)
-    res.status(200).send(updatedDestination)
-  } catch (error) {
-    console.error(error)
-    res.status(500).send('Broken')
-  }
-})
 
 export default router

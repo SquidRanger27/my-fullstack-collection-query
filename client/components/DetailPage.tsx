@@ -71,7 +71,9 @@ function DetailPage() {
                     >
                       Delete
                     </button>
-                    <button className="right">Edit</button>
+                    <Link to={`/destination/${parsedId}/edit`}>
+                      <button className="right">Edit</button>
+                    </Link>
                   </div>
                 </div>
               ))}
