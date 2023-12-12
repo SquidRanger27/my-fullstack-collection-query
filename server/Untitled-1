@@ -1,0 +1,5 @@
+-- database: /home/iggy/devacademy/my-fullstack-collection-query/server/db/dev.sqlite3
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM "PCGamesCollection";
