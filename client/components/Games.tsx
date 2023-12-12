@@ -1,5 +1,5 @@
-import { getGamesApi } from '../apis/game'
 import { useQuery } from '@tanstack/react-query'
+import { getGamesApi } from '../apis/game'
 import { Link } from 'react-router-dom'
 
 export default function GamesList() {
@@ -25,7 +25,7 @@ export default function GamesList() {
         <ul id="gameList">
           {games.map((game) => (
             <li key={game.id}>
-              <Link to={`/game/${game.id}`}>{game.title}</Link>
+              <Link to={`/game/${game.id}`}>{game.game}</Link>
             </li>
           ))}
         </ul>
