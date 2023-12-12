@@ -7,8 +7,12 @@ import { useGetDestination } from '../apis/hooks/hooks'
 function EditPage() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
-  const { cityId } = useParams<{ cityId?: string }>()
+  const { cityId, destinationId } = useParams<{
+    cityId?: string
+    destinationId?: string
+  }>()
   const parsedCityId = cityId ? Number(cityId) : undefined
+  const parsedDestinationId = destinationId ? Number(destinationId) : undefined
 
   const [text, setText] = useState({
     name: '',
@@ -83,15 +87,17 @@ function EditPage() {
       <h2 className="center">You are editing:</h2>
       <div id="home-page-container">
         <div className="center">
-          {destination.map((d) => (
-            <div key={d.id} className="edit-card">
-              <img src={`${d.image}`} alt={d.name} className="city-image" />
-              <div className="city-details">
-                <h3 className="city-name link-text">{d.name}</h3>
-                <p className="link-text">{d.description}</p>
-              </div>
+          <div key={destination[0].id} className="edit-card">
+            <img
+              src={`${destination[0].image}`}
+              alt={destination[0].name}
+              className="city-image"
+            />
+            <div className="city-details">
+              <h3 className="city-name link-text">{destination[0].name}</h3>
+              <p className="link-text">{destination[0].description}</p>
             </div>
-          ))}
+          </div>
         </div>
       </div>
       <div className="destination-container">

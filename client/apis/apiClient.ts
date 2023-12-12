@@ -48,5 +48,5 @@ export async function updateDestination(destinationData: {
     .patch(`/api/v1/nzplaces/${destinationData.NZPlaceId}/destination`)
     .send(destinationData.destination) // Directly send the FormData
 
-  return res.body
+  return res.body[0]
 }
