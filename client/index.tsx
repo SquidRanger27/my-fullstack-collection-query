@@ -7,15 +7,12 @@ import { routes } from './routes.tsx'
 import App from './components/App.tsx'
 
 const queryClient = new QueryClient()
-
 const router = createBrowserRouter(routes)
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}>
-        <App />
-        </RouterProvider>
+    <RouterProvider router={router} />
       <ReactQueryDevtools />
     </QueryClientProvider>
   )
