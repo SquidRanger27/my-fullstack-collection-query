@@ -1,5 +1,10 @@
 # Fullstack Collection App
 
+
+Troubleshooting notes:
+In the procfile you needed "npm start" instead of "npm run start"
+dockerfile needed to be added to commit manually with "ga Dockerfile"
+
 This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, API requests and React components that'll use React Query. Let's get going!
 
 ## Setup
