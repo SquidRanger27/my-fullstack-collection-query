@@ -2,8 +2,9 @@ import { ChangeEvent, useState } from 'react'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import * as api from '../apis/apiClient'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useGetDestination } from '../apis/hooks/hooks'
 
-function DestinationForm() {
+function EditPage() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const { cityId } = useParams<{ cityId?: string }>()
@@ -14,9 +15,9 @@ function DestinationForm() {
     description: '',
   })
 
-  const addDestinationMutation = useMutation(
+  const editDestinationMutation = useMutation(
     async (data: { destination: FormData; NZPlaceId: number }) => {
-      return api.addDestination(data)
+      return api.updateDestination(data)
     },
     {
       onSuccess: async () => {
@@ -27,6 +28,20 @@ function DestinationForm() {
   )
 
   const [fileData, setFileData] = useState<File | null>(null)
+
+  const {
+    data: destination,
+    isLoading: destinationLoading,
+    isError: destinationError,
+  } = useGetDestination(parsedCityId as number)
+
+  if (destinationLoading) {
+    return <p>Loading...</p>
+  }
+
+  if (destinationError) {
+    return <p>Error loading city details</p>
+  }
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -50,7 +65,7 @@ function DestinationForm() {
     }
 
     console.log(destinationData)
-    addDestinationMutation.mutate(destinationData)
+    editDestinationMutation.mutate(destinationData)
   }
 
   const handleChange = (
@@ -65,6 +80,20 @@ function DestinationForm() {
 
   return (
     <>
+      <h2 className="center">You are editing:</h2>
+      <div id="home-page-container">
+        <div className="center">
+          {destination.map((d) => (
+            <div key={d.id} className="edit-card">
+              <img src={`${d.image}`} alt={d.name} className="city-image" />
+              <div className="city-details">
+                <h3 className="city-name link-text">{d.name}</h3>
+                <p className="link-text">{d.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="destination-container">
         <form
           onSubmit={handleSubmit}
@@ -114,4 +143,4 @@ function DestinationForm() {
   )
 }
 
-export default DestinationForm
+export default EditPage

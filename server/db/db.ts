@@ -29,12 +29,16 @@ export async function addDestinationForPlaces(
 }
 
 export async function deleteDestinationForPlace(id: number) {
-  return db('destination').delete().where('id', id)
+  await db('destination').where({ id }).delete()
 }
 
 export async function updateDestination(
-  id: number,
   destination: DestinationInput
 ): Promise<Destination[]> {
-  return db('destination').update(destination).where('id', id).returning('*')
+  const { NZPlaceId, name, description, image } = destination
+  const [result] = await db('destination')
+    .update({ name, description, image, 'NZ places_id': NZPlaceId })
+    .returning(['id', 'name', 'description', 'image', 'NZ places_id'])
+
+  return result
 }
