@@ -1,18 +1,17 @@
 import express from 'express'
 import * as dbGames from '../db/games'
 
-const router = express.Router()
-
+const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const games = await dbGames.getAllGamesDb()
-    res.json(games)
+    const games = await dbGames.getAllGamesDb();
+    res.json(games);
   } catch (error) {
-    console.error(error)
-    res.status(500).send('Yo, where the games at?')
+    console.error(error);
+    res.status(500).send('Yo, where the games at?');
   }
-})
+});
 
 
 router.get('/:id', async (req, res) => {

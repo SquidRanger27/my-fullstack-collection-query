@@ -4,7 +4,7 @@ import { Game, NewGame } from '../../models/game'
 import { addGameApi } from '../apis/game'
 
 const initialFormData = {
-  title: '',
+  game: '',
   developer: '',
   year: 0,
 } as NewGame
@@ -49,13 +49,13 @@ export default function GameForm() {
     <>
       <form onSubmit={handleSubmit} aria-label="Add Game Form">
         <p>
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="game">Title:</label>
           <br />
           <input
-            id="title"
+            id="game"
             onChange={handleChange}
-            value={form.title}
-            name="title"
+            value={form.game}
+            name="game"
           />
         </p>
 

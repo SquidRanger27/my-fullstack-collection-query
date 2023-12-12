@@ -4,7 +4,7 @@ import { Game } from '../../models/game'
 import { getSingleGameApi } from '../apis/game'
 import DeleteGame from './DeleteGame'
 
-export default function SingleBook() {
+export default function SingleGame() {
   const { id } = useParams()
   const {
     data: game,
@@ -28,10 +28,10 @@ export default function SingleBook() {
 
   return (
     <>
-      <h1 id="single-game-title">{game.title}</h1>
+      <h1 id="single-game">{game.game}</h1>
       <div>
         <p>
-          <strong>Game:</strong> {game.title}
+          <strong>Game:</strong> {game.game}
         </p>
         <p>
           <strong>Developer:</strong> {game.developer}
