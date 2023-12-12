@@ -21,7 +21,7 @@ function EditPage() {
 
   const editDestinationMutation = useMutation(
     async (data: { destination: FormData; NZPlaceId: number }) => {
-      return api.updateDestination(data)
+      return api.updateDestination(parsedDestinationId as number, data)
     },
     {
       onSuccess: async () => {
@@ -82,20 +82,26 @@ function EditPage() {
     }))
   }
 
+  const selectedDestination = destination?.find(
+    (d) => d.id === parsedDestinationId
+  )
+
   return (
     <>
       <h2 className="center">You are editing:</h2>
       <div id="home-page-container">
         <div className="center">
-          <div key={destination[0].id} className="edit-card">
+          <div key={selectedDestination?.id} className="edit-card">
             <img
-              src={`${destination[0].image}`}
-              alt={destination[0].name}
+              src={`${selectedDestination?.image}`}
+              alt={selectedDestination?.name}
               className="city-image"
             />
             <div className="city-details">
-              <h3 className="city-name link-text">{destination[0].name}</h3>
-              <p className="link-text">{destination[0].description}</p>
+              <h3 className="city-name link-text">
+                {selectedDestination?.name}
+              </h3>
+              <p className="link-text">{selectedDestination?.description}</p>
             </div>
           </div>
         </div>

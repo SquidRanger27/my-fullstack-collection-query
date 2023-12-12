@@ -59,12 +59,13 @@ router.post(
 
 // PUT or PATCH /api/v1/nzplaces/:id/destination
 router.patch(
-  '/:id/destination',
+  '/:id/destination/:destinationId',
   upload.single('image'),
   async (req, res): Promise<void> => {
     console.log('Request Params:', req.params)
     console.log('Full Request Object:', req.body)
     const id = req.params.id ? Number(req.params.id) : 0
+    const destinationId = Number(req.params.destinationId)
 
     try {
       console.log('ID:', id)
@@ -77,7 +78,7 @@ router.patch(
         NZPlaceId: id,
       }
 
-      const response = await updateDestination(result)
+      const response = await updateDestination(destinationId, result)
       console.log('Response:', response)
       res.status(200).send(response)
     } catch (error) {

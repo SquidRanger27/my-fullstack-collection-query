@@ -33,10 +33,12 @@ export async function deleteDestinationForPlace(id: number) {
 }
 
 export async function updateDestination(
+  destinationId: number,
   destination: DestinationInput
 ): Promise<Destination[]> {
   const { NZPlaceId, name, description, image } = destination
   const [result] = await db('destination')
+    .where('id', destinationId)
     .update({ name, description, image, 'NZ places_id': NZPlaceId })
     .returning(['id', 'name', 'description', 'image', 'NZ places_id'])
 

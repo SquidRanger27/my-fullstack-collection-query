@@ -40,12 +40,17 @@ export async function deleteDestination(id: number): Promise<void> {
   }
 }
 
-export async function updateDestination(destinationData: {
-  destination: FormData
-  NZPlaceId: number
-}): Promise<Destination> {
+export async function updateDestination(
+  destinationId: number,
+  destinationData: {
+    destination: FormData
+    NZPlaceId: number
+  }
+): Promise<Destination> {
   const res = await request
-    .patch(`/api/v1/nzplaces/${destinationData.NZPlaceId}/destination`)
+    .patch(
+      `/api/v1/nzplaces/${destinationData.NZPlaceId}/destination/${destinationId}`
+    )
     .send(destinationData.destination) // Directly send the FormData
 
   return res.body[0]
