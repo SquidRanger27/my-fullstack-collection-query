@@ -1,4 +1,4 @@
-export interface comics {
+export interface Comics {
   id: number
   name: string
   issue_number: string

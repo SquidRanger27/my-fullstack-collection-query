@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from '@tanstack/react-query'
-import { getAllComics, getComicById, updateComic } from '../../server/db/db'
+import { getAllComics } from '../apis/comics'
 import {
   addComicByName,
   deleteComicById,
@@ -99,6 +99,17 @@ const Comics: React.FC = () => {
   return (
     <div>
       <h2>Comics</h2>
+
+      {/* <ol className="comicList">
+        {comics.map((comics: comics) => {
+          <strong>Comic ID:</strong> {comics.id} <br />
+          <strong>Comic Title:</strong> {comicItems.name} <br />
+          <strong>Issue Number:</strong> {comicItems.issue_number}
+          <br />
+        })}
+        
+      </ol> */}
+
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -121,6 +132,7 @@ const Comics: React.FC = () => {
       {updateData && (
         <div>
           <h3>Update Comic</h3>
+
           <label htmlFor="updateTitle">
             Title:
             <input
@@ -133,19 +145,21 @@ const Comics: React.FC = () => {
               }
             />
           </label>
+
           <label htmlFor="updateIssueNumber">
             {' '}
             Update Issue Number:
             <input
               type="text"
               id="updateIssueNumber"
-              name="uupdateIssueNumber"
+              name="updateIssueNumber"
               value={updateData.issue_number || ''}
               onChange={(e) =>
                 setUpdateData({ ...updateData, issue_number: e.target.value })
               }
             />
           </label>
+
           <button onClick={handleApplyUpdate}>Apply update!</button>
         </div>
       )}

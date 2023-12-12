@@ -1,5 +1,6 @@
 // import React from 'react'
 import Comics from './Comics'
+import ComicsList from './ComicsList'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       </header>
       <section className="main">
         <Comics />
+        {/* <ComicsList /> */}
       </section>
     </>
   )

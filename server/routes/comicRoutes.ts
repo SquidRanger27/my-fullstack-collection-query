@@ -1,6 +1,6 @@
 import express from 'express'
 import * as db from '../db/db.ts'
-import { comics as comics } from '../../models/comics.ts'
+import { Comics } from '../../models/comics.ts'
 
 const router = express.Router()
 
@@ -80,7 +80,7 @@ router.patch('/:id', async (req, res) => {
     return res.status(400).send('please input a valid ID')
   }
 
-  const updates = {} as Partial<comics>
+  const updates = {} as Partial<Comics>
   if (name !== undefined && typeof name === 'string') {
     updates.name = name
   }
