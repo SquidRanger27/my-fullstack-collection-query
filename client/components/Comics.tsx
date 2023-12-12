@@ -75,13 +75,13 @@ const Comics: React.FC = () => {
     return <>Something went wrong!</>
   }
 
-  if (!Comics || isLoading) {
+  if (!comics || isLoading) {
     return <>Loading...</>
   }
 
   const comicItems: JSX.Element[] = []
 
-  for (let i = 0; i < Comics.length; i++) {
+  for (let i = 0; i < comics.length; i++) {
     const comic = comics[i]
     comicItems.push(
       <li key={comic.id}>
@@ -99,17 +99,6 @@ const Comics: React.FC = () => {
   return (
     <div>
       <h2>Comics</h2>
-
-      {/* <ol className="comicList">
-        {comics.map((comics: comics) => {
-          <strong>Comic ID:</strong> {comics.id} <br />
-          <strong>Comic Title:</strong> {comicItems.name} <br />
-          <strong>Issue Number:</strong> {comicItems.issue_number}
-          <br />
-        })}
-        
-      </ol> */}
-
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -128,7 +117,6 @@ const Comics: React.FC = () => {
         <button type="submit">Add Comic!</button>
       </form>
       <ul>{comicItems}</ul>
-
       {updateData && (
         <div>
           <h3>Update Comic</h3>
