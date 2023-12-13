@@ -37,9 +37,6 @@
     "superagent": "7.1.1"
   },
   "devDependencies": {
-    "build": "run-s build:client build:server",
-    "build:client": "vite build",
-    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "@devacademy/eslint-config": "^1.9.1",
     "@tanstack/eslint-plugin-query": "^4.29.9",
     "@tanstack/react-query": "^4.29.12",
