@@ -9,7 +9,6 @@ const initialFormData = {
   year: 0,
 } as NewGame
 
-
 export default function GameForm() {
   const [form, setForm] = useState<NewGame>(initialFormData)
   const queryClient = useQueryClient()
@@ -20,12 +19,12 @@ export default function GameForm() {
       console.log('New Game', newGame)
       setForm(initialFormData)
       const currentGames: Game[] | undefined = queryClient.getQueryData([
-        'game',
+        'games',
       ])
       if (currentGames) {
         queryClient.setQueryData(['games'], [...currentGames, newGame])
       } else {
-        queryClient.invalidateQueries({ queryKey: ['game'] })
+        queryClient.invalidateQueries({ queryKey: ['games'] })
       }
     },
   })
